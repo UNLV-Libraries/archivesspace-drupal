@@ -1,10 +1,10 @@
 ## AS2D8
-#### ArchivesSpace-to-Drupal 8 integration
+## ArchivesSpace-to-Drupal 8 integration
 
 ![AS2D8 Logo]()
 
-#### About this project
-The [AS2D8](https://www.as2d8.com/) suite of modules supports pulling ArchivesSpace data to Drupal 8. It extends the Drupal core Migrate API with plugins, provides sensible defaults for displaying ArchivesSpace content in Drupal, and . Changes can be made in real time or asynchronously in batches during cron run. Once ArchivesSpace records are consumed by Drupal, they can be further enriched with NISO-defined metadata, displayed in a customizable discovery theme layer, and further syndicated for consumption by other resources. 
+## About this project
+The [AS2D8](https://www.as2d8.com/) suite of modules supports pulling ArchivesSpace data to Drupal 8. It extends the Drupal core Migrate API with plugins, provides sensible defaults for displaying ArchivesSpace content in Drupal, and . Changes can be made in real time or asynchronously in batches during cron run. Once ArchivesSpace records are consumed by Drupal, they can be further enriched with NISO-defined metadata, published in a customizable discovery theme layer, and further syndicated for consumption by other resources. 
 
 A few possible use cases include:
 - Using Drupal Views to build glossary displays, user-configurable sorting, 
@@ -17,10 +17,10 @@ A few possible use cases include:
 
 ---
 
-#### Pre-history
-This project began in 2014 as a [Kress Foundation-funded](http://www.kressfoundation.org) suite of Drupal 7 modules to support cataloging and discovery at the [American Academy in Rome](http://www.aarome.org). The project extends several Drupal modules including cURL HTTP (chr), Web Service Data (wsdata), and custom code to request ArchivesSpace JSON objects and pipe them into Drupal entities. These entities can then be formatted, manipulated, and indexed via traditional Drupal methods (Views, Solr, Elastic Search, etc.).
+## Pre-history
+This project began in 2014 as a [Kress Foundation-funded](http://www.kressfoundation.org) suite of Drupal 7 modules to support cataloging and discovery at the [American Academy in Rome](http://dhc.aarome.org). The project extends several Drupal modules including RESTClient(https://www.drupal.org/project/restclient), Web Service Data(https://www.drupal.org/project/wsdata), and custom code to request ArchivesSpace JSON objects and pipe them into Drupal entities. These entities can then be formatted, manipulated, and indexed via traditional Drupal methods (Views, Solr, Elastic Search, etc.).
 
-This project is monitored and updated for maintenance fixes only. No new features will be considered or added. Instead, the Acacdemy, together with partner institutions, seeks to create an entirely new suite of Drupal 8 modules that adhere to PSR coding standards and module development best practices in order to release this suite to both ArchivesSpace and Drupal developer communities 
+This project is monitored and updated for maintenance fixes only. No new features will be considered or added. Instead, the Acacdemy, together with partner institutions, seeks to create an entirely new suite of Drupal 8 modules that adhere to PSR coding standards and module development best practices in order to release this suite to both ArchivesSpace and Drupal developer communities.
 
 ---
 
@@ -34,7 +34,7 @@ An ArchivesSpace-CollectionSpace integration project developed by the Litchfield
 Established discovery framework for digital collections.
 
 ##### [DKAN] (https://getdkan.org/)
-A discovery platform for government open data. The inspiration for the antecedent ArchivesSpace-to-Drupal 7 modules.
+A discovery platform for government open data. The technical inspiration for the antecedent ArchivesSpace-to-Drupal 7 modules.
 
 ---
 #### Roadmap (and a few questions)
@@ -43,11 +43,11 @@ A discovery platform for government open data. The inspiration for the anteceden
 
 #### Themes
 
-## Documentation
+### Documentation
 
 Full AS2D8 documentation is available at http://docs.as2d8.com/
 
-## Quick Start Guide
+### Quick Start Guide
 
 ## Using AS2D8
 
