@@ -24,16 +24,16 @@ This project is monitored and updated for maintenance fixes only. No new feature
 
 ---
 
-#### Why not develop ArchivesSpace plugins?
+## Why not develop ArchivesSpace plugins?
 
-#### Benchmarks
-##### [BentoSpace] (http://demo.martinezdev.com/bento/search/)
+## Benchmarks
+#### [BentoSpace] (http://demo.martinezdev.com/bento/search/)
 An ArchivesSpace-CollectionSpace integration project developed by the Litchfield Historical Society that closely tracks many of the features Developed by the [Litchfield Historical Society] (http://litchfieldhistoricalsociety.org/)
 
-##### [Project Blacklight] (http://projectblacklight.org/)
+#### [Project Blacklight] (http://projectblacklight.org/)
 Established discovery framework for digital collections.
 
-##### [DKAN] (https://getdkan.org/)
+#### [DKAN] (https://getdkan.org/)
 A discovery platform for government open data. The technical inspiration for the antecedent ArchivesSpace-to-Drupal 7 modules.
 
 ---
@@ -43,7 +43,7 @@ A discovery platform for government open data. The technical inspiration for the
 
 #### Themes
 
-### Documentation
+#### Documentation
 
 Full AS2D8 documentation is available at http://docs.as2d8.com/
 
