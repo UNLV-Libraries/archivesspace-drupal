@@ -14,12 +14,12 @@ A few possible use cases include:
 - Researcher annotations, user-administered "favorites", save-for-later carts
 - Managing research requests
 - Joining archival records to geo-locations
-
+---
 #### Pre-history
 This project began in 2014 as a [Kress Foundation-funded](http://www.kressfoundation.org) suite of Drupal 7 modules to support cataloging and discovery at the [American Academy in Rome](http://www.aarome.org). The project extends several Drupal modules including cURL HTTP (chr), Web Service Data (wsdata), and custom code to request ArchivesSpace JSON objects and pipe them into Drupal entities. These entities can then be formatted, manipulated, and indexed via traditional Drupal methods (Views, Solr, Elastic Search, etc.).
 
 This project is monitored and updated for maintenance fixes only. No new features will be considered or added. Instead, the Acacdemy, together with partner institutions, seeks to create an entirely new suite of Drupal 8 modules that adhere to PSR coding standards and module development best practices in order to release this suite to both ArchivesSpace and Drupal developer communities.
-
+---
 #### Why not develop ArchivesSpace plugins?
 
 #### Benchmarks
@@ -32,7 +32,8 @@ Established discovery framework for digital collections.
 ##### [DKAN] (https://getdkan.org/)
 A discovery platform for government open data. The inspiration for the antecedent ArchivesSpace-to-Drupal 7 modules.
 
-## Roadmap (and a few questions)
+---
+#### Roadmap (and a few questions)
 
 #### Buidling the Drupal data model
 
