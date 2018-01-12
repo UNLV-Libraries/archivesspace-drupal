@@ -22,11 +22,12 @@ This project began in 2014 as a [Kress Foundation-funded](http://www.kressfounda
 
 This project is monitored and updated for maintenance fixes only. No new features will be considered or added. Instead, the Acacdemy, together with partner institutions, seeks to create an entirely new suite of Drupal 8 modules that adhere to PSR coding standards and module development best practices in order to release this suite to both ArchivesSpace and Drupal developer communities.
 
-## Why not develop ArchivesSpace plugins?
+## Why not develop ArchivesSpace plugins instead?
+TBD
 
 ## Benchmarks
 #### [BentoSpace] (http://demo.martinezdev.com/bento/search/)
-An ArchivesSpace-CollectionSpace integration project developed by the Litchfield Historical Society that closely tracks many of the features Developed by the [Litchfield Historical Society] (http://litchfieldhistoricalsociety.org/)
+An ArchivesSpace-CollectionSpace integration project developed by the [Litchfield Historical Society](http://litchfieldhistoricalsociety.org/)
 
 #### [Project Blacklight] (http://projectblacklight.org/)
 Established discovery framework for digital collections.
@@ -35,25 +36,30 @@ Established discovery framework for digital collections.
 A discovery platform for government open data. The technical inspiration for the antecedent ArchivesSpace-to-Drupal 7 modules.
 
 ## Roadmap (and a few questions)
+TBD
 
 ## Buidling the Drupal data model
+TBD
 
 ## Themes
+TBD
 
 ## Documentation
-
-Full AS2D8 documentation is available at http://docs.as2d8.com/
+TBD. Full AS2D8 documentation is available at http://docs.as2d8.com/
 
 ## Quick Start Guide
+TBD
 
 ## Using AS2D8
+TBD
 
 ## System Requirements
+TBD
 
 ## Other Notes
+TBD
 
 ## License
-
 This project is licensed under the MIT open source license.
 
 ## About the Authors
