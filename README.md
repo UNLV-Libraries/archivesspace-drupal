@@ -1,6 +1,6 @@
 ![AS2D8 Logo]()
 ## AS2D8: ArchivesSpace-to-Drupal 8 integration
-The [AS2D8](https://www.as2d8.com/) suite of modules supports that publishes ArchivesSpace data with Drupal 8. It extends the Drupal core Migrate API with plugins, and provides sensible defaults for displaying ArchivesSpace resources in Drupal, provides all of the usual Drupal theming site administration tools. AS2D8 closely tracks the [Islandora CLAW project](https://github.com/Islandora-CLAW/CLAW). When the next-generation of Islandora is stable, AS2D8 will offer an integration point for Islandora. 
+The [AS2D8](https://www.as2d8.com/) suite of modules supports that publishes ArchivesSpace data with Drupal 8. AS2D8 extends the Drupal core Migrate API with plugins, provides sensible defaults for displaying ArchivesSpace resources in Drupal and all of the usual Drupal content and website management tools. AS2D8 closely tracks the [Islandora CLAW project](https://github.com/Islandora-CLAW/CLAW). When the next-generation of Islandora is stable, AS2D8 will offer an integration point for Islandora. 
 
 A few possible use cases include:
 - Using Drupal Views to build glossary displays, user-configurable sorting, 
@@ -11,7 +11,7 @@ A few possible use cases include:
 - Managing research requests
 - Joining archival records to geo-locations
 
-Changes can be made in real time or asynchronously in batches during cron run. Once ArchivesSpace records are consumed by Drupal, they can be further enriched with NISO-defined metadata, published in a customizable discovery theme layer, and further syndicated for consumption by other resources. 
+Changes can be made in real time or asynchronously in batches during cron run. Once ArchivesSpace records are consumed by Drupal, they can be further enriched with NISO-defined metadata, published in a customizable discovery theme layer, and published in web service formats for consumption by other resources. 
 
 ## Pre-history
 This project began in 2014 as a [Kress Foundation-funded](http://www.kressfoundation.org) suite of Drupal 7 modules to support cataloging and discovery at the [American Academy in Rome](http://dhc.aarome.org). The project extends several Drupal modules including [RESTClient](https://www.drupal.org/project/restclient), [Web Service Data](https://www.drupal.org/project/wsdata), and custom code to request ArchivesSpace JSON objects and pipe them into Drupal entities. These entities can then be formatted, manipulated, and indexed via traditional Drupal methods (Views, Solr, Elastic Search, etc.).
