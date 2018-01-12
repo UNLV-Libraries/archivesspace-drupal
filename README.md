@@ -36,8 +36,6 @@ Established discovery framework for digital collections.
 A discovery platform for government open data. The technical inspiration for the antecedent ArchivesSpace-to-Drupal 7 modules.
 
 ## Roadmap & product pipeline
-TBD
-
 ### Buidling the Drupal data model
 TBD
 
