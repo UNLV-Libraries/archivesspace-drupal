@@ -4,7 +4,7 @@
 ![AS2D8 Logo]()
 
 ## About this project
-The [AS2D8](https://www.as2d8.com/) suite of modules supports pulling ArchivesSpace data to Drupal 8. It extends the Drupal core Migrate API with plugins, provides sensible defaults for displaying ArchivesSpace content in Drupal, and . Changes can be made in real time or asynchronously in batches during cron run. Once ArchivesSpace records are consumed by Drupal, they can be further enriched with NISO-defined metadata, published in a customizable discovery theme layer, and further syndicated for consumption by other resources. 
+The [AS2D8](https://www.as2d8.com/) suite of modules supports pulling ArchivesSpace data to Drupal 8. It extends the Drupal core Migrate API with plugins, provides sensible defaults for displaying ArchivesSpace resources in Drupal, provides all of the usual Drupal theming site administration tools. AS2D8 closely tracks the [Islandora CLAW project](https://github.com/Islandora-CLAW/CLAW). When the next-generation of Islandora is stable, AS2D8 will offer an integration point for Islandora. 
 
 A few possible use cases include:
 - Using Drupal Views to build glossary displays, user-configurable sorting, 
@@ -14,6 +14,8 @@ A few possible use cases include:
 - Researcher annotations, user-administered "favorites", save-for-later carts
 - Managing research requests
 - Joining archival records to geo-locations
+
+Changes can be made in real time or asynchronously in batches during cron run. Once ArchivesSpace records are consumed by Drupal, they can be further enriched with NISO-defined metadata, published in a customizable discovery theme layer, and further syndicated for consumption by other resources. 
 
 ## Pre-history
 This project began in 2014 as a [Kress Foundation-funded](http://www.kressfoundation.org) suite of Drupal 7 modules to support cataloging and discovery at the [American Academy in Rome](http://dhc.aarome.org). The project extends several Drupal modules including RESTClient(https://www.drupal.org/project/restclient), Web Service Data(https://www.drupal.org/project/wsdata), and custom code to request ArchivesSpace JSON objects and pipe them into Drupal entities. These entities can then be formatted, manipulated, and indexed via traditional Drupal methods (Views, Solr, Elastic Search, etc.).
