@@ -1,6 +1,6 @@
 ![AS2D8 Logo]()
 ## AS2D8: ArchivesSpace-to-Drupal 8 integration
-The [AS2D8](https://www.as2d8.com/) suite of modules supports that publishes ArchivesSpace data in Drupal 8. It extends the Drupal core Migrate API with plugins, and provides sensible defaults for displaying ArchivesSpace resources in Drupal, provides all of the usual Drupal theming site administration tools. AS2D8 closely tracks the [Islandora CLAW project](https://github.com/Islandora-CLAW/CLAW). When the next-generation of Islandora is stable, AS2D8 will offer an integration point for Islandora. 
+The [AS2D8](https://www.as2d8.com/) suite of modules supports that publishes ArchivesSpace data with Drupal 8. It extends the Drupal core Migrate API with plugins, and provides sensible defaults for displaying ArchivesSpace resources in Drupal, provides all of the usual Drupal theming site administration tools. AS2D8 closely tracks the [Islandora CLAW project](https://github.com/Islandora-CLAW/CLAW). When the next-generation of Islandora is stable, AS2D8 will offer an integration point for Islandora. 
 
 A few possible use cases include:
 - Using Drupal Views to build glossary displays, user-configurable sorting, 
