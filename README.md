@@ -35,13 +35,28 @@ Established discovery framework for digital collections.
 ##### [DKAN] (https://getdkan.org/)
 A discovery platform for government open data. The technical inspiration for the antecedent ArchivesSpace-to-Drupal 7 modules.
 
-## Roadmap (and a few questions)
+## Roadmap & product pipeline
 TBD
 
-## Buidling the Drupal data model
+### Buidling the Drupal data model
 TBD
 
-## Themes
+### Migration plugins
+TBD
+
+### Authentication
+TBD
+
+### Templates
+TBD
+
+### Search
+TBD
+
+### Features
+TBD
+
+### CMI
 TBD
 
 ## Documentation
