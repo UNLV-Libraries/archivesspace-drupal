@@ -26,13 +26,13 @@ This project is monitored and updated for maintenance fixes only. No new feature
 TBD
 
 ## Benchmarks
-#### [BentoSpace] (http://demo.martinezdev.com/bento/search/)
+#### [BentoSpace](http://demo.martinezdev.com/bento/search/)
 An ArchivesSpace-CollectionSpace integration project developed by the [Litchfield Historical Society](http://litchfieldhistoricalsociety.org/)
 
-#### [Project Blacklight] (http://projectblacklight.org/)
+#### [Project Blacklight](http://projectblacklight.org/)
 Established discovery framework for digital collections.
 
-##### [DKAN] (https://getdkan.org/)
+##### [DKAN](https://getdkan.org/)
 A discovery platform for government open data. The technical inspiration for the antecedent ArchivesSpace-to-Drupal 7 modules.
 
 ## Roadmap & product pipeline
