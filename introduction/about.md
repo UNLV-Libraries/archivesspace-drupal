@@ -1,6 +1,6 @@
 ![AS2D8 Logo]()
 ## AS2D8: ArchivesSpace-to-Drupal 8 integration
-The [AS2D8](https://www.as2d8.com/) suite of modules supports that publishes ArchivesSpace data with Drupal 8. AS2D8 extends the Drupal core Migrate API with plugins, provides sensible defaults for displaying ArchivesSpace resources in Drupal and all of the usual Drupal content and website management tools. AS2D8 closely tracks the [Islandora CLAW project](https://github.com/Islandora-CLAW/CLAW). When the next-generation of Islandora is stable, AS2D8 will offer an integration point for Islandora. 
+[AS2D8](https://www.as2d8.com/) is a series of Drupal modules for harvesting data from ArchviesSpace. AS2D8 extends the Drupal core Migrate API with plugins, provides sensible defaults for displaying ArchivesSpace resources in Drupal and all of the usual Drupal content and website management tools. AS2D8 closely tracks the [Islandora CLAW project](https://github.com/Islandora-CLAW/CLAW). When the next-generation of Islandora is stable, AS2D8 will offer an integration point for Islandora. 
 
 A few possible use cases include:
 - Using Drupal Views to build glossary displays, user-configurable sorting, 
@@ -17,9 +17,6 @@ Changes can be made in real time or asynchronously in batches during cron run. O
 This project began in 2014 as a [Kress Foundation-funded](http://www.kressfoundation.org) suite of Drupal 7 modules to support cataloging and discovery at the [American Academy in Rome](http://dhc.aarome.org). The project extends several Drupal modules including [RESTClient](https://www.drupal.org/project/restclient), [Web Service Data](https://www.drupal.org/project/wsdata), and custom code to request ArchivesSpace JSON objects and pipe them into Drupal entities. These entities can then be formatted, manipulated, and indexed via traditional Drupal methods (Views, Solr, Elastic Search, etc.).
 
 This project is monitored and updated for maintenance fixes only. No new features will be considered or added. Instead, the Acacdemy, together with partner institutions, seeks to create an entirely new suite of Drupal 8 modules that adhere to PSR coding standards and module development best practices in order to release this suite to both ArchivesSpace and Drupal developer communities.
-
-## Why not develop ArchivesSpace plugins instead?
-TBD
 
 ## Benchmarks
 #### [BentoSpace](http://demo.martinezdev.com/bento/search/)
