@@ -1,5 +1,5 @@
 ## Possible use cases
-- Using Drupal Views to build glossary displays, user-configurable sorting, 
+- Using Drupal Views to build glossary displays, user-configurable sorting, facets, filtering, and bulk operations
 - Optionally deploying with Search API with Apache Solr to provide a configurable and granular control over search results 
 - Building custom reports, logs, and user analytics
 - Developing customized "Omeka-like" online exhibitions of archival material
