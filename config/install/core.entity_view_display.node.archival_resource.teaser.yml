@@ -1,0 +1,17 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - node.type.archival_resource
+  module:
+    - user
+id: node.archival_resource.teaser
+targetEntityType: node
+bundle: archival_resource
+mode: teaser
+content:
+  links:
+    weight: 100
+    region: content
+hidden: {  }
