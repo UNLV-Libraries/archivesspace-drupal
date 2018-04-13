@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_repository_parent_name
+    - node.type.repository
+id: node.repository.field_repository_parent_name
+field_name: field_repository_parent_name
+entity_type: node
+bundle: repository
+label: 'Parent Institution Name'
+description: 'The name of the organization the repository is a part of.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string
