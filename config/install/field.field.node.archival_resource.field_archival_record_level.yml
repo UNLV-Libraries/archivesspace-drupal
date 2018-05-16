@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_archival_record_level
+    - node.type.archival_resource
+  module:
+    - options
+id: node.archival_resource.field_archival_record_level
+field_name: field_archival_record_level
+entity_type: node
+bundle: archival_resource
+label: 'Level of Description'
+description: 'Hierarchical level of description'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

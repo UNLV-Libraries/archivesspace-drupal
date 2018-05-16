@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_restrictions_bool
+    - node.type.archival_resource
+id: node.archival_resource.field_restrictions_bool
+field_name: field_restrictions_bool
+entity_type: node
+bundle: archival_resource
+label: 'Restrictions?'
+description: 'Indicates if the resource is restricted in any way.'
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'Restrictions Apply'
+  off_label: 'No Restrictions'
+field_type: boolean

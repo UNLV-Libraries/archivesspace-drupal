@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_repository_short_name
+    - node.type.repository
+id: node.repository.field_repository_short_name
+field_name: field_repository_short_name
+entity_type: node
+bundle: repository
+label: 'Repository Short Name'
+description: 'An abbreviation or shortened version of the repository''s name.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string
