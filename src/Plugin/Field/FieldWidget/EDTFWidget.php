@@ -26,25 +26,29 @@ class EDTFWidget extends WidgetBase {
    * {@inheritdoc}
    */
   public function formElement(FieldItemListInterface $items, $delta, array $element, array &$form, FormStateInterface $form_state) {
-    $value = isset($items[$delta]->value) ? $items[$delta]->value : '';
+    $item =& $items[$delta];
+
     $element += array(
       '#type' => 'fieldset',
     );
-    $element['value'] = [ //Got error 'PHP message: ParseError: syntax error, unexpected '$element' (T_VARIABLE) in /var/www/drupalvm/drupal/web/modules/local/as2d8/src/Plugin/Field/FieldWidget/EDTFWidget.php on line 33
+    $element['value'] = [
       '#title' => t('Value'),
       '#type' => 'textfield',
+      '#default_value' => isset($item->value) ? $item->value : '',
     ];
     $element['expression'] = [
       '#title' => t('Expression'),
       '#type' => 'textfield',
+      '#default_value' => isset($item->expression) ? $item->expression : '',
     ];
     $element['type'] = [
       '#title' => t('Type'),
       '#type' => 'select',
       '#options' => ['inclusive','bulk'], //TODO pull from configuration
       '#empty_value' => '',
+      '#default_value' => isset($item->type) ? $item->type : '',
     ];
-    // Build the element render array.
+
     return $element;
   }
 
