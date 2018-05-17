@@ -3,12 +3,14 @@ status: true
 dependencies:
   config:
     - field.field.node.archival_resource.field_archival_record_level
+    - field.field.node.archival_resource.field_as_date
     - field.field.node.archival_resource.field_repository
     - field.field.node.archival_resource.field_resource_identifier
     - field.field.node.archival_resource.field_resource_resource_type
     - field.field.node.archival_resource.field_restrictions_bool
     - node.type.archival_resource
   module:
+    - as2d8
     - path
 id: node.archival_resource.default
 targetEntityType: node
@@ -26,6 +28,12 @@ content:
     settings: {  }
     third_party_settings: {  }
     type: options_select
+    region: content
+  field_as_date:
+    weight: 126
+    settings: {  }
+    third_party_settings: {  }
+    type: as_date_default
     region: content
   field_repository:
     weight: 125
