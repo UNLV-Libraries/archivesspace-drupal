@@ -3,3 +3,6 @@ description: A module for migrating ArchivesSpace records into Drupal 8.
 package: as2d8
 type: module
 core: 8.x
+
+dependencies:
+  - address
