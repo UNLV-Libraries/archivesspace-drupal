@@ -3,18 +3,27 @@ status: true
 dependencies:
   config:
     - field.field.node.archival_resource.field_archival_record_level
+    - field.field.node.archival_resource.field_as_extent
     - field.field.node.archival_resource.field_repository
     - field.field.node.archival_resource.field_resource_identifier
     - field.field.node.archival_resource.field_resource_resource_type
     - field.field.node.archival_resource.field_restrictions_bool
     - node.type.archival_resource
   module:
+    - as2d8
     - user
 id: node.archival_resource.default
 targetEntityType: node
 bundle: archival_resource
 mode: default
 content:
+  field_as_extent:
+    weight: 2
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: as_extent_default
+    region: content
   field_resource_identifier:
     weight: 1
     label: above

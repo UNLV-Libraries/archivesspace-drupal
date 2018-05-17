@@ -1,0 +1,34 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_as_extent
+    - node.type.archival_resource
+  module:
+    - as2d8
+id: node.archival_resource.field_as_extent
+field_name: field_as_extent
+entity_type: node
+bundle: archival_resource
+label: Extent
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    portion: whole
+    number: ''
+    extent_type: linear_feet
+    container_summary: ''
+    physical_details: ''
+    dimensions: ''
+  -
+    portion: whole
+    number: ''
+    extent_type: cassettes
+    container_summary: ''
+    physical_details: ''
+    dimensions: ''
+default_value_callback: ''
+settings: {  }
+field_type: as_extent
