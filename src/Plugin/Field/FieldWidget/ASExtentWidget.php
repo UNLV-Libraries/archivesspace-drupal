@@ -26,28 +26,7 @@ class ASExtentWidget extends WidgetBase {
   public function formElement(FieldItemListInterface $items, $delta, array $element, array &$form, FormStateInterface $form_state) {
     // Item of interest
     $item =& $items[$delta];
-
-    //Load up the dropdown options TODO: load from config
-    $extent_type_values = [
-      'cassettes' => t('Cassettes'),
-      'cubic_feet' => t('Cubic Feet'),
-      'files' => t('Files'),
-      'gigabytes' => t('Gigabytes'),
-      'leaves' => t('Leaves'),
-      'linear_feet' => t('Linear Feet'),
-      'megabytes' => t('Megabytes'),
-      'photographic_prints' => t('Photographic Prints'),
-      'photographic_slides' => t('Photographic Slides'),
-      'reels' => t('Reels'),
-      'sheets' => t('Sheets'),
-      'terabytes' => t('Terabytes'),
-      'volumes' => t('Volumes'),
-    ];
-
-    $portion_values = [
-      'whole' => t('Whole'),
-      'part' => t('Part'),
-    ];
+    $settings = $item->getFieldDefinition()->getSettings();
 
     //Load up the form fields
     $element += array(
@@ -56,7 +35,7 @@ class ASExtentWidget extends WidgetBase {
     $element['portion'] = [
       '#title' => t('Portion'),
       '#type' => 'select',
-      '#options' => $portion_values,
+      '#options' => $settings['portion_values'],
       '#default_value' => isset($item->portion) ? $item->portion : '',
     ];
     $element['number'] = [
@@ -67,7 +46,7 @@ class ASExtentWidget extends WidgetBase {
     $element['extent_type'] = [
       '#title' => t('Type'),
       '#type' => 'select',
-      '#options' => $extent_type_values,
+      '#options' => $settings['extent_types'],
       '#default_value' => isset($item->extent_type) ? $item->extent_type : '',
     ];
     $element['container_summary'] = [
