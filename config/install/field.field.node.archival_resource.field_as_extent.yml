@@ -22,13 +22,6 @@ default_value:
     container_summary: ''
     physical_details: ''
     dimensions: ''
-  -
-    portion: whole
-    number: ''
-    extent_type: cassettes
-    container_summary: ''
-    physical_details: ''
-    dimensions: ''
 default_value_callback: ''
 settings: {  }
 field_type: as_extent
