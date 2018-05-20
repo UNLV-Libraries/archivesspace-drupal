@@ -10,7 +10,7 @@ dependencies:
     - field.field.node.archival_resource.field_restrictions_bool
     - node.type.archival_resource
   module:
-    - as2d8
+    - archivesspace
     - user
 id: node.archival_resource.default
 targetEntityType: node

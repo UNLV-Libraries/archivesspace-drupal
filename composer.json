@@ -1,0 +1,14 @@
+{
+  "name": "drupal/archivesspace",
+  "type": "drupal-module",
+  "description": "Provides integration between Drupal and ArchivesSpace",
+  "keywords": ["Drupal"],
+  "license": "GPL-2.0+",
+  "homepage": "https://www.drupal.org/project/archivesspace",
+  "minimum-stability": "dev",
+  "support": {
+    "issues": "https://www.drupal.org/project/issues/archivesspace",
+    "source": "http://cgit.drupalcode.org/archivesspace"
+  },
+  "require": { }
+}
