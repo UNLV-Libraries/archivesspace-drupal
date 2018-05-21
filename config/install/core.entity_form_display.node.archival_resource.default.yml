@@ -4,6 +4,7 @@ dependencies:
   config:
     - field.field.node.archival_resource.field_archival_record_level
     - field.field.node.archival_resource.field_as_date
+    - field.field.node.archival_resource.field_as_extent
     - field.field.node.archival_resource.field_repository
     - field.field.node.archival_resource.field_resource_identifier
     - field.field.node.archival_resource.field_resource_resource_type
@@ -34,6 +35,11 @@ content:
     settings: {  }
     third_party_settings: {  }
     type: as_date_default
+  field_as_extent:
+    weight: 126
+    settings: {  }
+    third_party_settings: {  }
+    type: as_extent_default
     region: content
   field_repository:
     weight: 125

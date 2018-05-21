@@ -3,11 +3,13 @@ status: true
 dependencies:
   config:
     - field.field.node.repository.body
+    - field.field.node.repository.field_as_address
     - field.field.node.repository.field_repository_org_code
     - field.field.node.repository.field_repository_parent_name
     - field.field.node.repository.field_repository_short_name
     - node.type.repository
   module:
+    - address
     - path
     - text
 id: node.repository.default
@@ -30,6 +32,13 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
+  field_as_address:
+    weight: 125
+    settings:
+      default_country: 'US'
+    third_party_settings: {  }
+    type: address_default
+    region: content
   field_repository_org_code:
     weight: 123
     settings:
