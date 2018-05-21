@@ -22,11 +22,11 @@ class ASExtentFormatter extends FormatterBase {
    * {@inheritdoc}
    */
   public function viewElements(FieldItemListInterface $items, $langcode) {
-    // TODO: Clean this up, simply a WIP proof-of-concept
-    // TODO: Load translated values of controlled fields
     $output = array();
     foreach ($items as $delta => $item) {
-      $display_value = $item->number . ' ' . $item->extent_type;
+      $extent_types = $item->getExtentTypes();
+      $extent_type = isset($extent_types[$item->extent_type]) ? $extent_types[$item->extent_type] : $item->extent_type;
+      $display_value = $item->number . ' ' . t($extent_type);
       if($item->container_summary){
         $display_value .= ' ('.$item->container_summary.')';
       }
