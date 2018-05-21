@@ -1,0 +1,9 @@
+field.field_settings.as_extent:
+  type: mapping
+  label: 'Default AS Extent widget settings'
+  mapping:
+    extent_types:
+      type: sequence
+      label: 'Extent Types'
+      sequence:
+        - type: string
