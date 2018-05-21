@@ -28,7 +28,8 @@ content:
   field_as_date:
     weight: 2
     label: above
-    settings: {}
+    settings: {  }
+    third_party_settings: {  }
     type: as_date_default
     region: content
   field_resource_identifier:

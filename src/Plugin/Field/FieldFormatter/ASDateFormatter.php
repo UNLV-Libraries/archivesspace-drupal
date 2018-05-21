@@ -8,6 +8,8 @@ use Drupal\Core\Field\FieldItemListInterface;
 /**
  * Plugin implementation of the 'ASDateFormatter'.
  *
+ * TODO: Use more of the available fields
+ *
  * @FieldFormatter(
  *   id = "as_date_default",
  *   label = @Translation("ArchivesSpace Date Formatter"),
@@ -31,7 +33,9 @@ class ASDateFormatter extends FormatterBase {
         $display_value = $item->expression;
       } else {
         if (!empty($item->type)){
-          $display_value .= $item->type;
+          $types = $item->getSettings('date_type');
+          $type = isset($types[$item->type]) ? $types[$item->type] : $item->type;
+          $display_value .= $type;
         }
         if (!empty($item->begin)){
           $display_value .= $item->begin;

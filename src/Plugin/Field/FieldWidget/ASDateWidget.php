@@ -28,39 +28,7 @@ class ASDateWidget extends WidgetBase {
   public function formElement(FieldItemListInterface $items, $delta, array $element, array &$form, FormStateInterface $form_state) {
     // Item of interest
     $item =& $items[$delta];
-
-    //Load up the dropdown options TODO: load from config
-    $label_values = [
-      'record_keeping' => t('Record Keeping'),
-      'broadcast' => t('Broadcast'),
-      'copyright' => t('Copyright'),
-      'creation' => t('Creation'),
-      'deaccession' => t('Deaccession'),
-      'agent_relation' => t('Agent Relation'),
-      'digitized' => t('Digitized'),
-      'existence' => t('Existence'),
-      'event' => t('Event'),
-      'issued' => t('Issued'),
-      'modified' => t('Modified'),
-      'publication' => t('Publication'),
-      'usage' => t('Usage'),
-      'other' => t('Other'),
-    ];
-
-    $date_type_values = [
-      'inclusive' => t('Inclusive'),
-      'bulk' => t('Bulk'),
-    ];
-
-    $certainty_values = [
-      'approximate' => t('Approximate'),
-      'inferred' => t('Inferred'),
-      'questionable' => t('Questionable'),
-    ];
-
-    $calendar_values = [
-      'gregorian' => t('Gregorian'),
-    ];
+    $settings = $item->getFieldDefinition()->getSettings();
 
     //Load up the form fields
     $element += array(
@@ -69,7 +37,7 @@ class ASDateWidget extends WidgetBase {
     $element['label'] = [
       '#title' => t('Label'),
       '#type' => 'select',
-      '#options' => $label_values,
+      '#options' => $settings['label_types'],
       '#default_value' => isset($item->label) ? $item->label : 'creation',
     ];
     $element['begin'] = [
@@ -85,14 +53,14 @@ class ASDateWidget extends WidgetBase {
     $element['date_type'] = [
       '#title' => t('Type'),
       '#type' => 'select',
-      '#options' => $date_type_values,
+      '#options' => $settings['date_types'],
       '#empty_value' => '',
-      '#default_value' => isset($item->date_type) ? $item->date_type : '',
+      '#default_value' => isset($item->date_type) ? $item->date_type : 'inclusive',
     ];
     $element['certainty'] = [
       '#title' => t('Certainty'),
       '#type' => 'select',
-      '#options' => $certainty_values,
+      '#options' => $settings['certainty_types'],
       '#empty_value' => '',
       '#default_value' => isset($item->certainty) ? $item->certainty : '',
     ];
@@ -104,9 +72,9 @@ class ASDateWidget extends WidgetBase {
     $element['calendar'] = [
       '#title' => t('Calendar'),
       '#type' => 'select',
-      '#options' => $calendar_values,
+      '#options' => $settings['calendar_types'],
       '#empty_value' => '',
-      '#default_value' => isset($item->calendar) ? $item->calendar : '',
+      '#default_value' => isset($item->calendar) ? $item->calendar : 'gregorian',
     ];
 
     return $element;
