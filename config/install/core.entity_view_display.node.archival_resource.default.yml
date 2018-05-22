@@ -3,6 +3,7 @@ status: true
 dependencies:
   config:
     - field.field.node.archival_resource.field_archival_record_level
+    - field.field.node.archival_resource.field_as_date
     - field.field.node.archival_resource.field_as_extent
     - field.field.node.archival_resource.field_repository
     - field.field.node.archival_resource.field_resource_identifier
@@ -18,11 +19,18 @@ bundle: archival_resource
 mode: default
 content:
   field_as_extent:
-    weight: 2
+    weight: 3
     label: above
     settings: {  }
     third_party_settings: {  }
     type: as_extent_default
+    region: content
+  field_as_date:
+    weight: 2
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: as_date_default
     region: content
   field_resource_identifier:
     weight: 1
