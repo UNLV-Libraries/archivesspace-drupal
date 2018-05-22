@@ -141,8 +141,6 @@ class ASExtent extends FieldItemBase {
   public function fieldSettingsForm(array $form, FormStateInterface $form_state) {
     $element = [];
 
-    $description =
-
     $element['extent_types'] = [
       '#type' => 'textarea',
       '#title' => t('Extent Types'),

@@ -1,0 +1,36 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_as_date
+    - node.type.archival_resource
+  module:
+    - as2d8
+id: node.archival_resource.field_as_date
+field_name: field_as_date
+entity_type: node
+bundle: archival_resource
+label: Date
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    label: creation
+    begin: ''
+    end: ''
+    date_type: ''
+    certainty: ''
+    expression: ''
+    calendar: ''
+  -
+    label: creation
+    begin: ''
+    end: ''
+    date_type: ''
+    certainty: ''
+    expression: ''
+    calendar: ''
+default_value_callback: ''
+settings: {  }
+field_type: as_date
