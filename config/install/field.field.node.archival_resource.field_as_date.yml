@@ -5,7 +5,7 @@ dependencies:
     - field.storage.node.field_as_date
     - node.type.archival_resource
   module:
-    - as2d8
+    - archivesspace
 id: node.archival_resource.field_as_date
 field_name: field_as_date
 entity_type: node

@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\as2d8\Plugin\Field\FieldFormatter;
+namespace Drupal\archivesspace\Plugin\Field\FieldFormatter;
 
 use Drupal\Core\Field\FormatterBase;
 use Drupal\Core\Field\FieldItemListInterface;

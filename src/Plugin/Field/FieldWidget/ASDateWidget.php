@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\as2d8\Plugin\Field\FieldWidget;
+namespace Drupal\archivesspace\Plugin\Field\FieldWidget;
 
 use Drupal\Core\Field\FieldItemListInterface;
 use Drupal\Core\Field\WidgetBase;
