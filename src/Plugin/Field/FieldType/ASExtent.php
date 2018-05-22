@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\as2d8\Plugin\Field\FieldType;
+namespace Drupal\archivesspace\Plugin\Field\FieldType;
 
 use Drupal\Core\Field\FieldItemBase;
 use Drupal\Core\Field\FieldItemInterface;
@@ -15,7 +15,7 @@ use Drupal\Core\TypedData\DataDefinition;
  * @FieldType(
  *   id = "as_extent",
  *   label = @Translation("ArchivesSpace Extent"),
- *   module = "as2d8",
+ *   module = "archivesspace",
  *   category = @Translation("ArchivesSpace"),
  *   description = @Translation("Implements an ArchivesSpace-based extent field"),
  *   default_formatter = "as_extent_default",
