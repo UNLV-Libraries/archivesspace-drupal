@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\as2d8\Plugin\Field\FieldType;
+namespace Drupal\archivesspace\Plugin\Field\FieldType;
 
 use Drupal\Core\Field\FieldItemBase;
 use Drupal\Core\Field\FieldItemInterface;
@@ -16,7 +16,7 @@ use Drupal\Core\TypedData\DataDefinition;
  * @FieldType(
  *   id = "as_date",
  *   label = @Translation("ArchivesSpace Date"),
- *   module = "as2d8",
+ *   module = "archivesspace",
  *   category = @Translation("ArchivesSpace"),
  *   description = @Translation("Implements an ArchivesSpace-based date field"),
  *   default_formatter = "as_date_default",
