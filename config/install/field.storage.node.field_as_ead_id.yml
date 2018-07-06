@@ -1,0 +1,21 @@
+uuid: e66f6625-2aef-4a93-a713-ba2d55c5258c
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_as_ead_id
+field_name: field_as_ead_id
+entity_type: node
+type: string
+settings:
+  max_length: 255
+  is_ascii: false
+  case_sensitive: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

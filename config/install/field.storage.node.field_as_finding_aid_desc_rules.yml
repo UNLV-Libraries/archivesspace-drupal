@@ -1,0 +1,36 @@
+uuid: 97639acb-383a-46bd-96c8-4e182d463bc7
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - options
+id: node.field_as_finding_aid_desc_rules
+field_name: field_as_finding_aid_desc_rules
+entity_type: node
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: aacr
+      label: 'Anglo-American Cataloguing Rules'
+    -
+      value: cco
+      label: 'Cataloging Cultural Objects'
+    -
+      value: dacs
+      label: 'Describing Archives: A Content Standard'
+    -
+      value: isadg
+      label: 'International Standard for Archival Description - General'
+    -
+      value: rad
+      label: 'Rules for Archival Description'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false
