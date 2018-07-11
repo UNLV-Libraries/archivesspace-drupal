@@ -140,19 +140,6 @@ class ASDate extends FieldItemBase {
     ] + parent::defaultFieldSettings();
   }
 
-  public function getSetting(string $type){
-    //What settings will we allow?
-    $allowable = ['label_types',
-      'date_types',
-      'certainty_types',
-      'calendar_types'
-    ];
-    if(in_array($type, $allowable)){
-      return $this->getSetting($type);
-    }
-    return;
-  }
-
   /**
    * {@inheritdoc}
    */
