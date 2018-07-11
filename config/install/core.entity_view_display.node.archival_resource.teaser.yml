@@ -4,6 +4,8 @@ dependencies:
   config:
     - core.entity_view_mode.node.teaser
     - field.field.node.archival_resource.field_archival_record_level
+    - field.field.node.archival_resource.field_as_date
+    - field.field.node.archival_resource.field_as_extent
     - field.field.node.archival_resource.field_repository
     - field.field.node.archival_resource.field_resource_identifier
     - field.field.node.archival_resource.field_resource_resource_type
@@ -21,6 +23,8 @@ content:
     region: content
 hidden:
   field_archival_record_level: true
+  field_as_date: true
+  field_as_extent: true
   field_repository: true
   field_resource_identifier: true
   field_resource_resource_type: true
