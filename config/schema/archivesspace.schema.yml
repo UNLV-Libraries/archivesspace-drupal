@@ -7,3 +7,12 @@ field.field_settings.as_extent:
       label: 'Extent Types'
       sequence:
         - type: string
+field.field_settings.as_resource_notes:
+  type: mapping
+  label: 'Default AS Note types widget settings'
+  mapping:
+    extent_types:
+      type: sequence
+      label: 'Note Types'
+      sequence:
+        - type: string

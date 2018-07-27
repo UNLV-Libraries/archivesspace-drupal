@@ -6,6 +6,7 @@ dependencies:
     - field.field.node.archival_resource.field_as_date
     - field.field.node.archival_resource.field_as_ead_id
     - field.field.node.archival_resource.field_as_extent
+    - field.field.node.archival_resource.field_as_resource_notes
     - field.field.node.archival_resource.field_as_finding_aid_desc_rules
     - field.field.node.archival_resource.field_repository
     - field.field.node.archival_resource.field_resource_identifier
@@ -52,6 +53,11 @@ content:
     third_party_settings: {  }
     type: as_extent_default
     region: content
+  field_as_resource_notes:
+    weight: 127
+    settings: {  }
+    third_party_settings: {  }
+    type: typed_note_default
   field_as_finding_aid_desc_rules:
     weight: 129
     settings: {  }
