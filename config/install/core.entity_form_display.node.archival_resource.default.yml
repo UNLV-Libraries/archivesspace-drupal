@@ -4,7 +4,9 @@ dependencies:
   config:
     - field.field.node.archival_resource.field_archival_record_level
     - field.field.node.archival_resource.field_as_date
+    - field.field.node.archival_resource.field_as_ead_id
     - field.field.node.archival_resource.field_as_extent
+    - field.field.node.archival_resource.field_as_finding_aid_desc_rules
     - field.field.node.archival_resource.field_repository
     - field.field.node.archival_resource.field_resource_identifier
     - field.field.node.archival_resource.field_resource_resource_type
@@ -35,11 +37,26 @@ content:
     settings: {  }
     third_party_settings: {  }
     type: as_date_default
+    region: content
+  field_as_ead_id:
+    weight: 128
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
   field_as_extent:
     weight: 126
     settings: {  }
     third_party_settings: {  }
     type: as_extent_default
+    region: content
+  field_as_finding_aid_desc_rules:
+    weight: 129
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
     region: content
   field_repository:
     weight: 125
@@ -71,6 +88,13 @@ content:
     third_party_settings: {  }
     type: boolean_checkbox
     region: content
+  langcode:
+    type: language_select
+    weight: 2
+    region: content
+    settings:
+      include_locked: true
+    third_party_settings: {  }
   path:
     type: path
     weight: 30
