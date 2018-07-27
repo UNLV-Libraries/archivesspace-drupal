@@ -29,3 +29,4 @@ hidden:
   field_resource_identifier: true
   field_resource_resource_type: true
   field_restrictions_bool: true
+  langcode: true
