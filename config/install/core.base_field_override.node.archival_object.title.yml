@@ -1,0 +1,18 @@
+uuid: a3978e91-ba4f-4ee8-ba8c-7feaff1c599c
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.archival_object
+id: node.archival_object.title
+field_name: title
+entity_type: node
+bundle: archival_object
+label: 'Display String'
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

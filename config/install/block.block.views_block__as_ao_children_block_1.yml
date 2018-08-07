@@ -1,0 +1,34 @@
+uuid: 05d166f7-c84d-45a2-ab39-8ae0f7e7de10
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.as_ao_children
+  module:
+    - node
+    - views
+  theme:
+    - bartik
+id: views_block__as_ao_children_block_1
+theme: bartik
+region: content
+weight: 1
+provider: null
+plugin: 'views_block:as_ao_children-block_1'
+settings:
+  id: 'views_block:as_ao_children-block_1'
+  label: Inventory
+  provider: views
+  label_display: visible
+  views_label: Inventory
+  items_per_page: none
+  context_mapping: {  }
+visibility:
+  node_type:
+    id: node_type
+    bundles:
+      archival_object: archival_object
+      archival_resource: archival_resource
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'
