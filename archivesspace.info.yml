@@ -6,4 +6,5 @@ package: 'ArchivesSpace'
 
 dependencies:
   - address
+  - auto_entitylabel
   - language

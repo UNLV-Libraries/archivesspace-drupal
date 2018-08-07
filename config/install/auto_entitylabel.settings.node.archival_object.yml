@@ -1,0 +1,7 @@
+status: '1'
+pattern: "<?php\r\n// Shouldn't have to use such a hack, but there it is...\r\n// Should probably trim the title if it gets too long so it can fit the date (if it exists).\r\nif(!$entity->get('field_as_title')->isEmpty()){\r\n  echo (string) \\Drupal::service('renderer')->render($entity->field_as_title->get(0)->view());\r\n}\r\nif(!$entity->get('field_as_title')->isEmpty() && !$entity->get('field_as_date')->isEmpty()){\r\n  echo ', ';\r\n}\r\nif(!$entity->get('field_as_date')->isEmpty()){\r\n  echo (string) \\Drupal::service('renderer')->render($entity->field_as_date->get(0)->view());\r\n}\r\n?>"
+php: 1
+escape: 0
+dependencies:
+  config:
+    - node.type.archival_object
