@@ -1,0 +1,25 @@
+uuid: 2aae63e4-4196-46a7-8dfa-1e9bc9f7927c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_as_weight
+    - node.type.archival_object
+id: node.archival_object.field_as_weight
+field_name: field_as_weight
+entity_type: node
+bundle: archival_object
+label: Weight
+description: 'Sets the position of an archival object amongst it''s siblings. Lower numbers are first. If multiple objects have the same weight, they will be sorted by the display title.'
+required: true
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  min: 0
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer
