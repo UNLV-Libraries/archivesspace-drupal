@@ -7,3 +7,5 @@ package: 'ArchivesSpace'
 dependencies:
   - address
   - language
+  - migrate_plus
+  - migrate_run
