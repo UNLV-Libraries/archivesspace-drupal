@@ -4,16 +4,16 @@ label: ArchivesSpace Repositories
 migration_group: archivesspace
 
 source:
-  plugin: url
-  data_fetcher_plugin: http
-  data_parser_plugin: json
+  plugin: archivesspace
   authentication:
     plugin: archivesspace
-    # The settings below will override those set at /admin/structure/archivesspace/settings
+    # Remove the leading '#' to override site settings (/admin/structure/archivesspace/settings)
 #    username: 'admin'
 #    password: 'admin' # I *really* hope you changed this...
-#    base_uri: 'http://localhost:8089'
-  urls: http://localhost:8089/repositories
+#    base_uri: 'http://localhost:8089' # Only applies to authentication...
+  data_fetcher_plugin: http
+#  base_uri: 'http://localhost:8089' # Only applies to the listed urls
+  urls: http://localhost:8089/repositories # Can ommit the server & port (/repositories) if base_uri is set
   ids:
     uri:
       type: string
