@@ -9,10 +9,11 @@ source:
   data_parser_plugin: json
   authentication:
     plugin: archivesspace
-    username: 'drupal'
-    password: 'drupal'
-    base_uri: 'http://drupalvm.test:8089'
-  urls: http://drupalvm.test:8089/repositories
+    # The settings below will override those set at /admin/structure/archivesspace/settings
+#    username: 'admin'
+#    password: 'admin' # I *really* hope you changed this...
+#    base_uri: 'http://localhost:8089'
+  urls: http://localhost:8089/repositories
   ids:
     uri:
       type: string
