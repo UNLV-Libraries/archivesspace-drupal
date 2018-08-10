@@ -5,19 +5,23 @@ migration_group: archivesspace
 
 source:
   plugin: archivesspace
-  authentication:
-    plugin: archivesspace
+  # authentication:
+    # plugin: archivesspace
     # Remove the leading '#' to override site settings (/admin/structure/archivesspace/settings)
 #    username: 'admin'
 #    password: 'admin' # I *really* hope you changed this...
 #    base_uri: 'http://localhost:8089' # Only applies to authentication...
-  data_fetcher_plugin: http
+  # data_fetcher_plugin: http
 #  base_uri: 'http://localhost:8089' # Only applies to the listed urls
-  urls: http://localhost:8089/repositories # Can ommit the server & port (/repositories) if base_uri is set
-  ids:
-    uri:
-      type: string
-  item_selector: 0
+  # urls: http://localhost:8089/repositories # Can ommit the server & port (/repositories) if base_uri is set
+  # ids:
+  #   uri:
+  #     type: string
+  # item_selector: 0
+  object_type: repository
+  base_uri: http://drupalvm.test:8089
+  username: drupal
+  password: drupal
   fields:
     -
       name: name

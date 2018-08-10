@@ -3,6 +3,7 @@
 namespace Drupal\archivesspace;
 
 use GuzzleHttp\Client;
+use GuzzleHttp\Middleware;
 use InvalidArgumentException;
 
 class ArchivesSpaceSession {
@@ -44,13 +45,23 @@ class ArchivesSpaceSession {
       $this->login();
     }
     $client = new Client([
-        'base_url' => $connection_info['base_uri'],
+        'base_uri' => $this->connection_info['base_uri'],
         'defaults' => [
-            'headers' => ['X-ArchivesSpace-Session' => $session],
+            'headers' => ['X-ArchivesSpace-Session' => $this->session],
         ]
     ]);
 
-    $response = $client->request($type,$path,['query'=>$parameters]);
+    // DEBUGING 403 Forbidden Response
+    
+    // Grab the client's handler instance.
+    $clientHandler = $client->getConfig('handler');
+    // Create a middleware that echoes parts of the request.
+    $tapMiddleware = Middleware::tap(function ($request) {
+        print("X-ArchivesSpace-Session: " . $request->getHeaderLine('X-ArchivesSpace-Session') ."\n");
+    });
+    $response = $client->request($type,$path,['query'=>$parameters,'handler' => $tapMiddleware($clientHandler)]);
+
+    print_r($response);
     return json_decode($response->getBody(),true);
 
   }
