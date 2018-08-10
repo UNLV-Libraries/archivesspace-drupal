@@ -3,9 +3,9 @@
 namespace Drupal\archivesspace\Plugin\migrate_plus\authentication;
 
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
+use Drupal\archivesspace\ArchivesSpaceSession;
 use Drupal\migrate\MigrateException;
 use Drupal\migrate_plus\AuthenticationPluginBase;
-use GuzzleHttp\Client;
 
 
 /**
@@ -22,35 +22,28 @@ class ArchivesSpace extends AuthenticationPluginBase implements ContainerFactory
    * {@inheritdoc}
    */
   public function getAuthenticationOptions() {
-    // Override Module Settings if set in migration config
-    $state_config = [];
-    foreach(\Drupal::state()->getMultiple(['archivesspace.base_uri',
-                                           'archivesspace.username',
-                                           'archivesspace.password']
-                                          ) as $key => $value){
-      $new_key = substr($key, 14);
-      $state_config[$new_key] = $value;
+    // Create the session
+    // Send migration config auth options to the Session object
+    if( isset($this->configuration['base_uri']) ||
+        isset($this->configuration['username']) ||
+        isset($this->configuration['password']) ){
+      // Get Config Settings
+      $base_uri = ( isset($this->configuration['base_uri']) ? $this->configuration['base_uri'] : '' );
+      $username = ( isset($this->configuration['username']) ? $this->configuration['username'] : '' );
+      $password = ( isset($this->configuration['password']) ? $this->configuration['password'] : '' );
+
+      $session = ArchivesSpaceSession::withConnectionInfo(
+          $base_uri, $username, $password
+        );
+
+    } else { // No login info provided by the migration config
+      $session = new ArchivesSpaceSession();
     }
-    $config_merge = array_replace($state_config, $this->configuration);
 
-    // Setup the client
-    $client = new Client([
-      'base_uri' => $config_merge['base_uri'],
-    ]);
-
-    // Form the query string and make the call
-    $login_url = '/users/' .
-                 rawurlencode($config_merge['username']) .
-                 '/login?password=' .
-                 rawurlencode($config_merge['password']) ;
-    $response = $client->post($login_url);
-
-    // Return the Session ID from the response
-    $login_response = json_decode($response->getBody(), true);
-    $session_id = $login_response['session'];
+    // Login and return the session id to the Auth plugin
     return [
       'headers' => [
-        'X-ArchivesSpace-Session' => $session_id,
+        'X-ArchivesSpace-Session' => $session->getSession(),
       ],
     ];
   }
