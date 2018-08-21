@@ -9,19 +9,6 @@ source:
   base_uri: http://drupalvm.test:8089 #http://localhost:8089/repositories
   username: drupal
   password: drupal
-  fields:
-    -
-      name: name
-      label: 'Name'
-      selector: /name
-    -
-      name: uri
-      label: 'URI'
-      selector: /uri
-    -
-      name: repo_code
-      label: 'Repository Code'
-      selector: /repo_code
 
 destination:
   plugin: entity:node

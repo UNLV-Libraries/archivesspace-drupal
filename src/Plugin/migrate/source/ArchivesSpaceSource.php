@@ -27,12 +27,33 @@ class ArchivesSpaceSource extends SourcePluginBase {
     'archival_object',
     'digital_object'
   ];
+  protected $fields = [];
   /**
    * {@inheritdoc}
    */
   public function __construct(array $configuration, $plugin_id, $plugin_definition, MigrationInterface $migration) {
     parent::__construct($configuration, $plugin_id, $plugin_definition, $migration);
     $this->object_type = $configuration['object_type'];
+
+    switch ($this->object_type) {
+      case 'repository':
+        $this->fields = [
+          'uri' => $this->t('URI'),
+          'name' => $this->t('Name'),
+          'repo_code' => $this->t('Repository Code')
+        ];
+        break;
+      case 'resource':
+        $this->fields = [
+          'uri' => $this->t('URI'),
+          'title' => $this->t('Title'),
+          'repo_uri' => $this->t('Repository URI')
+        ];
+        break;
+      default:
+        break;
+    }
+
     if( isset($configuration['last_updated']) ){
       $this->last_update = DateTime::createFromFormat('Y-m-d\TH:i:s\Z', $configuration['last_updated']);
     } else {
@@ -81,11 +102,7 @@ class ArchivesSpaceSource extends SourcePluginBase {
   }
 
   public function fields() {
-    return array(
-      'uri' => $this->t('URI'),
-      'name' => $this->t('Name'),
-      'repo_code' => $this->t('Repository Code')
-    );
+    return $this->fields;
   }
 
   public function __toString() {
