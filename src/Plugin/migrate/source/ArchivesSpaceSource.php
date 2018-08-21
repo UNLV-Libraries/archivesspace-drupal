@@ -31,7 +31,7 @@ class ArchivesSpaceSource extends SourcePluginBase {
    * {@inheritdoc}
    */
   public function __construct(array $configuration, $plugin_id, $plugin_definition, MigrationInterface $migration) {
-    
+    parent::__construct($configuration, $plugin_id, $plugin_definition, $migration);
     $this->object_type = $configuration['object_type'];
     if( isset($configuration['last_updated']) ){
       $this->last_update = DateTime::createFromFormat('Y-m-d\TH:i:s\Z', $configuration['last_updated']);
@@ -42,13 +42,13 @@ class ArchivesSpaceSource extends SourcePluginBase {
 
     // Create the session
     // Send migration config auth options to the Session object
-    if( isset($this->configuration['base_uri']) ||
-        isset($this->configuration['username']) ||
-        isset($this->configuration['password']) ){
+    if( isset($configuration['base_uri']) ||
+        isset($configuration['username']) ||
+        isset($configuration['password']) ){
       // Get Config Settings
-      $base_uri = ( isset($this->configuration['base_uri']) ? $this->configuration['base_uri'] : '' );
-      $username = ( isset($this->configuration['username']) ? $this->configuration['username'] : '' );
-      $password = ( isset($this->configuration['password']) ? $this->configuration['password'] : '' );
+      $base_uri = ( isset($configuration['base_uri']) ? $configuration['base_uri'] : '' );
+      $username = ( isset($configuration['username']) ? $configuration['username'] : '' );
+      $password = ( isset($configuration['password']) ? $configuration['password'] : '' );
 
       $this->session = ArchivesSpaceSession::withConnectionInfo(
           $base_uri, $username, $password
@@ -91,19 +91,5 @@ class ArchivesSpaceSource extends SourcePluginBase {
   public function __toString() {
     return "ArchivesSpace data";
   }
-
-  // /**
-  //  * Returns the initialized data parser plugin.
-  //  * We use the JSON parser.
-  //  *
-  //  * @return \Drupal\migrate_plus\DataParserPluginInterface
-  //  *   The data parser plugin.
-  //  */
-  // public function getDataParserPlugin() {
-  //   if (!isset($this->dataParserPlugin)) {
-  //     $this->dataParserPlugin = \Drupal::service('plugin.manager.migrate_plus.data_parser')->createInstance('json', $this->configuration);
-  //   }
-  //   return $this->dataParserPlugin;
-  // }
 
 }

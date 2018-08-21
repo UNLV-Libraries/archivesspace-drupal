@@ -23,11 +23,13 @@ class ArchivesSpaceSession {
       throw new InvalidArgumentException('Could not connect. Either the username or password was missing.');
     }
     $instance = new self();
-    $this->connection_info = [
+    $instance->connection_info = [
       'base_uri' => $base_uri,
       'username' => $username,
       'password' => $password,
     ];
+
+    return $instance;
   }
 
   public function getSession(){
@@ -44,30 +46,23 @@ class ArchivesSpaceSession {
     if(empty($this->session)){
       $this->login();
     }
-    $client = new Client([
-        'base_uri' => $this->connection_info['base_uri'],
-        'defaults' => [
-            'headers' => ['X-ArchivesSpace-Session' => $this->session],
-        ]
-    ]);
+    $client = new Client(['base_uri' => $this->connection_info['base_uri']]);
 
-    // DEBUGING 403 Forbidden Response
-    
-    // Grab the client's handler instance.
-    $clientHandler = $client->getConfig('handler');
-    // Create a middleware that echoes parts of the request.
-    $tapMiddleware = Middleware::tap(function ($request) {
-        print("X-ArchivesSpace-Session: " . $request->getHeaderLine('X-ArchivesSpace-Session') ."\n");
-    });
-    $response = $client->request($type,$path,['query'=>$parameters,'handler' => $tapMiddleware($clientHandler)]);
+    $response = $client->request($type,
+                                 $path,
+                                 [
+                                   'query'=>$parameters,
+                                   'headers' => [
+                                     'X-ArchivesSpace-Session' => $this->session
+                                     ]
+                                   ]
+                                 );
 
-    print_r($response);
     return json_decode($response->getBody(),true);
 
   }
 
   protected function login(){
-
     $state_config = [];
     foreach(\Drupal::state()->getMultiple(['archivesspace.base_uri',
                                            'archivesspace.username',

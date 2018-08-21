@@ -32,7 +32,6 @@ class ArchivesSpaceIterator implements \Iterator {
     protected $offset_last = 0;
     protected $page_size = 10;
 
-    // public function __construct(string $type, DateTime $datetime, ArchivesSpaceSession $session = ArchivesSpaceSession()) {
     public function __construct(string $type, DateTime $datetime, ArchivesSpaceSession $session) {
         if(!in_array($type, $this->types)){
           throw new InvalidArgumentException('Can\'t iterate over type: '.$type);
@@ -58,7 +57,8 @@ class ArchivesSpaceIterator implements \Iterator {
       // Unfortunately/fortunately? The results bury the full json object
       // as a sub-field, rather than just giving it to us in the first place.
       // So, let's return that.
-      return json_decode($this->loaded[$loaded_pos]['json']);
+      // Oh, and the base SourcePlugin wants an array, so type cast it too.
+      return (array) json_decode($this->loaded[$loaded_pos]['json']);
     }
 
     public function key() {
