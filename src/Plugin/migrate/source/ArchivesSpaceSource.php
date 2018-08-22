@@ -25,7 +25,8 @@ class ArchivesSpaceSource extends SourcePluginBase {
     'repository',
     'resource',
     'archival_object',
-    'digital_object'
+    'digital_object',
+    'agent'
   ];
   protected $fields = [];
   /**
@@ -47,7 +48,7 @@ class ArchivesSpaceSource extends SourcePluginBase {
         $this->fields = [
           'uri' => $this->t('URI'),
           'title' => $this->t('Title'),
-          'repo_uri' => $this->t('Repository URI')
+          'repository' => $this->t('Repository')
         ];
         break;
       default:

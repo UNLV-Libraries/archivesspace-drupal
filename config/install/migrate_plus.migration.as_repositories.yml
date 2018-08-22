@@ -7,8 +7,10 @@ source:
   plugin: archivesspace
   object_type: repository
   base_uri: http://drupalvm.test:8089 #http://localhost:8089/repositories
-  username: drupal
-  password: drupal
+  username: admin
+  password: admin
+  keys:
+    - uri
 
 destination:
   plugin: entity:node
@@ -23,3 +25,7 @@ process:
   uid:
     plugin: default_value
     default_value: 1
+
+  # field_repository_org_code:
+  # field_repository_parent_name:
+  # field_as_address/address0:
