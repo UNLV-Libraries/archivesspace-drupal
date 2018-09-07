@@ -41,18 +41,39 @@ class ArchivesSpaceSource extends SourcePluginBase {
     $this->object_type = $configuration['object_type'];
 
     switch ($this->object_type) {
-      case 'repository':
-        $this->fields = [
-          'uri' => $this->t('URI'),
-          'name' => $this->t('Name'),
-          'repo_code' => $this->t('Repository Code')
-        ];
-        break;
+      // case 'repository':
+      //   $this->fields = [
+      //     'uri' => $this->t('URI'),
+      //     'name' => $this->t('Name'),
+      //     'repo_code' => $this->t('Repository Code')
+      //   ];
+      //   break;
       case 'resource':
         $this->fields = [
           'uri' => $this->t('URI'),
           'title' => $this->t('Title'),
-          'repository' => $this->t('Repository')
+          'repository' => $this->t('Repository'),
+          'dates' => $this->t('Dates'),
+          'classifications' => $this->t('Classifications'),
+          'deaccessions' => $this->t('Deaccessions'),
+          'ead_id' => $this->t('EAD ID'),
+          'ead_location' => $this->t('EAD Location'),
+          'extents' => $this->t('Extents'),
+          'finding_aid_filing_title' => $this->t('Filing Title'),
+          'finding_aid_language' => $this->t('Finding Aid Language'),
+          'finding_aid_status' => $this->t('Finding Aid Status'),
+          'id_0' => $this->t('ID Position 0'),
+          'id_1' => $this->t('ID Position 1'),
+          'id_2' => $this->t('ID Position 2'),
+          'id_3' => $this->t('ID Position 3'),
+          'language' => $this->t('Language Code'),
+          'level' => $this->t('Level'),
+          'linked_agents' => $this->t('Linked Agents'),
+          'notes' => $this->t('Notes'),
+          'publish' => $this->t('Publish'),
+          'restrictions' => $this->t('Restrictions'),
+          'subjects' => $this->t('Subjects'),
+          'suppressed' => $this->t('Suppressed')
         ];
         break;
       default:
