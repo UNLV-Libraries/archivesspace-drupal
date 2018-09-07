@@ -1,16 +1,34 @@
-uuid: 376945f0-cb7d-4345-966b-acb258c86bbc
 id: as_repositories
 label: ArchivesSpace Repositories
 migration_group: archivesspace
 
 source:
-  plugin: archivesspace
-  object_type: repository
-  base_uri: http://drupalvm.test:8089 #http://localhost:8089/repositories
-  username: admin
-  password: admin
-  keys:
-    - uri
+  plugin: url
+  data_fetcher_plugin: http
+  data_parser_plugin: json
+  urls: http://localhost:8089/repositories
+  ids:
+    uri:
+      type: string
+  item_selector: 0
+  fields:
+    -
+      name: uri
+      label: 'URI'
+      selector: uri
+    -
+      name: repo_code
+      label: 'Repository Code'
+      selector: repo_code
+    -
+      name: name
+      label: 'Name'
+      selector: name
+    -
+      name: publish
+      label: 'Publish?'
+      selector: publish
+
 
 destination:
   plugin: entity:node
