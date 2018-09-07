@@ -9,9 +9,10 @@ migration_dependencies:
 source:
   plugin: archivesspace
   object_type: resource
-  base_uri: http://drupalvm.test:8089 #http://localhost:8089/repositories
-  username: admin
-  password: admin
+  base_uri: http://localhost:8089/repositories
+  repository: /repositories/2
+  username: drupal
+  password: drupal
   keys:
     - uri
 
@@ -27,14 +28,13 @@ process:
   uid:
     plugin: default_value
     default_value: 1
-
-# field_repository doesn't currently work because the repository source field
-# is an object, where we need the repository[ref].
-# We need to update either the ArchivesSpaceSource or ArchivesSpaceIterator
-# to return that as needed.
-
-  # field_repository:
-  #   plugin: migration_lookup
-  #   migration: as_repositories
-  #   source: repository
-  #   no_stub: true
+  field_repository:
+    -
+      plugin: extract
+      source: repository
+      index:
+        - ref
+    -
+      plugin: migration_lookup
+      migration: as_repositories
+      no_stub: true

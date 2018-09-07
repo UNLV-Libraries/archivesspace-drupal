@@ -29,11 +29,15 @@ class ArchivesSpaceSource extends SourcePluginBase {
     'agent'
   ];
   protected $fields = [];
+  protected $repository = '';
+
   /**
    * {@inheritdoc}
    */
   public function __construct(array $configuration, $plugin_id, $plugin_definition, MigrationInterface $migration) {
+
     parent::__construct($configuration, $plugin_id, $plugin_definition, $migration);
+
     $this->object_type = $configuration['object_type'];
 
     switch ($this->object_type) {
@@ -60,6 +64,14 @@ class ArchivesSpaceSource extends SourcePluginBase {
     } else {
       $this->last_update = new DateTime();
       $this->last_update->setTimestamp(0);
+    }
+
+    if( isset($configuration['repository'])){
+      if(is_int($configuration['repository'])){
+        $this->repository = '/repositories/'.$configuration['repository'];
+      } elseif (preg_match('#^/repositories/[0-9]+$#',$configuration['repository'])) {
+        $this->repository = $configuration['repository'];
+      }
     }
 
     // Create the session
@@ -89,7 +101,7 @@ class ArchivesSpaceSource extends SourcePluginBase {
    */
   protected function initializeIterator() {
 
-    return new ArchivesSpaceIterator($this->object_type, $this->last_update, $this->session);
+    return new ArchivesSpaceIterator($this->object_type, $this->last_update, $this->session, $this->repository);
 
   }
 

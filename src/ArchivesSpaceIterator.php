@@ -13,12 +13,13 @@ class ArchivesSpaceIterator implements \Iterator {
     protected $session;
     protected $type;
     protected $types = [
-      'repository',
+      // 'repository', // Doesn't use the iterator
       'resource',
       'archival_object',
       'digital_object'
     ];
     protected $datetime;
+    protected $repository;
     // Total count
     protected $count = 0;
     // loaded objects
@@ -30,9 +31,9 @@ class ArchivesSpaceIterator implements \Iterator {
     protected $last_page;
     protected $offset_first = 0;
     protected $offset_last = 0;
-    protected $page_size = 10;
+    protected $page_size = 100;
 
-    public function __construct(string $type, DateTime $datetime, ArchivesSpaceSession $session) {
+    public function __construct(string $type, DateTime $datetime, ArchivesSpaceSession $session, string $repository) {
         if(!in_array($type, $this->types)){
           throw new InvalidArgumentException('Can\'t iterate over type: '.$type);
         }
@@ -40,6 +41,7 @@ class ArchivesSpaceIterator implements \Iterator {
         $this->type = $type;
         $this->datetime = $datetime;
         $this->session = $session;
+        $this->repository = $repository;
     }
 
     public function rewind() {
@@ -57,8 +59,8 @@ class ArchivesSpaceIterator implements \Iterator {
       // Unfortunately/fortunately? The results bury the full json object
       // as a sub-field, rather than just giving it to us in the first place.
       // So, let's return that.
-      // Oh, and the base SourcePlugin wants an array, so type cast it too.
-      return (array) json_decode($this->loaded[$loaded_pos]['json']);
+      // Oh, and the base SourcePlugin wants nested arrays.
+      return json_decode($this->loaded[$loaded_pos]['json'], true);
     }
 
     public function key() {
@@ -70,7 +72,6 @@ class ArchivesSpaceIterator implements \Iterator {
     }
 
     public function valid() {
-
         // offset is out of range?
         if( ($this->position + 1) > $this->count ){
           return false;
@@ -78,7 +79,7 @@ class ArchivesSpaceIterator implements \Iterator {
 
         // Is position's offset loaded (comes after last loaded)?
         if( ($this->position + 1) > $this->offset_last ){
-          $this->loadPage($current_page + 1); // Get more!
+          $this->loadPage($this->current_page + 1); // Get more!
 
           // What if the load failed for some reason?
           if( ($this->position + 1) != $this->offset_first ){
@@ -120,10 +121,11 @@ class ArchivesSpaceIterator implements \Iterator {
         'page_size' => $this->page_size,
         'aq' => $aq
       ];
+
       // ROOT-level search requires a user to have ADMIN!
       // If we want a user with read-only, we have to limit search to
       // a repository where they have read-only permissions set.
-      $results = $this->session->request('GET','/search', $parameters);
+      $results = $this->session->request('GET', $this->repository . '/search', $parameters);
       $this->count        = $results['total_hits'];
       $this->current_page = $results['this_page'];
       $this->last_page    = $results['last_page'];
@@ -131,4 +133,5 @@ class ArchivesSpaceIterator implements \Iterator {
       $this->offset_last  = $results['offset_last'];
       $this->loaded       = $results['results'];
     }
+
 }
