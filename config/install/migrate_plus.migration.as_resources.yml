@@ -78,3 +78,6 @@ process:
       container_summary: container_summary
       physical_details: physical_details
       dimensions: dimensions
+  field_as_resource_notes:
+    plugin: archivesspace_notes # Custom process to handle single and multi-part notes
+    source: notes
