@@ -33,6 +33,32 @@ process:
   uid:
     plugin: default_value
     default_value: 1
+  field_as_date:
+    plugin: sub_process
+    source: dates
+    process:
+      label: label
+      begin: begin
+      end: end
+      date_type: date_type
+      certainty: certainty
+      expression: expression
+      calendar: calendar
+  field_as_ead_id: ead_id
+  field_as_extent:
+    plugin: sub_process
+    source: extents
+    process:
+      portion: portion
+      number: number
+      extent_type: extent_type
+      container_summary: container_summary
+      physical_details: physical_details
+      dimensions: dimensions
+  field_as_finding_aid_desc_rules: finding_aid_description_rules
+  field_as_resource_notes:
+    plugin: archivesspace_notes # Custom process to handle single and multi-part notes
+    source: notes
   field_repository:
     -
       plugin: extract
@@ -57,27 +83,5 @@ process:
       regex: true
       search: '/--+/' # Remove any double-dashes from missing id positions
       replace: ''
-  field_as_date:
-    plugin: sub_process
-    source: dates
-    process:
-      label: label
-      begin: begin
-      end: end
-      date_type: date_type
-      certainty: certainty
-      expression: expression
-      calendar: calendar
-  field_as_extent:
-    plugin: sub_process
-    source: extents
-    process:
-      portion: portion
-      number: number
-      extent_type: extent_type
-      container_summary: container_summary
-      physical_details: physical_details
-      dimensions: dimensions
-  field_as_resource_notes:
-    plugin: archivesspace_notes # Custom process to handle single and multi-part notes
-    source: notes
+  field_resource_resource_type: level
+  field_restrictions_bool: restrictions

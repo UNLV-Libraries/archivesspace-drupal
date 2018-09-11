@@ -51,6 +51,7 @@ class ArchivesSpaceSource extends SourcePluginBase {
           'ead_id' => $this->t('EAD ID'),
           'ead_location' => $this->t('EAD Location'),
           'extents' => $this->t('Extents'),
+          'finding_aid_description_rules' => $this->t('Description Rules'),
           'finding_aid_filing_title' => $this->t('Filing Title'),
           'finding_aid_language' => $this->t('Finding Aid Language'),
           'finding_aid_status' => $this->t('Finding Aid Status'),
