@@ -18,6 +18,7 @@ default_value: {  }
 default_value_callback: ''
 settings:
   note_types:
+    abstract: 'Abstract'
     accessrestrict: 'Conditions Governing Access'
     accruals: 'Accruals'
     acqinfo: 'Immediate Source of Acquisition'
@@ -28,10 +29,15 @@ settings:
     custodhist: 'Custodial History'
     dimensions: Dimensions
     fileplan: 'File Plan'
+    langmaterial: 'Language of Materials'
     legalstatus: 'Legal Status'
+    materialspec: 'Materials Specific Details'
     odd: 'General'
     originalsloc: 'Existence and Location of Originals'
     otherfindaid: 'Other Finding Aids'
+    physdesc: 'Physical Description'
+    physfacet: 'Physical Facet'
+    physloc: 'Physical Location'
     phystech: 'Physical Characteristics and Technical Requirements'
     prefercite: 'Preferred Citation'
     processinfo: 'Processing Information'
