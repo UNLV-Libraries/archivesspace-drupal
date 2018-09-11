@@ -8,3 +8,5 @@ dependencies:
   - address
   - auto_entitylabel
   - language
+  - migrate_plus
+  - migrate_run

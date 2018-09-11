@@ -1,0 +1,49 @@
+id: as_repositories
+label: ArchivesSpace Repositories
+migration_group: archivesspace
+
+source:
+  plugin: url
+  data_fetcher_plugin: http
+  data_parser_plugin: json
+  urls: http://localhost:8089/repositories
+  ids:
+    uri:
+      type: string
+  item_selector: 0
+  fields:
+    -
+      name: uri
+      label: 'URI'
+      selector: uri
+    -
+      name: repo_code
+      label: 'Repository Code'
+      selector: repo_code
+    -
+      name: name
+      label: 'Name'
+      selector: name
+    -
+      name: publish
+      label: 'Publish?'
+      selector: publish
+
+
+destination:
+  plugin: entity:node
+  bundle: repository
+
+process:
+  type:
+    plugin: default_value
+    default_value: repository
+  title: name
+  field_repository_short_name: repo_code
+  uid:
+    plugin: default_value
+    default_value: 1
+
+  # field_repository_org_code:
+  # field_repository_parent_name:
+  # field_as_address/address0:

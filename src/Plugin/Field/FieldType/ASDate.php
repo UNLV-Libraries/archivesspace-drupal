@@ -3,15 +3,14 @@
 namespace Drupal\archivesspace\Plugin\Field\FieldType;
 
 use Drupal\Core\Field\FieldItemBase;
-use Drupal\Core\Field\FieldItemInterface;
-use Drupal\Core\Field\FieldDefinitionInterface;
 use Drupal\Core\Field\FieldStorageDefinitionInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\TypedData\DataDefinition;
 
 /**
  * Provides a ArchivesSpace-based Date field.
- * TODO: override defaultFieldSettings so users can add date types
+ *
+ * TODO: override defaultFieldSettings so users can add date types.
  *
  * @FieldType(
  *   id = "as_date",
@@ -23,49 +22,48 @@ use Drupal\Core\TypedData\DataDefinition;
  *   default_widget = "as_date_default",
  * )
  */
-
 class ASDate extends FieldItemBase {
 
   /**
    * {@inheritdoc}
    */
   public static function schema(FieldStorageDefinitionInterface $field_definition) {
-    return array(
-      // columns contains the values that the field will store
-      'columns' => array(
-        'label' => array(
+    return [
+      // Columns contains the values that the field will store.
+      'columns' => [
+        'label' => [
           'type' => 'text',
           'size' => 'tiny',
           'not null' => FALSE,
-        ),
-        'begin' => array(
+        ],
+        'begin' => [
           'type' => 'text',
           'size' => 'tiny',
           'not null' => FALSE,
-        ),
-        'end' => array(
+        ],
+        'end' => [
           'type' => 'text',
           'size' => 'tiny',
           'not null' => FALSE,
-        ),
-        'date_type' => array(
+        ],
+        'date_type' => [
           'type' => 'text',
           'size' => 'tiny',
-        ),
-        'certainty' => array(
+        ],
+        'certainty' => [
           'type' => 'text',
-          'size' => 'tiny'
-        ),
-        'expression' => array(
+          'size' => 'tiny',
+        ],
+        'expression' => [
           'type' => 'text',
-          'size' => 'tiny'
-        ),
-        'calendar' => array(
+          'size' => 'tiny',
+        ],
+        'calendar' => [
           'type' => 'text',
-          'size' => 'tiny'
-        )
-      ),
-    );
+          'size' => 'tiny',
+        ],
+      ],
+    ];
   }
 
   /**
@@ -96,8 +94,7 @@ class ASDate extends FieldItemBase {
         isset($item['begin']) && !empty($item['begin']) ||
         isset($item['end']) && !empty($item['end']) ||
         isset($item['expression']) && !empty($item['expression'])
-       )
-    {
+       ) {
       $is_empty = FALSE;
     }
 
@@ -107,7 +104,7 @@ class ASDate extends FieldItemBase {
   /**
    * {@inheritdoc}
    */
-   public static function defaultFieldSettings() {
+  public static function defaultFieldSettings() {
     return [
       'label_types' => [
         'broadcast' => t('Broadcast'),
@@ -153,10 +150,10 @@ class ASDate extends FieldItemBase {
       '#element_validate' => [[get_class($this), 'validateValues']],
       '#required' => TRUE,
       '#min' => 1,
-      '#description' => '<p>' . t('Enter one value per line, in the format key|label.').
-        '<br/>' . t('The key is the stored value. The label will be used in displayed values and edit forms.').
-        '<br/>' . t('The label is optional: if a line contains a single string, it will be used as key and label.').
-        '</p>',
+      '#description' => '<p>' . t('Enter one value per line, in the format key|label.') .
+      '<br/>' . t('The key is the stored value. The label will be used in displayed values and edit forms.') .
+      '<br/>' . t('The label is optional: if a line contains a single string, it will be used as key and label.') .
+      '</p>',
     ];
 
     $element['date_types'] = [
@@ -166,10 +163,10 @@ class ASDate extends FieldItemBase {
       '#element_validate' => [[get_class($this), 'validateValues']],
       '#required' => TRUE,
       '#min' => 1,
-      '#description' => '<p>' . t('Enter one value per line, in the format key|label.').
-        '<br/>' . t('The key is the stored value. The label will be used in displayed values and edit forms.').
-        '<br/>' . t('The label is optional: if a line contains a single string, it will be used as key and label.').
-        '</p>',
+      '#description' => '<p>' . t('Enter one value per line, in the format key|label.') .
+      '<br/>' . t('The key is the stored value. The label will be used in displayed values and edit forms.') .
+      '<br/>' . t('The label is optional: if a line contains a single string, it will be used as key and label.') .
+      '</p>',
     ];
 
     $element['certainty_types'] = [
@@ -179,10 +176,10 @@ class ASDate extends FieldItemBase {
       '#element_validate' => [[get_class($this), 'validateValues']],
       '#required' => TRUE,
       '#min' => 1,
-      '#description' => '<p>' . t('Enter one value per line, in the format key|label.').
-        '<br/>' . t('The key is the stored value. The label will be used in displayed values and edit forms.').
-        '<br/>' . t('The label is optional: if a line contains a single string, it will be used as key and label.').
-        '</p>',
+      '#description' => '<p>' . t('Enter one value per line, in the format key|label.') .
+      '<br/>' . t('The key is the stored value. The label will be used in displayed values and edit forms.') .
+      '<br/>' . t('The label is optional: if a line contains a single string, it will be used as key and label.') .
+      '</p>',
     ];
 
     $element['calendar_types'] = [
@@ -192,18 +189,27 @@ class ASDate extends FieldItemBase {
       '#element_validate' => [[get_class($this), 'validateValues']],
       '#required' => TRUE,
       '#min' => 1,
-      '#description' => '<p>' . t('Enter one value per line, in the format key|label.').
-        '<br/>' . t('The key is the stored value. The label will be used in displayed values and edit forms.').
-        '<br/>' . t('The label is optional: if a line contains a single string, it will be used as key and label.').
-        '</p>',
+      '#description' => '<p>' . t('Enter one value per line, in the format key|label.') .
+      '<br/>' . t('The key is the stored value. The label will be used in displayed values and edit forms.') .
+      '<br/>' . t('The label is optional: if a line contains a single string, it will be used as key and label.') .
+      '</p>',
     ];
 
     return $element;
   }
 
-  protected function encodeTextSettingsField(array $settings){
+  /**
+   * Encodes key/value pairs into pipe-delimited text.
+   *
+   * @param array $settings
+   *   Key/value pairs.
+   *
+   * @return string
+   *   Pipe-delimited key/value pairs
+   */
+  protected function encodeTextSettingsField(array $settings) {
     $output = '';
-    foreach($settings as $key => $value){
+    foreach ($settings as $key => $value) {
       $output .= "$key|$value\n";
     }
     return $output;
@@ -235,7 +241,7 @@ class ASDate extends FieldItemBase {
         $key = trim($matches[1]);
         $value = trim($matches[2]);
       }
-      // Otherwise use the value as key and value
+      // Otherwise use the value as key and value.
       else {
         $key = $value = $text;
       }
@@ -247,17 +253,17 @@ class ASDate extends FieldItemBase {
   }
 
   /**
-   * #element_validate callback.
+   * Callback for #element_validate.
    *
-   * @param $element
+   * @param array $element
    *   An associative array containing the properties and children of the
    *   generic form element.
-   * @param $form_state
+   * @param \Drupal\Core\Form\FormStateInterface $form_state
    *   The current state of the form for the form this element belongs to.
    *
    * @see \Drupal\Core\Render\Element\FormElement::processPattern()
    */
-  public static function validateValues($element, FormStateInterface $form_state) {
+  public static function validateValues(array $element, FormStateInterface $form_state) {
     $values = static::extractPipedValues($element['#value']);
 
     if (!is_array($values)) {
@@ -265,17 +271,8 @@ class ASDate extends FieldItemBase {
     }
     else {
       // We may want to validate key values in the future...
-      // foreach ($values as $key => $value) {
-      //   if ($error = static::validateAllowedValue($key)) {
-      //     $form_state->setError($element, $error);
-      //     break;
-      //   }
-      // }
-
       $form_state->setValueForElement($element, $values);
     }
   }
 
 }
-
-?>

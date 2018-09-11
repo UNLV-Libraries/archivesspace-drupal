@@ -1,0 +1,87 @@
+uuid: baa226ff-09ec-48d8-96e4-439d55d7be55
+id: as_resources
+label: ArchivesSpace Resources
+migration_group: archivesspace
+migration_dependencies:
+  required:
+    - as_repositories
+
+source:
+  plugin: archivesspace
+  object_type: resource
+  base_uri: http://localhost:8089/repositories
+  repository: /repositories/2
+  username: drupal
+  password: drupal
+  keys:
+    - uri
+
+destination:
+  plugin: entity:node
+  bundle: archival_resource
+
+process:
+  published:
+    plugin: skip_on_value
+    source: published
+    method: row
+    value: true
+  type:
+    plugin: default_value
+    default_value: archival_resource
+  title: title
+  uid:
+    plugin: default_value
+    default_value: 1
+  field_as_date:
+    plugin: sub_process
+    source: dates
+    process:
+      label: label
+      begin: begin
+      end: end
+      date_type: date_type
+      certainty: certainty
+      expression: expression
+      calendar: calendar
+  field_as_ead_id: ead_id
+  field_as_extent:
+    plugin: sub_process
+    source: extents
+    process:
+      portion: portion
+      number: number
+      extent_type: extent_type
+      container_summary: container_summary
+      physical_details: physical_details
+      dimensions: dimensions
+  field_as_finding_aid_desc_rules: finding_aid_description_rules
+  field_as_resource_notes:
+    plugin: archivesspace_notes # Custom process to handle single and multi-part notes
+    source: notes
+  field_repository:
+    -
+      plugin: extract
+      source: repository
+      index:
+        - ref
+    -
+      plugin: migration_lookup
+      migration: as_repositories
+      no_stub: true
+  field_resource_identifier:
+    -
+      plugin: concat
+      delimiter: '-'
+      source:
+        - id_0
+        - id_1
+        - id_2
+        - id_3
+    -
+      plugin: str_replace
+      regex: true
+      search: '/--+/' # Remove any double-dashes from missing id positions
+      replace: ''
+  field_resource_resource_type: level
+  field_restrictions_bool: restrictions
