@@ -1,0 +1,23 @@
+uuid: e60673b3-79a7-4912-b096-d5767c88a7b4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_restrictions_bool
+    - node.type.archival_object
+id: node.archival_object.field_restrictions_bool
+field_name: field_restrictions_bool
+entity_type: node
+bundle: archival_object
+label: 'Restrictions?'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

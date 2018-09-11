@@ -1,0 +1,21 @@
+uuid: c79ded5f-2b57-4ae1-aadc-0d2323e347a3
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_archival_record_level
+    - node.type.archival_object
+  module:
+    - options
+id: node.archival_object.field_archival_record_level
+field_name: field_archival_record_level
+entity_type: node
+bundle: archival_object
+label: 'Level of Description'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

@@ -1,0 +1,19 @@
+uuid: 05545fc7-4c4c-4c49-a8b8-7242feb9bcdd
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_as_ref_id
+    - node.type.archival_object
+id: node.archival_object.field_as_ref_id
+field_name: field_as_ref_id
+entity_type: node
+bundle: archival_object
+label: 'Reference ID'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

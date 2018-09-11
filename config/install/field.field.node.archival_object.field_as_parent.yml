@@ -1,0 +1,29 @@
+uuid: cd85f974-9ce1-49e7-a7bc-5a7e1dad3250
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_as_parent
+    - node.type.archival_object
+    - node.type.archival_resource
+id: node.archival_object.field_as_parent
+field_name: field_as_parent
+entity_type: node
+bundle: archival_object
+label: Parent
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      archival_object: archival_object
+      archival_resource: archival_resource
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: archival_object
+field_type: entity_reference
