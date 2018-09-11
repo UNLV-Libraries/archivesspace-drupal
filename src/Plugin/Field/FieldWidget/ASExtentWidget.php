@@ -17,21 +17,20 @@ use Drupal\Core\Form\FormStateInterface;
  *   }
  * )
  */
-
 class ASExtentWidget extends WidgetBase {
 
   /**
    * {@inheritdoc}
    */
   public function formElement(FieldItemListInterface $items, $delta, array $element, array &$form, FormStateInterface $form_state) {
-    // Item of interest
+    // Item of interest.
     $item =& $items[$delta];
     $settings = $item->getFieldDefinition()->getSettings();
 
-    //Load up the form fields
-    $element += array(
+    // Load up the form fields.
+    $element += [
       '#type' => 'fieldset',
-    );
+    ];
     $element['portion'] = [
       '#title' => t('Portion'),
       '#type' => 'select',
@@ -69,4 +68,3 @@ class ASExtentWidget extends WidgetBase {
   }
 
 }
- ?>

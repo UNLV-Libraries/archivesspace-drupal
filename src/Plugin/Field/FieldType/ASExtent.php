@@ -3,8 +3,6 @@
 namespace Drupal\archivesspace\Plugin\Field\FieldType;
 
 use Drupal\Core\Field\FieldItemBase;
-use Drupal\Core\Field\FieldItemInterface;
-use Drupal\Core\Field\FieldDefinitionInterface;
 use Drupal\Core\Field\FieldStorageDefinitionInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\TypedData\DataDefinition;
@@ -22,45 +20,44 @@ use Drupal\Core\TypedData\DataDefinition;
  *   default_widget = "as_extent_default",
  * )
  */
-
 class ASExtent extends FieldItemBase {
 
   /**
    * {@inheritdoc}
    */
   public static function schema(FieldStorageDefinitionInterface $field_definition) {
-    return array(
-      // columns contains the values that the field will store
-      'columns' => array(
-        'portion' => array(
+    return [
+      // Columns contains the values that the field will store.
+      'columns' => [
+        'portion' => [
           'type' => 'text',
           'size' => 'tiny',
           'not null' => TRUE,
-        ),
-        'number' => array(
+        ],
+        'number' => [
           'type' => 'text',
           'size' => 'tiny',
           'not null' => TRUE,
-        ),
-        'extent_type' => array(
+        ],
+        'extent_type' => [
           'type' => 'text',
           'size' => 'tiny',
           'not null' => TRUE,
-        ),
-        'container_summary' => array(
+        ],
+        'container_summary' => [
           'type' => 'text',
-          'size' => 'medium'
-        ),
-        'physical_details' => array(
+          'size' => 'medium',
+        ],
+        'physical_details' => [
           'type' => 'text',
-          'size' => 'medium'
-        ),
-        'dimensions' => array(
+          'size' => 'medium',
+        ],
+        'dimensions' => [
           'type' => 'text',
-          'size' => 'tiny'
-        )
-      ),
-    );
+          'size' => 'tiny',
+        ],
+      ],
+    ];
   }
 
   /**
@@ -93,13 +90,12 @@ class ASExtent extends FieldItemBase {
   public function isEmpty() {
     $item = $this->getValue();
 
-    // All must have a value
+    // All must have a value.
     if (
         isset($item['portion'])     && !empty($item['portion']) &&
         isset($item['number'])      && !empty($item['number'])  &&
         isset($item['extent_type']) && !empty($item['extent_type'])
-       )
-    {
+       ) {
       return FALSE;
     }
 
@@ -109,11 +105,11 @@ class ASExtent extends FieldItemBase {
   /**
    * {@inheritdoc}
    */
-   public static function defaultFieldSettings() {
+  public static function defaultFieldSettings() {
     return [
       'extent_types' => [
-        'linear_feet'=>t('Linear Feet'),
-        'cubic_feet'=>t('Cubic Feet'),
+        'linear_feet' => t('Linear Feet'),
+        'cubic_feet' => t('Cubic Feet'),
         'cassettes' => t('Cassettes'),
         'cubic_feet' => t('Cubic Feet'),
         'files' => t('Files'),
@@ -129,8 +125,8 @@ class ASExtent extends FieldItemBase {
         'volumes' => t('Volumes'),
       ],
       'portion_values' => [
-          'whole' => t('Whole'),
-          'part' => t('Part'),
+        'whole' => t('Whole'),
+        'part' => t('Part'),
       ],
     ] + parent::defaultFieldSettings();
   }
@@ -148,22 +144,37 @@ class ASExtent extends FieldItemBase {
       '#element_validate' => [[get_class($this), 'validateValues']],
       '#required' => TRUE,
       '#min' => 1,
-      '#description' => '<p>' . t('Enter one value per line, in the format key|label.').
-        '<br/>' . t('The key is the stored value. The label will be used in displayed values and edit forms.').
-        '<br/>' . t('The label is optional: if a line contains a single string, it will be used as key and label.').
-        '</p>',
+      '#description' => '<p>' . t('Enter one value per line, in the format key|label.') .
+      '<br/>' . t('The key is the stored value. The label will be used in displayed values and edit forms.') .
+      '<br/>' . t('The label is optional: if a line contains a single string, it will be used as key and label.') .
+      '</p>',
     ];
 
     return $element;
   }
 
-  public function getExtentTypes(){
+  /**
+   * Retrieves extent types settings for formatters to use.
+   *
+   * @return array
+   *   Available extent_types key/value pairs
+   */
+  public function getExtentTypes() {
     return $this->getSetting('extent_types');
   }
 
-  protected function encodeTextSettingsField(array $settings){
+  /**
+   * Encodes key/value pairs into pipe-delimited text.
+   *
+   * @param array $settings
+   *   Key/value pairs.
+   *
+   * @return string
+   *   Pipe-delimited key/value pairs
+   */
+  protected function encodeTextSettingsField(array $settings) {
     $output = '';
-    foreach($settings as $key => $value){
+    foreach ($settings as $key => $value) {
       $output .= "$key|$value\n";
     }
     return $output;
@@ -195,7 +206,7 @@ class ASExtent extends FieldItemBase {
         $key = trim($matches[1]);
         $value = trim($matches[2]);
       }
-      // Otherwise use the value as key and value
+      // Otherwise use the value as key and value.
       else {
         $key = $value = $text;
       }
@@ -207,35 +218,27 @@ class ASExtent extends FieldItemBase {
   }
 
   /**
-   * #element_validate callback.
+   * Callback for #element_validate.
    *
-   * @param $element
+   * @param array $element
    *   An associative array containing the properties and children of the
    *   generic form element.
-   * @param $form_state
+   * @param \Drupal\Core\Form\FormStateInterface $form_state
    *   The current state of the form for the form this element belongs to.
    *
    * @see \Drupal\Core\Render\Element\FormElement::processPattern()
    */
-  public static function validateValues($element, FormStateInterface $form_state) {
+  public static function validateValues(array $element, FormStateInterface $form_state) {
     $values = static::extractPipedValues($element['#value']);
 
     if (!is_array($values)) {
       $form_state->setError($element, t('Allowed values list: invalid input.'));
     }
     else {
-      // We may want to validate key values in the future...
-      // foreach ($values as $key => $value) {
-      //   if ($error = static::validateAllowedValue($key)) {
-      //     $form_state->setError($element, $error);
-      //     break;
-      //   }
-      // }
-
+      // We may want to validate key values and notify in the future
+      // $form_state->setError($element, $error);.
       $form_state->setValueForElement($element, $values);
     }
   }
 
 }
-
-?>

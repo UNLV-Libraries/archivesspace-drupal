@@ -9,7 +9,8 @@ use Drupal\Core\Form\FormStateInterface;
 /**
  * Plugin implementation of the 'as_date_default' widget.
  *
- * TODO: Override validate to validate EDTF format OR be empty with an expression value
+ * TODO: Override validate to validate EDTF format OR
+ *       be empty with an expression value.
  *
  * @FieldWidget(
  *   id = "as_date_default",
@@ -19,21 +20,20 @@ use Drupal\Core\Form\FormStateInterface;
  *   }
  * )
  */
-
 class ASDateWidget extends WidgetBase {
 
   /**
    * {@inheritdoc}
    */
   public function formElement(FieldItemListInterface $items, $delta, array $element, array &$form, FormStateInterface $form_state) {
-    // Item of interest
+    // Item of interest.
     $item =& $items[$delta];
     $settings = $item->getFieldDefinition()->getSettings();
 
-    //Load up the form fields
-    $element += array(
+    // Load up the form fields.
+    $element += [
       '#type' => 'fieldset',
-    );
+    ];
     $element['label'] = [
       '#title' => t('Label'),
       '#type' => 'select',
@@ -81,4 +81,3 @@ class ASDateWidget extends WidgetBase {
   }
 
 }
- ?>

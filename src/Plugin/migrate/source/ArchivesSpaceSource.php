@@ -7,7 +7,6 @@ use Drupal\archivesspace\ArchivesSpaceIterator;
 use Drupal\archivesspace\ArchivesSpaceSession;
 use Drupal\migrate\Plugin\MigrationInterface;
 use Drupal\migrate\Plugin\migrate\source\SourcePluginBase;
-use Drupal\migrate\Row;
 
 /**
  * Source plugin for retrieving data from ArchivesSpace.
@@ -19,14 +18,14 @@ use Drupal\migrate\Row;
 class ArchivesSpaceSource extends SourcePluginBase {
 
   protected $session;
-  protected $object_type;
-  protected $last_update;
-  protected $object_types = [
+  protected $objectType;
+  protected $lastUpdate;
+  protected $objectTypes = [
     'repository',
     'resource',
     'archival_object',
     'digital_object',
-    'agent'
+    'agent',
   ];
   protected $fields = [];
   protected $repository = '';
@@ -38,16 +37,9 @@ class ArchivesSpaceSource extends SourcePluginBase {
 
     parent::__construct($configuration, $plugin_id, $plugin_definition, $migration);
 
-    $this->object_type = $configuration['object_type'];
+    $this->objectType = $configuration['object_type'];
 
-    switch ($this->object_type) {
-      // case 'repository':
-      //   $this->fields = [
-      //     'uri' => $this->t('URI'),
-      //     'name' => $this->t('Name'),
-      //     'repo_code' => $this->t('Repository Code')
-      //   ];
-      //   break;
+    switch ($this->objectType) {
       case 'resource':
         $this->fields = [
           'uri' => $this->t('URI'),
@@ -73,43 +65,48 @@ class ArchivesSpaceSource extends SourcePluginBase {
           'publish' => $this->t('Publish'),
           'restrictions' => $this->t('Restrictions'),
           'subjects' => $this->t('Subjects'),
-          'suppressed' => $this->t('Suppressed')
+          'suppressed' => $this->t('Suppressed'),
         ];
         break;
+
       default:
         break;
     }
 
-    if( isset($configuration['last_updated']) ){
-      $this->last_update = DateTime::createFromFormat('Y-m-d\TH:i:s\Z', $configuration['last_updated']);
-    } else {
-      $this->last_update = new DateTime();
-      $this->last_update->setTimestamp(0);
+    if (isset($configuration['last_updated'])) {
+      $this->lastUpdate = DateTime::createFromFormat('Y-m-d\TH:i:s\Z', $configuration['last_updated']);
+    }
+    else {
+      $this->lastUpdate = new DateTime();
+      $this->lastUpdate->setTimestamp(0);
     }
 
-    if( isset($configuration['repository'])){
-      if(is_int($configuration['repository'])){
-        $this->repository = '/repositories/'.$configuration['repository'];
-      } elseif (preg_match('#^/repositories/[0-9]+$#',$configuration['repository'])) {
+    if (isset($configuration['repository'])) {
+      if (is_int($configuration['repository'])) {
+        $this->repository = '/repositories/' . $configuration['repository'];
+      }
+      elseif (preg_match('#^/repositories/[0-9]+$#', $configuration['repository'])) {
         $this->repository = $configuration['repository'];
       }
     }
 
     // Create the session
-    // Send migration config auth options to the Session object
-    if( isset($configuration['base_uri']) ||
+    // Send migration config auth options to the Session object.
+    if (isset($configuration['base_uri']) ||
         isset($configuration['username']) ||
-        isset($configuration['password']) ){
-      // Get Config Settings
-      $base_uri = ( isset($configuration['base_uri']) ? $configuration['base_uri'] : '' );
-      $username = ( isset($configuration['username']) ? $configuration['username'] : '' );
-      $password = ( isset($configuration['password']) ? $configuration['password'] : '' );
+        isset($configuration['password'])) {
+      // Get Config Settings.
+      $base_uri = (isset($configuration['base_uri']) ? $configuration['base_uri'] : '');
+      $username = (isset($configuration['username']) ? $configuration['username'] : '');
+      $password = (isset($configuration['password']) ? $configuration['password'] : '');
 
       $this->session = ArchivesSpaceSession::withConnectionInfo(
           $base_uri, $username, $password
         );
 
-    } else { // No login info provided by the migration config
+      // No login info provided by the migration config.
+    }
+    else {
       $this->session = new ArchivesSpaceSession();
     }
 
@@ -117,28 +114,38 @@ class ArchivesSpaceSource extends SourcePluginBase {
 
   /**
    * Initializes the iterator with the source data.
+   *
    * @return \Iterator
    *   An iterator containing the data for this source.
    */
   protected function initializeIterator() {
 
-    return new ArchivesSpaceIterator($this->object_type, $this->last_update, $this->session, $this->repository);
+    return new ArchivesSpaceIterator($this->objectType, $this->lastUpdate, $this->session, $this->repository);
 
   }
 
+  /**
+   * {@inheritdoc}
+   */
   public function getIds() {
     $ids = [
       'uri' => [
-        'type' => 'string'
-      ]
+        'type' => 'string',
+      ],
     ];
     return $ids;
   }
 
+  /**
+   * {@inheritdoc}
+   */
   public function fields() {
     return $this->fields;
   }
 
+  /**
+   * {@inheritdoc}
+   */
   public function __toString() {
     return "ArchivesSpace data";
   }

@@ -3,8 +3,6 @@
 namespace Drupal\archivesspace\Plugin\Field\FieldType;
 
 use Drupal\Core\Field\FieldItemBase;
-use Drupal\Core\Field\FieldItemInterface;
-use Drupal\Core\Field\FieldDefinitionInterface;
 use Drupal\Core\Field\FieldStorageDefinitionInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\TypedData\DataDefinition;
@@ -22,32 +20,31 @@ use Drupal\Core\TypedData\DataDefinition;
  *   default_widget = "typed_note_default",
  * )
  */
-
 class TypedNote extends FieldItemBase {
 
   /**
    * {@inheritdoc}
    */
   public static function schema(FieldStorageDefinitionInterface $field_definition) {
-    return array(
-      // columns contains the values that the field will store
-      'columns' => array(
-        'note_type' => array(
+    return [
+      // Columns contains the values that the field will store.
+      'columns' => [
+        'note_type' => [
           'type' => 'text',
           'size' => 'tiny',
           'not null' => TRUE,
-        ),
-        'label' => array(
+        ],
+        'label' => [
           'type' => 'text',
           'size' => 'tiny',
-        ),
-        'note' => array(
+        ],
+        'note' => [
           'type' => 'text',
           'size' => 'big',
           'not null' => TRUE,
-        )
-      ),
-    );
+        ],
+      ],
+    ];
   }
 
   /**
@@ -73,9 +70,8 @@ class TypedNote extends FieldItemBase {
   public function isEmpty() {
     $item = $this->getValue();
 
-    // All must have a value
-    if ( isset($item['note']) && !empty($item['note']) )
-    {
+    // All must have a value.
+    if (isset($item['note']) && !empty($item['note'])) {
       return FALSE;
     }
 
@@ -85,30 +81,30 @@ class TypedNote extends FieldItemBase {
   /**
    * {@inheritdoc}
    */
-   public static function defaultFieldSettings() {
+  public static function defaultFieldSettings() {
     return [
       'note_types' => [
-        'accessrestrict'=>t('Conditions Governing Access'),
-        'accruals'=>t('Accruals'),
-        'acqinfo'=>t('Immediate Source of Acquisition'),
-        'altformavail'=>t('Existence and Location of Copies'),
-        'appraisal'=>t('Appraisal'),
-        'arrangement'=>t('Arrangement'),
-        'bioghist'=>t('Biographical / Historical'),
-        'custodhist'=>t('Custodial History'),
-        'dimensions'=>t('Dimensions'),
-        'fileplan'=>t('File Plan'),
-        'legalstatus'=>t('Legal Status'),
-        'odd'=>t('General'),
-        'originalsloc'=>t('Existence and Location of Originals'),
-        'otherfindaid'=>t('Other Finding Aids'),
-        'phystech'=>t('Physical Characteristics and Technical Requirements'),
-        'prefercite'=>t('Preferred Citation'),
-        'processinfo'=>t('Processing Information'),
-        'relatedmaterial'=>t('Related Materials'),
-        'scopecontent'=>t('Scope and Contents'),
-        'separatedmaterial'=>t('Separated Materials'),
-        'userestrict'=>t('Conditions Governing Use'),
+        'accessrestrict' => t('Conditions Governing Access'),
+        'accruals' => t('Accruals'),
+        'acqinfo' => t('Immediate Source of Acquisition'),
+        'altformavail' => t('Existence and Location of Copies'),
+        'appraisal' => t('Appraisal'),
+        'arrangement' => t('Arrangement'),
+        'bioghist' => t('Biographical / Historical'),
+        'custodhist' => t('Custodial History'),
+        'dimensions' => t('Dimensions'),
+        'fileplan' => t('File Plan'),
+        'legalstatus' => t('Legal Status'),
+        'odd' => t('General'),
+        'originalsloc' => t('Existence and Location of Originals'),
+        'otherfindaid' => t('Other Finding Aids'),
+        'phystech' => t('Physical Characteristics and Technical Requirements'),
+        'prefercite' => t('Preferred Citation'),
+        'processinfo' => t('Processing Information'),
+        'relatedmaterial' => t('Related Materials'),
+        'scopecontent' => t('Scope and Contents'),
+        'separatedmaterial' => t('Separated Materials'),
+        'userestrict' => t('Conditions Governing Use'),
       ],
     ] + parent::defaultFieldSettings();
   }
@@ -126,22 +122,37 @@ class TypedNote extends FieldItemBase {
       '#element_validate' => [[get_class($this), 'validateValues']],
       '#required' => TRUE,
       '#min' => 1,
-      '#description' => '<p>' . t('Enter one value per line, in the format key|label.').
-        '<br/>' . t('The key is the stored value. The label will be used in displayed values and edit forms.').
-        '<br/>' . t('The label is optional: if a line contains a single string, it will be used as key and label.').
-        '</p>',
+      '#description' => '<p>' . t('Enter one value per line, in the format key|label.') .
+      '<br/>' . t('The key is the stored value. The label will be used in displayed values and edit forms.') .
+      '<br/>' . t('The label is optional: if a line contains a single string, it will be used as key and label.') .
+      '</p>',
     ];
 
     return $element;
   }
 
-  public function getNoteTypes(){
+  /**
+   * Retrieves the note types setting for formatters.
+   *
+   * @return array
+   *   Key/value pairs of note type codes and display values
+   */
+  public function getNoteTypes() {
     return $this->getSetting('note_types');
   }
 
-  protected function encodeTextSettingsField(array $settings){
+  /**
+   * Encodes key/value pairs into pipe-delimited text.
+   *
+   * @param array $settings
+   *   Key/value pairs.
+   *
+   * @return string
+   *   Pipe-delimited key/value pairs
+   */
+  protected function encodeTextSettingsField(array $settings) {
     $output = '';
-    foreach($settings as $key => $value){
+    foreach ($settings as $key => $value) {
       $output .= "$key|$value\n";
     }
     return $output;
@@ -173,7 +184,7 @@ class TypedNote extends FieldItemBase {
         $key = trim($matches[1]);
         $value = trim($matches[2]);
       }
-      // Otherwise use the value as key and value
+      // Otherwise use the value as key and value.
       else {
         $key = $value = $text;
       }
@@ -185,17 +196,17 @@ class TypedNote extends FieldItemBase {
   }
 
   /**
-   * #element_validate callback.
+   * Callback for #element_validate.
    *
-   * @param $element
+   * @param array $element
    *   An associative array containing the properties and children of the
    *   generic form element.
-   * @param $form_state
+   * @param \Drupal\Core\Form\FormStateInterface $form_state
    *   The current state of the form for the form this element belongs to.
    *
    * @see \Drupal\Core\Render\Element\FormElement::processPattern()
    */
-  public static function validateValues($element, FormStateInterface $form_state) {
+  public static function validateValues(array $element, FormStateInterface $form_state) {
     $values = static::extractPipedValues($element['#value']);
 
     if (!is_array($values)) {
@@ -203,17 +214,8 @@ class TypedNote extends FieldItemBase {
     }
     else {
       // We may want to validate key values in the future...
-      // foreach ($values as $key => $value) {
-      //   if ($error = static::validateAllowedValue($key)) {
-      //     $form_state->setError($element, $error);
-      //     break;
-      //   }
-      // }
-
       $form_state->setValueForElement($element, $values);
     }
   }
 
 }
-
-?>

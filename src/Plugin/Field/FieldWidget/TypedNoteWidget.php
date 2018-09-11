@@ -17,21 +17,20 @@ use Drupal\Core\Form\FormStateInterface;
  *   }
  * )
  */
-
 class TypedNoteWidget extends WidgetBase {
 
   /**
    * {@inheritdoc}
    */
   public function formElement(FieldItemListInterface $items, $delta, array $element, array &$form, FormStateInterface $form_state) {
-    // Item of interest
+    // Item of interest.
     $item =& $items[$delta];
     $settings = $item->getFieldDefinition()->getSettings();
 
-    //Load up the form fields
-    $element += array(
+    // Load up the form fields.
+    $element += [
       '#type' => 'fieldset',
-    );
+    ];
     $element['note_type'] = [
       '#title' => t('Note Type'),
       '#type' => 'select',
@@ -52,7 +51,6 @@ class TypedNoteWidget extends WidgetBase {
     return $element;
   }
 
-
   /**
    * {@inheritdoc}
    *
@@ -61,11 +59,10 @@ class TypedNoteWidget extends WidgetBase {
    * value we want from the array and discards the rest.
    */
   public function massageFormValues(array $values, array $form, FormStateInterface $form_state) {
-    foreach($values as $key => $value) {
+    foreach ($values as $key => $value) {
       $values[$key]['note'] = $value['note']['value'];
     }
     return $values;
   }
 
 }
- ?>

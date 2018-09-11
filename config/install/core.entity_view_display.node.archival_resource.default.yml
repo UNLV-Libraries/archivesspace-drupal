@@ -38,7 +38,11 @@ content:
     region: content
   field_as_resource_notes:
     weight: 4
-    label: hidden
+    label: visually_hidden
+    region: content
+    type: typed_note_default
+    settings: {  }
+    third_party_settings: {  }
   field_archival_record_level:
     type: list_default
     weight: 4

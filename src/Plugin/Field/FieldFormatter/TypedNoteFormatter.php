@@ -22,7 +22,7 @@ class TypedNoteFormatter extends FormatterBase {
    * {@inheritdoc}
    */
   public function viewElements(FieldItemListInterface $items, $langcode) {
-    $output = array();
+    $output = [];
     foreach ($items as $delta => $item) {
       $note_types = $item->getNoteTypes();
       $note_type = isset($note_types[$item->note_type]) ? $note_types[$item->note_type] : $item->note_type;
@@ -55,6 +55,5 @@ class TypedNoteFormatter extends FormatterBase {
 
     return $output;
   }
-}
 
- ?>
+}
