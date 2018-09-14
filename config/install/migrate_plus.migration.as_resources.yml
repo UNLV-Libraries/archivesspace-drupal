@@ -9,10 +9,10 @@ migration_dependencies:
 source:
   plugin: archivesspace
   object_type: resource
-  base_uri: http://localhost:8089/repositories
-  repository: /repositories/2
-  username: drupal
-  password: drupal
+  base_uri: http://localhost:8089
+  # repository: /repositories/2
+  username: admin
+  password: admin
   keys:
     - uri
 
@@ -81,7 +81,7 @@ process:
     -
       plugin: str_replace
       regex: true
-      search: '/--+/' # Remove any double-dashes from missing id positions
+      search: '/-+$/' # Remove any trailing dashes from missing id positions
       replace: ''
   field_resource_resource_type: level
   field_restrictions_bool: restrictions

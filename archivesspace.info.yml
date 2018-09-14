@@ -10,3 +10,4 @@ dependencies:
   - language
   - migrate_plus
   - migrate_run
+  - title_length

@@ -70,6 +70,29 @@ class ArchivesSpaceSource extends SourcePluginBase {
         ];
         break;
 
+      case 'archival_object':
+        $this->fields = [
+          'ancestors' => $this->t('Ancestors'),
+          'component_id' => $this->t('Component Unique Identifier'),
+          'dates' => $this->t('Dates'),
+          'display_string' => $this->t('Display String'),
+          'extents' => $this->t('Extents'),
+          'instances' => $this->t('Instances'),
+          'level' => $this->t('Level'),
+          'linked_agents' => $this->t('Linked Agents'),
+          'parent' => $this->t('Parent Object'),
+          'position' => $this->t('Position (weight)'),
+          'publish' => $this->t('Publish'),
+          'ref_id' => $this->t('Reference Identifier'),
+          'repository' => $this->t('Repository URI'),
+          'resource' => $this->t('Resource URI'),
+          'restrictions_apply' => $this->t('Restrictions Apply'),
+          'rights_statements' => $this->t('Rights Statements'),
+          'subjects' => $this->t('Subjects'),
+          'suppressed' => $this->t('Suppressed'),
+          'title' => $this->t('Title'),
+          'uri' => $this->t('URI'),
+        ];
       default:
         break;
     }

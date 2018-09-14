@@ -1,0 +1,106 @@
+uuid: 5e14a74c-580b-404c-9b58-77cea2af4369
+id: as_archival_objects
+label: ArchivesSpace Archival Objects
+migration_group: archivesspace
+migration_dependencies:
+  required:
+    - as_repositories
+    - as_resources
+
+source:
+  plugin: archivesspace
+  object_type: archival_object
+  base_uri: http://localhost:8089
+  # repository: /repositories/2
+  username: admin
+  password: admin
+  keys:
+    - uri
+
+destination:
+  plugin: entity:node
+  bundle: archival_object
+
+process:
+  published:
+    plugin: skip_on_value
+    source: published
+    method: row
+    value: true
+  type:
+    plugin: default_value
+    default_value: archival_object
+  title: display_string
+  uid:
+    plugin: default_value
+    default_value: 1
+  field_archival_record_level: level
+  field_as_date:
+    plugin: sub_process
+    source: dates
+    process:
+      label: label
+      begin: begin
+      end: end
+      date_type: date_type
+      certainty: certainty
+      expression: expression
+      calendar: calendar
+  # Extents is pulling in some from higher levels. Needs debugging.
+  field_as_extent:
+    -
+      plugin: skip_on_empty
+      source: extents
+      method: process
+    -
+      plugin: sub_process
+      process:
+        portion: portion
+        number: number
+        extent_type: extent_type
+        container_summary: container_summary
+        physical_details: physical_details
+        dimensions: dimensions
+  # Parent is a bit more complex.
+  # We need to use parent if it exists, but if not, use resource.
+  field_as_parent:
+    -
+      plugin: get
+      source:
+        - parent # The URI we want to use.
+        - resource # The backup URI.
+    -
+      # Toss out empty items.
+      plugin: callback
+      callable: array_filter
+    -
+      # Return first available
+      plugin: callback
+      callable: 'current'
+    -
+      plugin: skip_on_empty
+      method: process
+    -
+      # The URI is embedded in an array, pull it out.
+      plugin: extract
+      index:
+        - ref
+    -
+      plugin: migration_lookup
+      migration:
+        - as_archival_objects
+        - as_resources
+  field_as_ref_id: ref_id
+  field_as_resource_notes:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: notes
+      message: 'Notes field is empty'
+    -
+      plugin: archivesspace_notes # Custom process to handle single and multi-part notes
+  field_as_title: title
+  field_as_weight: position
+  field_resource_identifier: component_id
+  field_resource_resource_type: level
+  field_restrictions_bool: restrictions
