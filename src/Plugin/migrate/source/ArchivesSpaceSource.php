@@ -25,7 +25,7 @@ class ArchivesSpaceSource extends SourcePluginBase {
     'resource',
     'archival_object',
     'digital_object',
-    'agent',
+    'agent_person',
   ];
   protected $fields = [];
   protected $repository = '';
@@ -93,6 +93,24 @@ class ArchivesSpaceSource extends SourcePluginBase {
           'title' => $this->t('Title'),
           'uri' => $this->t('URI'),
         ];
+        break;
+
+      case 'agent_person':
+        $this->fields = [
+          'dates_of_existence' => $this->t('Dates of Existence'),
+          'display_name' => $this-t('Display Name'),
+          'is_linked_to_published_record' => $this->t('Is Linked to a Published Record'),
+          'linked_agent_roles' => $this->t('Linked Agent Roles'),
+          'names' => $this->t('Names'),
+          'notes' => $this->t('Notes'),
+          'publish' => $this->t('Publish'),
+          'related_agents' => $this->t('Related Agents'),
+          'title' => $this->t('Title'),
+          'agent_type' => $this->t('Agent Type'),
+          'uri' => $this->t('URI'),
+        ];
+        break;
+
       default:
         break;
     }
