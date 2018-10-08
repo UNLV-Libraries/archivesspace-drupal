@@ -19,7 +19,8 @@ class ArchivesSpaceIterator implements \Iterator {
     'digital_object',
     'agent_person',
     'agent_corporate_entity',
-    'agent_family'
+    'agent_family',
+    'subject'
   ];
   protected $datetime;
   protected $repository;
