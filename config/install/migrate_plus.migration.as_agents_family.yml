@@ -1,0 +1,51 @@
+id: as_agents_family
+label: ArchivesSpace Agents Families
+migration_group: archivesspace
+
+source:
+  plugin: archivesspace
+  object_type: agent_family
+  base_uri: http://localhost:8089
+  # repository: /repositories/2
+  username: admin
+  password: admin
+  keys:
+    - uri
+
+destination:
+  plugin: entity:taxonomy_term
+  default_bundle: family
+
+process:
+  is_used: # Remove if you want to keep agents that are also users
+    plugin: skip_on_value
+    source: is_linked_to_published_record
+    method: row
+    value: false
+  name: title
+  uid:
+    plugin: default_value
+    default_value: 1
+  description: notes
+  field_cat_date_begin:
+    -
+      plugin: extract
+      source: dates_of_existence
+      default: ''
+      index:
+        - 0
+        - begin
+    -
+      plugin: skip_on_empty
+      method: process
+  field_cat_date_end:
+    -
+      plugin: extract
+      source: dates_of_existence
+      default: ''
+      index:
+        - 0
+        - end
+    -
+      plugin: skip_on_empty
+      method: process

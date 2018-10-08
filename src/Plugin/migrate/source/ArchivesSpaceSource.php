@@ -96,6 +96,10 @@ class ArchivesSpaceSource extends SourcePluginBase {
         break;
 
       case 'agent_person':
+      case 'agent_family':
+       // The only field person and family has that corp doesn't is publish,
+       // but we don't use it anyway, so all agent cases use the same field set.
+      case 'agent_corporate_entity':
         $this->fields = [
           'dates_of_existence' => $this->t('Dates of Existence'),
           'display_name' => $this-t('Display Name'),
@@ -103,7 +107,6 @@ class ArchivesSpaceSource extends SourcePluginBase {
           'linked_agent_roles' => $this->t('Linked Agent Roles'),
           'names' => $this->t('Names'),
           'notes' => $this->t('Notes'),
-          'publish' => $this->t('Publish'),
           'related_agents' => $this->t('Related Agents'),
           'title' => $this->t('Title'),
           'agent_type' => $this->t('Agent Type'),
