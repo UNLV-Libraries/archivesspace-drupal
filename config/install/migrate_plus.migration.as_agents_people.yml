@@ -17,28 +17,21 @@ destination:
   default_bundle: person
 
 process:
-  published:
-    plugin: skip_on_value
-    source: published
-    method: row
-    value: false
   is_used: # Remove if you want to keep agents that are also users
     plugin: skip_on_value
     source: is_linked_to_published_record
     method: row
     value: false
-  title: title
+  name: title
   uid:
     plugin: default_value
     default_value: 1
   description: notes
   field_cat_date_begin:
     -
-      plugin: skip_on_empty
-      source: extents
-      method: process
-    -
       plugin: extract
+      source: dates_of_existence
+      default: ''
       index:
         - 0
         - begin
@@ -47,31 +40,43 @@ process:
       method: process
   field_cat_date_end:
     -
-      plugin: skip_on_empty
-      source: extents
-      method: process
-    -
       plugin: extract
+      source: dates_of_existence
+      default: ''
       index:
         - 0
-        - begin
+        - end
     -
       plugin: skip_on_empty
       method: process
-  field_person_alternate_names:
-    plugin: sub_process
-    source: names
-    process:
-      is_display_name:
-        plugin: skip_on_value
-        source: is_display_name
-        method: row
-        value: true
-      given: rest_of_name
-      family: primary_name
-  field_person_preferred_name:
-    plugin: sub_process
-    source: display_name
-    process:
-      given: rest_of_name
-      family: primary_name
+  field_person_preferred_name/given:
+    plugin: skip_on_empty
+    method: process
+    source: display_name/rest_of_name
+  field_person_preferred_name/family:
+    plugin: skip_on_empty
+    method: process
+    source: display_name/primary_name
+
+  # field_person_preferred_name/middle not supported by ArchivesSpace
+
+  # Needs Testing
+  # field_person_preferred_name/title:
+  # field_person_preferred_name/generational:
+  # field_person_preferred_name/credentials:
+
+
+  # Doesn't currently work because of how SubProcess works.
+  # skip_on_value with row will halt the whole agent, not just the display name.
+
+  # field_person_alternate_names:
+  #   plugin: sub_process
+  #   source: names
+  #   process:
+  #     is_display_name:
+  #       plugin: skip_on_value
+  #       source: is_display_name
+  #       method: row
+  #       value: true
+  #     given: rest_of_name
+  #     family: primary_name
