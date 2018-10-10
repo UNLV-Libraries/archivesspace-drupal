@@ -1,10 +1,10 @@
-uuid: 834eaf57-8faa-4bcf-9dc0-1c194bbdd5f6
 langcode: en
 status: true
 dependencies:
   config:
     - core.entity_view_mode.node.teaser
     - field.field.node.archival_object.field_archival_record_level
+    - field.field.node.archival_object.field_as_agent_links
     - field.field.node.archival_object.field_as_date
     - field.field.node.archival_object.field_as_extent
     - field.field.node.archival_object.field_as_parent
@@ -27,6 +27,7 @@ content:
     region: content
 hidden:
   field_archival_record_level: true
+  field_as_agent_links: true
   field_as_date: true
   field_as_extent: true
   field_as_parent: true

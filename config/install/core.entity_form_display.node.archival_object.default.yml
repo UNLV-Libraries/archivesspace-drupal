@@ -9,6 +9,7 @@ dependencies:
     - field.field.node.archival_object.field_as_parent
     - field.field.node.archival_object.field_as_ref_id
     - field.field.node.archival_object.field_as_resource_notes
+    - field.field.node.archival_object.field_as_subject
     - field.field.node.archival_object.field_as_title
     - field.field.node.archival_object.field_as_weight
     - field.field.node.archival_object.field_resource_identifier
@@ -30,7 +31,7 @@ content:
     settings: {  }
     third_party_settings: {  }
   field_archival_record_level:
-    weight: 14
+    weight: 15
     settings: {  }
     third_party_settings: {  }
     type: options_select
@@ -57,7 +58,7 @@ content:
     type: as_extent_default
     region: content
   field_as_parent:
-    weight: 12
+    weight: 13
     settings:
       match_operator: CONTAINS
       size: 60
@@ -66,10 +67,19 @@ content:
     type: entity_reference_autocomplete
     region: content
   field_as_resource_notes:
-    weight: 17
+    weight: 18
     settings: {  }
     third_party_settings: {  }
     type: typed_note_default
+    region: content
+  field_as_subject:
+    weight: 12
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
     region: content
   field_as_title:
     weight: 8
@@ -80,14 +90,14 @@ content:
     type: string_textarea
     region: content
   field_as_weight:
-    weight: 15
+    weight: 16
     settings:
       placeholder: ''
     third_party_settings: {  }
     type: number
     region: content
   field_resource_identifier:
-    weight: 16
+    weight: 17
     settings:
       size: 60
       placeholder: ''
@@ -95,7 +105,7 @@ content:
     type: string_textfield
     region: content
   field_restrictions_bool:
-    weight: 13
+    weight: 14
     settings:
       display_label: true
     third_party_settings: {  }
