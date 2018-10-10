@@ -2,6 +2,7 @@
 
 namespace Drupal\archivesspace\Plugin\migrate\process;
 
+use Drupal\migrate\MigrateSkipProcessException;
 use Drupal\migrate\ProcessPluginBase;
 use Drupal\migrate\MigrateException;
 use Drupal\migrate\MigrateExecutableInterface;
@@ -21,7 +22,7 @@ class ArchivesSpaceNotes extends ProcessPluginBase {
    */
   public function transform($value, MigrateExecutableInterface $migrate_executable, Row $row, $destination_property) {
     if (empty($value)) {
-      throw new \Drupal\migrate\MigrateSkipProcessException();
+      throw new MigrateSkipProcessException();
     }
     if (!is_array($value)) {
       throw new MigrateException(sprintf('ArchivesSpace Notes process failed for destination property (%s): input is not an array.', $destination_property));
@@ -55,7 +56,7 @@ class ArchivesSpaceNotes extends ProcessPluginBase {
       ];
     }
     else {
-      throw new \Drupal\migrate\MigrateSkipProcessException();
+      throw new MigrateSkipProcessException();
     }
 
   }

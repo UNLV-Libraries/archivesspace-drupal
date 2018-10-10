@@ -20,7 +20,7 @@ class ArchivesSpaceIterator implements \Iterator {
     'agent_person',
     'agent_corporate_entity',
     'agent_family',
-    'subject'
+    'subject',
   ];
   protected $datetime;
   protected $repository;
@@ -33,7 +33,12 @@ class ArchivesSpaceIterator implements \Iterator {
   protected $lastPage;
   protected $offsetFirst = 0;
   protected $offsetLast = 0;
-  protected $pageSize = 500; // Default max is 250
+  /**
+   * Default max set by ArchivesSpace is 250.
+   *
+   * @var int
+   */
+  protected $pageSize = 500;
 
   /**
    * {@inheritdoc}
