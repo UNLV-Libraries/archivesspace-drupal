@@ -57,7 +57,7 @@ process:
       dimensions: dimensions
   field_as_finding_aid_desc_rules: finding_aid_description_rules
   field_as_resource_notes:
-    plugin: archivesspace_notes # Custom process to handle single and multi-part notes
+    plugin: archivesspace_notes  # Custom process to handle single and multi-part notes
     source: notes
   field_repository:
     -
@@ -81,7 +81,7 @@ process:
     -
       plugin: str_replace
       regex: true
-      search: '/-+$/' # Remove any trailing dashes from missing id positions
+      search: /-+$/ # Remove any trailing dashes from missing id positions
       replace: ''
   field_resource_resource_type: level
   field_restrictions_bool: restrictions
@@ -99,11 +99,11 @@ process:
           plugin: concat
           delimiter: ':'
           source:
-            - 'relators'
+            - relators
             - relator
         -
           plugin: static_map
-          bypass: TRUE
+          bypass: true
           map:
             ':': 'relators:cre'
       target_id:
@@ -113,3 +113,42 @@ process:
           - as_agents_family
           - as_agents_people
         source: ref
+  temp_subjects_agents:
+    -
+      plugin: sub_process_ext
+      source: linked_agents
+      process:
+        role:
+          plugin: skip_on_value
+          not_equals: true
+          method: row
+          source: role
+          value: subject
+        ref: ref
+    -
+      plugin: flatten_to_keys
+      key: ref
+    -
+      plugin: migration_lookup
+      migration:
+        - as_agents_corp
+        - as_agents_family
+        - as_agents_people
+  temp_subjects:
+    -
+      plugin: flatten_to_keys
+      source: subjects
+      key: ref
+    -
+      plugin: migration_lookup
+      migration:
+        - as_subjects_all
+        - as_subjects_geo
+  field_as_subject:
+    -
+      plugin: get
+      source:
+        - '@temp_subjects_agents'
+        - '@temp_subjects'
+    -
+      plugin: flatten
