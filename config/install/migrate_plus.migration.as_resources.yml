@@ -85,3 +85,31 @@ process:
       replace: ''
   field_resource_resource_type: level
   field_restrictions_bool: restrictions
+  field_as_agent_links:
+    plugin: sub_process_ext
+    source: linked_agents
+    process:
+      role: # Deal with subjects separately
+        plugin: skip_on_value
+        method: row
+        source: role
+        value: subject
+      rel_type:
+        -
+          plugin: concat
+          delimiter: ':'
+          source:
+            - 'relators'
+            - relator
+        -
+          plugin: static_map
+          bypass: TRUE
+          map:
+            ':': 'relators:cre'
+      target_id:
+        plugin: migration_lookup
+        migration:
+          - as_agents_corp
+          - as_agents_family
+          - as_agents_people
+        source: ref

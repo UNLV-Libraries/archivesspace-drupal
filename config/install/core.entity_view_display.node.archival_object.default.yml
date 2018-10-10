@@ -1,9 +1,9 @@
-uuid: a71a3b92-6542-40b8-9a81-16a2c01f5f98
 langcode: en
 status: true
 dependencies:
   config:
     - field.field.node.archival_object.field_archival_record_level
+    - field.field.node.archival_object.field_as_agent_links
     - field.field.node.archival_object.field_as_date
     - field.field.node.archival_object.field_as_extent
     - field.field.node.archival_object.field_as_parent
@@ -16,6 +16,7 @@ dependencies:
     - node.type.archival_object
   module:
     - archivesspace
+    - controlled_access_terms
     - options
     - user
 id: node.archival_object.default
@@ -24,28 +25,36 @@ bundle: archival_object
 mode: default
 content:
   field_archival_record_level:
-    weight: 107
+    weight: 7
     label: inline
     settings: {  }
     third_party_settings: {  }
     type: list_default
     region: content
+  field_as_agent_links:
+    weight: 4
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: typed_relation_default
+    region: content
   field_as_date:
-    weight: 103
+    weight: 2
     label: above
     settings: {  }
     third_party_settings: {  }
     type: as_date_default
     region: content
   field_as_extent:
-    weight: 104
+    weight: 3
     label: above
     settings: {  }
     third_party_settings: {  }
     type: as_extent_default
     region: content
   field_as_parent:
-    weight: 105
+    weight: 5
     label: visually_hidden
     settings:
       link: true
@@ -53,7 +62,7 @@ content:
     type: entity_reference_label
     region: content
   field_as_ref_id:
-    weight: 111
+    weight: 10
     label: above
     settings:
       link_to_entity: false
@@ -61,21 +70,21 @@ content:
     type: string
     region: content
   field_as_resource_notes:
-    weight: 110
+    weight: 9
     label: above
     settings: {  }
     third_party_settings: {  }
     type: typed_note_default
     region: content
   field_as_title:
-    weight: 102
+    weight: 1
     label: above
     settings: {  }
     third_party_settings: {  }
     type: basic_string
     region: content
   field_resource_identifier:
-    weight: 109
+    weight: 8
     label: above
     settings:
       link_to_entity: false
@@ -83,7 +92,7 @@ content:
     type: string
     region: content
   field_restrictions_bool:
-    weight: 106
+    weight: 6
     label: inline
     settings:
       format: yes-no
@@ -93,7 +102,7 @@ content:
     type: boolean
     region: content
   links:
-    weight: 100
+    weight: 0
     region: content
     settings: {  }
     third_party_settings: {  }
