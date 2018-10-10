@@ -33,7 +33,7 @@ class ArchivesSpaceIterator implements \Iterator {
   protected $lastPage;
   protected $offsetFirst = 0;
   protected $offsetLast = 0;
-  protected $pageSize = 100;
+  protected $pageSize = 500; // Default max is 250
 
   /**
    * {@inheritdoc}
