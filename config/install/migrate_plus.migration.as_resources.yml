@@ -5,6 +5,11 @@ migration_group: archivesspace
 migration_dependencies:
   required:
     - as_repositories
+    - as_agents_corp
+    - as_agents_family
+    - as_agents_people
+    - as_subjects_all
+    - as_subjects_geo
 
 source:
   plugin: archivesspace

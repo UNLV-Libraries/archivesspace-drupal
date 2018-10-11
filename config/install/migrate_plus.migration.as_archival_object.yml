@@ -6,6 +6,11 @@ migration_dependencies:
   required:
     - as_repositories
     - as_resources
+    - as_agents_corp
+    - as_agents_family
+    - as_agents_people
+    - as_subjects_all
+    - as_subjects_geo
 
 source:
   plugin: archivesspace
@@ -132,3 +137,49 @@ process:
           - as_agents_family
           - as_agents_people
         source: ref
+
+  temp_subjects_agents:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: linked_agents
+    -
+      plugin: sub_process_ext
+      process:
+        role:
+          plugin: skip_on_value
+          not_equals: true
+          method: row
+          source: role
+          value: subject
+        ref: ref
+    -
+      plugin: flatten_to_keys
+      key: ref
+    -
+      plugin: migration_lookup
+      migration:
+        - as_agents_corp
+        - as_agents_family
+        - as_agents_people
+  temp_subjects:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: subjects
+    -
+      plugin: flatten_to_keys
+      key: ref
+    -
+      plugin: migration_lookup
+      migration:
+        - as_subjects_all
+        - as_subjects_geo
+  field_as_subject:
+    -
+      plugin: get
+      source:
+        - '@temp_subjects_agents'
+        - '@temp_subjects'
+    -
+      plugin: flatten
