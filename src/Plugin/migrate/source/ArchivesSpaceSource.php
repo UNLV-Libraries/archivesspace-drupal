@@ -120,6 +120,8 @@ class ArchivesSpaceSource extends SourcePluginBase {
       case 'subject':
         $this->fields = [
           'uri' => $this->t('URI'),
+          'authority_id' => $this->t('Authority ID'),
+          'source' => $this->t('Authority Source'),
           'title' => $this->t('Title'),
           'external_ids' => $this->t('External IDs'),
           'terms' => $this->t('Terms'),
