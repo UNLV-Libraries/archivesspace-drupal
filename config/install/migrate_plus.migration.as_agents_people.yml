@@ -58,6 +58,18 @@ process:
     method: process
     source: display_name/primary_name
 
+  field_person_name_authorities/uri:
+    plugin: skip_on_regex
+    not_equals: true
+    value: '|^https?://|'
+    method: process
+    source: display_name/authority_id
+
+  field_person_name_authorities/source:
+    plugin: skip_on_empty
+    method: process
+    source: display_name/source
+
   # field_person_preferred_name/middle not supported by ArchivesSpace
 
   # Needs Testing
