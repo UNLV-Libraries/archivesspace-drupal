@@ -39,3 +39,17 @@ process:
   uid:
     plugin: default_value
     default_value: 1
+  field_geo_authority_link/uri:
+    -
+      plugin: callback
+      callable: trim
+      source: authority_id
+    -
+      plugin: skip_on_regex
+      not_equals: true
+      value: '|^https?://|'
+      method: process
+  field_geo_authority_link/source:
+    plugin: skip_on_empty
+    method: process
+    source: source
