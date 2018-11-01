@@ -8,7 +8,7 @@ use InvalidArgumentException;
 /**
  * Manages iteration of ArchivesSpace API search result sets.
  */
-class ArchivesSpaceIterator implements \Iterator {
+class ArchivesSpaceIterator implements \Countable, \Iterator {
 
 
   protected $session;
@@ -26,7 +26,7 @@ class ArchivesSpaceIterator implements \Iterator {
   protected $repository;
 
 
-  protected $count = 0;
+  protected $count = -1;
   protected $loaded = [];
   protected $position = 0;
   protected $currentPage = 0;
@@ -60,6 +60,14 @@ class ArchivesSpaceIterator implements \Iterator {
   public function rewind() {
     $this->position = 0;
     $this->loadPage(1);
+  }
+
+  /**
+  * {@inheritdoc}
+  */
+  public function count() {
+    $this->rewind();
+    return $this->count;
   }
 
   /**
