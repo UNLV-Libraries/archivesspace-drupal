@@ -104,7 +104,9 @@ class ArchivesSpaceSession {
     ]
                                           ) as $key => $value) {
       $new_key = substr($key, 14);
-      $state_config[$new_key] = $value;
+      if(!empty($value)){
+        $state_config[$new_key] = $value;
+      }
     }
     $this->connectionInfo = array_replace($this->connectionInfo, $state_config);
 
