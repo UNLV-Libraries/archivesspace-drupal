@@ -104,7 +104,7 @@ process:
           plugin: concat
           delimiter: ':'
           source:
-            - relators
+            - 'relators'
             - relator
         -
           plugin: static_map
