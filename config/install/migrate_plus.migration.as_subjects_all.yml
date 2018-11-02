@@ -1,6 +1,6 @@
 id: as_subjects_all
 label: ArchivesSpace Subjects
-migration_group: archivesspace
+migration_group: archivesspace_subjects
 
 source:
   plugin: archivesspace

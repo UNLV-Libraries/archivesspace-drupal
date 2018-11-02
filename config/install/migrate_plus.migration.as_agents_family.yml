@@ -1,6 +1,6 @@
 id: as_agents_family
 label: ArchivesSpace Agents Families
-migration_group: archivesspace
+migration_group: archivesspace_agents
 
 source:
   plugin: archivesspace

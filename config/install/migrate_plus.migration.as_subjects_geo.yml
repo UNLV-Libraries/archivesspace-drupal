@@ -1,6 +1,6 @@
 id: as_subjects_geo
 label: ArchivesSpace Geographic Subjects
-migration_group: archivesspace
+migration_group: archivesspace_subjects
 
 source:
   plugin: archivesspace

@@ -1,6 +1,6 @@
 id: as_agents_people
 label: ArchivesSpace Agents People
-migration_group: archivesspace
+migration_group: archivesspace_agents
 
 source:
   plugin: archivesspace

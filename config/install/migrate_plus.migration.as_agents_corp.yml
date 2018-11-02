@@ -1,6 +1,6 @@
 id: as_agents_corp
 label: ArchivesSpace Agents Corporate Bodies
-migration_group: archivesspace
+migration_group: archivesspace_agents
 
 source:
   plugin: archivesspace
