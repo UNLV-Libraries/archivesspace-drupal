@@ -59,11 +59,15 @@ process:
     source: display_name/primary_name
 
   field_person_name_authorities/uri:
-    plugin: skip_on_regex
-    not_equals: true
-    value: '|^https?://|'
-    method: process
-    source: display_name/authority_id
+    -
+      plugin: callback
+      callable: trim
+      source: display_name/authority_id
+    -
+      plugin: skip_on_regex
+      not_equals: true
+      value: '|^https?://|'
+      method: process
 
   field_person_name_authorities/source:
     plugin: skip_on_empty
