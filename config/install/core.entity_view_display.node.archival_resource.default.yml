@@ -10,6 +10,7 @@ dependencies:
     - field.field.node.archival_resource.field_as_finding_aid_desc_rules
     - field.field.node.archival_resource.field_as_resource_notes
     - field.field.node.archival_resource.field_as_subject
+    - field.field.node.archival_resource.field_finding_aid_link
     - field.field.node.archival_resource.field_repository
     - field.field.node.archival_resource.field_resource_identifier
     - field.field.node.archival_resource.field_resource_resource_type
@@ -18,6 +19,7 @@ dependencies:
   module:
     - archivesspace
     - controlled_access_terms
+    - link
     - options
     - user
 id: node.archival_resource.default
@@ -25,6 +27,21 @@ targetEntityType: node
 bundle: archival_resource
 mode: default
 content:
+  display_media_entity_view_1:
+    weight: 10
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  display_media_service_file:
+    weight: 10
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  display_media_thumbnail:
+    weight: 10
+    settings: {  }
+    third_party_settings: {  }
+    region: content
   field_archival_record_level:
     type: list_default
     weight: 4
@@ -68,6 +85,18 @@ content:
       link: true
     third_party_settings: {  }
     type: entity_reference_label
+    region: content
+  field_finding_aid_link:
+    weight: 11
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    type: link
     region: content
   field_resource_identifier:
     weight: 2

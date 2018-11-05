@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_finding_aid_link
+    - node.type.archival_resource
+  module:
+    - link
+id: node.archival_resource.field_finding_aid_link
+field_name: field_finding_aid_link
+entity_type: node
+bundle: archival_resource
+label: 'Finding Aid Link'
+description: 'Can either be used for the EAD Location or an HTTP-dereferencable persistent URI. Use the "link text" to describe which kind of link it is (for example, "EAD", "PDF", "ARK", or "DOI"). Leave the "link text" blank to display the URL itself.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  link_type: 17
+  title: 1
+field_type: link

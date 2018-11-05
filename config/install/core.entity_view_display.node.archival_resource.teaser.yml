@@ -10,6 +10,7 @@ dependencies:
     - field.field.node.archival_resource.field_as_extent
     - field.field.node.archival_resource.field_as_finding_aid_desc_rules
     - field.field.node.archival_resource.field_as_resource_notes
+    - field.field.node.archival_resource.field_as_subject
     - field.field.node.archival_resource.field_repository
     - field.field.node.archival_resource.field_resource_identifier
     - field.field.node.archival_resource.field_resource_resource_type
@@ -22,6 +23,21 @@ targetEntityType: node
 bundle: archival_resource
 mode: teaser
 content:
+  display_media_entity_view_1:
+    weight: 10
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  display_media_service_file:
+    weight: 10
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  display_media_thumbnail:
+    weight: 10
+    settings: {  }
+    third_party_settings: {  }
+    region: content
   links:
     weight: 100
     region: content
@@ -33,6 +49,7 @@ hidden:
   field_as_extent: true
   field_as_finding_aid_desc_rules: true
   field_as_resource_notes: true
+  field_as_subject: true
   field_repository: true
   field_resource_identifier: true
   field_resource_resource_type: true
