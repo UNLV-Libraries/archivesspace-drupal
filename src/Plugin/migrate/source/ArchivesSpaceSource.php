@@ -25,7 +25,10 @@ class ArchivesSpaceSource extends SourcePluginBase {
     'resource',
     'archival_object',
     'digital_object',
-    'agent',
+    'agent_person',
+    'agent_corporate_entity',
+    'agent_family',
+    'subject',
   ];
   protected $fields = [];
   protected $repository = '';
@@ -67,6 +70,62 @@ class ArchivesSpaceSource extends SourcePluginBase {
           'restrictions' => $this->t('Restrictions'),
           'subjects' => $this->t('Subjects'),
           'suppressed' => $this->t('Suppressed'),
+        ];
+        break;
+
+      case 'archival_object':
+        $this->fields = [
+          'ancestors' => $this->t('Ancestors'),
+          'component_id' => $this->t('Component Unique Identifier'),
+          'dates' => $this->t('Dates'),
+          'display_string' => $this->t('Display String'),
+          'extents' => $this->t('Extents'),
+          'instances' => $this->t('Instances'),
+          'level' => $this->t('Level'),
+          'linked_agents' => $this->t('Linked Agents'),
+          'parent' => $this->t('Parent Object'),
+          'position' => $this->t('Position (weight)'),
+          'publish' => $this->t('Publish'),
+          'ref_id' => $this->t('Reference Identifier'),
+          'repository' => $this->t('Repository URI'),
+          'resource' => $this->t('Resource URI'),
+          'restrictions_apply' => $this->t('Restrictions Apply'),
+          'rights_statements' => $this->t('Rights Statements'),
+          'subjects' => $this->t('Subjects'),
+          'suppressed' => $this->t('Suppressed'),
+          'title' => $this->t('Title'),
+          'uri' => $this->t('URI'),
+        ];
+        break;
+
+      case 'agent_person':
+      case 'agent_family':
+        // The only field person and family has that corp doesn't is publish,
+        // but we don't use it anyway, so all agent cases use the same fieldset.
+      case 'agent_corporate_entity':
+        $this->fields = [
+          'dates_of_existence' => $this->t('Dates of Existence'),
+          'display_name' => $this->t('Display Name'),
+          'is_linked_to_published_record' => $this->t('Is Linked to a Published Record'),
+          'linked_agent_roles' => $this->t('Linked Agent Roles'),
+          'names' => $this->t('Names'),
+          'notes' => $this->t('Notes'),
+          'related_agents' => $this->t('Related Agents'),
+          'title' => $this->t('Title'),
+          'agent_type' => $this->t('Agent Type'),
+          'uri' => $this->t('URI'),
+        ];
+        break;
+
+      case 'subject':
+        $this->fields = [
+          'uri' => $this->t('URI'),
+          'authority_id' => $this->t('Authority ID'),
+          'source' => $this->t('Authority Source'),
+          'title' => $this->t('Title'),
+          'external_ids' => $this->t('External IDs'),
+          'terms' => $this->t('Terms'),
+          'is_linked_to_published_record' => $this->t('Is Linked to a Published Record'),
         ];
         break;
 

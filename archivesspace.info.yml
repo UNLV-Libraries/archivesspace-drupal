@@ -7,6 +7,9 @@ package: 'ArchivesSpace'
 dependencies:
   - address
   - auto_entitylabel
+  - controlled_access_terms
+  - controlled_access_terms_default_configuration
   - language
   - migrate_plus
   - migrate_run
+  - title_length

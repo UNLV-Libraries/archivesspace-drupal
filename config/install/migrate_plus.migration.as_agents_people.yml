@@ -1,0 +1,98 @@
+id: as_agents_people
+label: ArchivesSpace Agents People
+migration_group: archivesspace_agents
+
+source:
+  plugin: archivesspace
+  object_type: agent_person
+  base_uri: http://localhost:8089
+  # repository: /repositories/2
+  username: admin
+  password: admin
+  keys:
+    - uri
+
+destination:
+  plugin: entity:taxonomy_term
+  default_bundle: person
+
+process:
+  is_used: # Remove if you want to keep agents that are also users
+    plugin: skip_on_value
+    source: is_linked_to_published_record
+    method: row
+    value: false
+  name: title
+  uid:
+    plugin: default_value
+    default_value: 1
+  description: notes
+  field_cat_date_begin:
+    -
+      plugin: extract
+      source: dates_of_existence
+      default: ''
+      index:
+        - 0
+        - begin
+    -
+      plugin: skip_on_empty
+      method: process
+  field_cat_date_end:
+    -
+      plugin: extract
+      source: dates_of_existence
+      default: ''
+      index:
+        - 0
+        - end
+    -
+      plugin: skip_on_empty
+      method: process
+  field_person_preferred_name/given:
+    plugin: skip_on_empty
+    method: process
+    source: display_name/rest_of_name
+  field_person_preferred_name/family:
+    plugin: skip_on_empty
+    method: process
+    source: display_name/primary_name
+
+  field_person_name_authorities/uri:
+    -
+      plugin: callback
+      callable: trim
+      source: display_name/authority_id
+    -
+      plugin: skip_on_regex
+      not_equals: true
+      value: '|^https?://|'
+      method: process
+
+  field_person_name_authorities/source:
+    plugin: skip_on_empty
+    method: process
+    source: display_name/source
+
+  # field_person_preferred_name/middle not supported by ArchivesSpace
+
+  # Needs Testing
+  # field_person_preferred_name/title:
+  # field_person_preferred_name/generational:
+  # field_person_preferred_name/credentials:
+
+
+  # Doesn't currently work because of how SubProcess works.
+  # skip_on_value with row will halt the whole agent, not just the display name.
+
+  # field_person_alternate_names:
+  #   plugin: sub_process
+  #   source: names
+  #   process:
+  #     is_display_name:
+  #       plugin: skip_on_value
+  #       source: is_display_name
+  #       method: row
+  #       value: true
+  #     given: rest_of_name
+  #     family: primary_name
