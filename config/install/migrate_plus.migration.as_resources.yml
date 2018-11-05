@@ -157,3 +157,5 @@ process:
         - '@temp_subjects'
     -
       plugin: flatten
+  field_finding_aid_link/uri: ead_location
+  # field_finding_aid_link/title: 'EAD' # ARK, DOI, etc.
