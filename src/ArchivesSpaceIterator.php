@@ -166,7 +166,6 @@ class ArchivesSpaceIterator implements \Countable, \Iterator {
     // ROOT-level search requires a user to have ADMIN!
     // If we want a user with read-only, we have to limit search to
     // a repository where they have read-only permissions set.
-    print("QUERY PARAMS:".print_r($parameters)."\n");
     $results           = $this->session->request('GET', $this->repository . '/search', $parameters);
     $this->count       = $results['total_hits'];
     $this->currentPage = $results['this_page'];
