@@ -129,6 +129,16 @@ class ArchivesSpaceSource extends SourcePluginBase {
         ];
         break;
 
+      case 'repository':
+        $this->fields = [
+          'uri' => $this->t('URI'),
+          'name' => $this->t('Name'),
+          'repo_code' => $this->t('Repository Code'),
+          'publish' => $this->t('Publish?'),
+          'agent_representation' => $this->t('Agent Representation'),
+        ];
+        break;
+
       default:
         break;
     }

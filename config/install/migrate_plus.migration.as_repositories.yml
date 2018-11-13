@@ -3,32 +3,14 @@ label: ArchivesSpace Repositories
 migration_group: archivesspace
 
 source:
-  plugin: url
-  data_fetcher_plugin: http
-  data_parser_plugin: json
-  urls: http://localhost:8089/repositories
-  ids:
-    uri:
-      type: string
-  item_selector: 0
-  fields:
-    -
-      name: uri
-      label: 'URI'
-      selector: uri
-    -
-      name: repo_code
-      label: 'Repository Code'
-      selector: repo_code
-    -
-      name: name
-      label: 'Name'
-      selector: name
-    -
-      name: publish
-      label: 'Publish?'
-      selector: publish
-
+  plugin: archivesspace
+  object_type: repository
+  base_uri: http://localhost:8089
+  # repository: /repositories/2
+  username: admin
+  password: admin
+  keys:
+    - uri
 
 destination:
   plugin: entity:node
