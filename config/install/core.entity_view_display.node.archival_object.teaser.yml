@@ -10,6 +10,7 @@ dependencies:
     - field.field.node.archival_object.field_as_parent
     - field.field.node.archival_object.field_as_ref_id
     - field.field.node.archival_object.field_as_resource_notes
+    - field.field.node.archival_object.field_as_subject
     - field.field.node.archival_object.field_as_title
     - field.field.node.archival_object.field_as_weight
     - field.field.node.archival_object.field_resource_identifier
@@ -33,6 +34,7 @@ hidden:
   field_as_parent: true
   field_as_ref_id: true
   field_as_resource_notes: true
+  field_as_subject: true
   field_as_title: true
   field_as_weight: true
   field_resource_identifier: true

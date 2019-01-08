@@ -23,5 +23,22 @@ default_value:
     physical_details: ''
     dimensions: ''
 default_value_callback: ''
-settings: {  }
+settings:
+  extent_types:
+    linear_feet: 'Linear Feet'
+    cubic_feet: 'Cubic Feet'
+    cassettes: Cassettes
+    files: Files
+    gigabytes: Gigabytes
+    leaves: Leaves
+    megabytes: Megabytes
+    photographic_prints: 'Photographic Prints'
+    photographic_slides: 'Photographic Slides'
+    reels: Reels
+    sheets: Sheets
+    terabytes: Terabytes
+    volumes: Volumes
+  portion_values:
+    whole: Whole
+    part: Part
 field_type: as_extent

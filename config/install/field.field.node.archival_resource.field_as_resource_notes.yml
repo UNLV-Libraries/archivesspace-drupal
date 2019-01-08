@@ -18,9 +18,9 @@ default_value: {  }
 default_value_callback: ''
 settings:
   note_types:
-    abstract: 'Abstract'
+    abstract: Abstract
     accessrestrict: 'Conditions Governing Access'
-    accruals: 'Accruals'
+    accruals: Accruals
     acqinfo: 'Immediate Source of Acquisition'
     altformavail: 'Existence and Location of Copies'
     appraisal: Appraisal
@@ -32,7 +32,7 @@ settings:
     langmaterial: 'Language of Materials'
     legalstatus: 'Legal Status'
     materialspec: 'Materials Specific Details'
-    odd: 'General'
+    odd: General
     originalsloc: 'Existence and Location of Originals'
     otherfindaid: 'Other Finding Aids'
     physdesc: 'Physical Description'

@@ -35,7 +35,7 @@ content:
   field_as_address:
     weight: 125
     settings:
-      default_country: 'US'
+      default_country: US
     third_party_settings: {  }
     type: address_default
     region: content
@@ -63,6 +63,13 @@ content:
     third_party_settings: {  }
     type: string_textfield
     region: content
+  langcode:
+    type: language_select
+    weight: 2
+    region: content
+    settings:
+      include_locked: true
+    third_party_settings: {  }
   path:
     type: path
     weight: 30
