@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_restrictions_bool
+    - node.type.digital_object
+id: node.digital_object.field_restrictions_bool
+field_name: field_restrictions_bool
+entity_type: node
+bundle: digital_object
+label: 'Restrictions?'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

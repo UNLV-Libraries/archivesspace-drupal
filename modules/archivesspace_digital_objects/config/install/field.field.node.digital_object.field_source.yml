@@ -1,0 +1,29 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_source
+    - node.type.archival_object
+    - node.type.archival_resource
+    - node.type.digital_object
+id: node.digital_object.field_source
+field_name: field_source
+entity_type: node
+bundle: digital_object
+label: Source
+description: 'The Archival Resource or Archival Object the digital object was created from.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      archival_object: archival_object
+      archival_resource: archival_resource
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: archival_object
+field_type: entity_reference

@@ -1,0 +1,161 @@
+id: as_digital_objects
+migration_group: archivesspace
+label: 'ArchivesSpace Digital Objects'
+
+source:
+  plugin: archivesspace
+  object_type: digital_object
+  base_uri: 'http://localhost:8089'
+  username: admin
+  password: admin
+  keys:
+    - uri
+
+process:
+  published:
+    plugin: skip_on_value
+    source: published
+    method: row
+    value: true
+  type:
+    plugin: default_value
+    default_value: digital_object
+  title: title
+  uid:
+    plugin: default_value
+    default_value: 1
+  field_as_date:
+    plugin: sub_process
+    source: dates
+    process:
+      label: label
+      begin: begin
+      end: end
+      date_type: date_type
+      certainty: certainty
+      expression: expression
+      calendar: calendar
+  field_as_extent:
+    -
+      plugin: skip_on_empty
+      source: extents
+      method: process
+    -
+      plugin: sub_process
+      process:
+        portion: portion
+        number: number
+        extent_type: extent_type
+        container_summary: container_summary
+        physical_details: physical_details
+        dimensions: dimensions
+  field_source:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: linked_instances
+    -
+      plugin: extract
+      index:
+        - 0
+        - ref
+    -
+      plugin: migration_lookup
+      migration:
+        - as_archival_objects
+        - as_resources
+  field_as_resource_notes:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: notes
+      message: 'Notes field is empty'
+    -
+      plugin: archivesspace_notes
+  field_restrictions_bool: restrictions
+  field_as_agent_links:
+    plugin: sub_process_ext
+    source: linked_agents
+    process:
+      role:
+        plugin: skip_on_value
+        method: row
+        source: role
+        value: subject
+      rel_type:
+        -
+          plugin: concat
+          delimiter: ':'
+          source:
+            - relators
+            - relator
+        -
+          plugin: static_map
+          bypass: true
+          map:
+            ':': 'relators:cre'
+      target_id:
+        plugin: migration_lookup
+        migration:
+          - as_agents_corp
+          - as_agents_family
+          - as_agents_people
+        source: ref
+  temp_subjects_agents:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: linked_agents
+    -
+      plugin: sub_process_ext
+      process:
+        role:
+          plugin: skip_on_value
+          not_equals: true
+          method: row
+          source: role
+          value: subject
+        ref: ref
+    -
+      plugin: flatten_to_keys
+      key: ref
+    -
+      plugin: migration_lookup
+      migration:
+        - as_agents_corp
+        - as_agents_family
+        - as_agents_people
+  temp_subjects:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: subjects
+    -
+      plugin: flatten_to_keys
+      key: ref
+    -
+      plugin: migration_lookup
+      migration:
+        - as_subjects_all
+        - as_subjects_geo
+  field_as_subject:
+    -
+      plugin: get
+      source:
+        - '@temp_subjects_agents'
+        - '@temp_subjects'
+    -
+      plugin: flatten
+destination:
+  plugin: 'entity:node'
+  bundle: digital_object
+migration_dependencies:
+  required:
+    - as_repositories
+    - as_resources
+    - as_archival_objects
+    - as_agents_corp
+    - as_agents_family
+    - as_agents_people
+    - as_subjects_all
+    - as_subjects_geo

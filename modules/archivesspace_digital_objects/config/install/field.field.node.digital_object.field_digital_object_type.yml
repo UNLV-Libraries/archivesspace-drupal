@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_digital_object_type
+    - node.type.digital_object
+  module:
+    - options
+id: node.digital_object.field_digital_object_type
+field_name: field_digital_object_type
+entity_type: node
+bundle: digital_object
+label: Type
+description: 'A generic term indicating the basic content type of the digital object. The default options correspond to the MODS &lt;typeOfResource&gt; element.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

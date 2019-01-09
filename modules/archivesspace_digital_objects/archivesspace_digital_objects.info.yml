@@ -1,0 +1,17 @@
+name: 'ArchivesSpace Digital Objects'
+type: module
+description: 'Adds ArchivesSpace Digital Objects.'
+core: 8.x
+package: ArchivesSpace
+dependencies:
+  - archivesspace
+  - controlled_access_terms
+  - controlled_access_terms_default_configuration
+  - field
+  - language
+  - menu_ui
+  - migrate_plus
+  - node
+  - options
+  - path
+  - user

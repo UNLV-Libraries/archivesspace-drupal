@@ -1,0 +1,38 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.digital_object.field_as_agent_links
+    - field.field.node.digital_object.field_as_date
+    - field.field.node.digital_object.field_as_extent
+    - field.field.node.digital_object.field_as_resource_notes
+    - field.field.node.digital_object.field_as_subject
+    - field.field.node.digital_object.field_digital_object_id
+    - field.field.node.digital_object.field_digital_object_type
+    - field.field.node.digital_object.field_source
+    - field.field.node.digital_object.field_vra_core_level
+    - node.type.digital_object
+  module:
+    - user
+id: node.digital_object.teaser
+targetEntityType: node
+bundle: digital_object
+mode: teaser
+content:
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  field_as_agent_links: true
+  field_as_date: true
+  field_as_extent: true
+  field_as_resource_notes: true
+  field_as_subject: true
+  field_digital_object_id: true
+  field_digital_object_type: true
+  field_source: true
+  field_vra_core_level: true
+  langcode: true

@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_vra_core_level
+    - node.type.digital_object
+  module:
+    - options
+id: node.digital_object.field_vra_core_level
+field_name: field_vra_core_level
+entity_type: node
+bundle: digital_object
+label: 'VRA Core Level'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

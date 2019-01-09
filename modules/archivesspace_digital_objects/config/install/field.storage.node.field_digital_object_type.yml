@@ -1,0 +1,50 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - options
+id: node.field_digital_object_type
+field_name: field_digital_object_type
+entity_type: node
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: cartographic
+      label: Cartographic
+    -
+      value: mixed_materials
+      label: 'Mixed Materials'
+    -
+      value: moving_image
+      label: 'Moving Image'
+    -
+      value: notated_music
+      label: 'Notated Music'
+    -
+      value: software_multimedia
+      label: 'Software, Multimedia'
+    -
+      value: sound_recording
+      label: 'Sound Recording'
+    -
+      value: sound_recording_musical
+      label: 'Sound Recording (Musical)'
+    -
+      value: sound_recording_nonmusical
+      label: 'Sound Recording (Non-musical)'
+    -
+      value: still_image
+      label: 'Still Image'
+    -
+      value: text
+      label: Text
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false
