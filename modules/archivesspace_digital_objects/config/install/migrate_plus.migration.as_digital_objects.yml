@@ -1,7 +1,13 @@
+langcode: en
+status: true
+dependencies: {  }
 id: as_digital_objects
+class: null
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags: null
 migration_group: archivesspace
 label: 'ArchivesSpace Digital Objects'
-
 source:
   plugin: archivesspace
   object_type: digital_object
@@ -10,7 +16,6 @@ source:
   password: admin
   keys:
     - uri
-
 process:
   published:
     plugin: skip_on_value

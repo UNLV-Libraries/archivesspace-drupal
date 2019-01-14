@@ -10,21 +10,34 @@ dependencies:
     - field.field.node.digital_object.field_as_subject
     - field.field.node.digital_object.field_digital_object_id
     - field.field.node.digital_object.field_digital_object_type
+    - field.field.node.digital_object.field_display
+    - field.field.node.digital_object.field_restrictions_bool
     - field.field.node.digital_object.field_source
     - field.field.node.digital_object.field_vra_core_level
+    - image.style.thumbnail
     - node.type.digital_object
   module:
+    - media
     - user
 id: node.digital_object.teaser
 targetEntityType: node
 bundle: digital_object
 mode: teaser
 content:
+  field_display:
+    type: media_thumbnail
+    weight: 1
+    region: content
+    label: above
+    settings:
+      image_style: thumbnail
+      image_link: content
+    third_party_settings: {  }
   links:
-    weight: 100
+    weight: 0
+    region: content
     settings: {  }
     third_party_settings: {  }
-    region: content
 hidden:
   field_as_agent_links: true
   field_as_date: true
@@ -33,6 +46,7 @@ hidden:
   field_as_subject: true
   field_digital_object_id: true
   field_digital_object_type: true
+  field_restrictions_bool: true
   field_source: true
   field_vra_core_level: true
   langcode: true

@@ -9,6 +9,7 @@ dependencies:
     - field.field.node.digital_object.field_as_subject
     - field.field.node.digital_object.field_digital_object_id
     - field.field.node.digital_object.field_digital_object_type
+    - field.field.node.digital_object.field_display
     - field.field.node.digital_object.field_restrictions_bool
     - field.field.node.digital_object.field_source
     - field.field.node.digital_object.field_vra_core_level
@@ -16,7 +17,6 @@ dependencies:
   module:
     - archivesspace
     - controlled_access_terms
-    - options
     - user
 id: node.digital_object.default
 targetEntityType: node
@@ -24,7 +24,7 @@ bundle: digital_object
 mode: default
 content:
   field_as_agent_links:
-    weight: 107
+    weight: 3
     label: above
     settings:
       link: true
@@ -32,28 +32,28 @@ content:
     type: typed_relation_default
     region: content
   field_as_date:
-    weight: 105
+    weight: 4
     label: above
     settings: {  }
     third_party_settings: {  }
     type: as_date_default
     region: content
   field_as_extent:
-    weight: 106
+    weight: 5
     label: above
     settings: {  }
     third_party_settings: {  }
     type: as_extent_default
     region: content
   field_as_resource_notes:
-    weight: 109
+    weight: 8
     label: above
     settings: {  }
     third_party_settings: {  }
     type: typed_note_default
     region: content
   field_as_subject:
-    weight: 108
+    weight: 7
     label: above
     settings:
       link: true
@@ -61,22 +61,24 @@ content:
     type: entity_reference_label
     region: content
   field_digital_object_id:
-    weight: 102
+    weight: 2
     label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
     type: string
     region: content
-  field_digital_object_type:
-    weight: 104
+  field_display:
+    type: entity_reference_entity_view
+    weight: 1
     label: above
-    settings: {  }
+    settings:
+      view_mode: default
+      link: false
     third_party_settings: {  }
-    type: list_default
     region: content
   field_restrictions_bool:
-    weight: 111
+    weight: 9
     label: above
     settings:
       format: default
@@ -86,24 +88,19 @@ content:
     type: boolean
     region: content
   field_source:
-    weight: 110
+    weight: 6
     label: above
     settings:
       link: true
     third_party_settings: {  }
     type: entity_reference_label
     region: content
-  field_vra_core_level:
-    weight: 103
-    label: above
-    settings: {  }
-    third_party_settings: {  }
-    type: list_default
-    region: content
   links:
-    weight: 100
+    weight: 0
+    region: content
     settings: {  }
     third_party_settings: {  }
-    region: content
 hidden:
+  field_digital_object_type: true
+  field_vra_core_level: true
   langcode: true

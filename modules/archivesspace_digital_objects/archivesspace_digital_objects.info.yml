@@ -9,6 +9,7 @@ dependencies:
   - controlled_access_terms_default_configuration
   - field
   - language
+  - media
   - menu_ui
   - migrate_plus
   - node
