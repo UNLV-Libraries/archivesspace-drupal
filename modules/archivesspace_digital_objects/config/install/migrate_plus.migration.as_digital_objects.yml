@@ -151,16 +151,17 @@ process:
         - '@temp_subjects'
     -
       plugin: flatten
+  field_display:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: file_versions
+    -
+      plugin: archivesspace_import_media
+      drupal_path: false
 destination:
   plugin: 'entity:node'
   bundle: digital_object
 migration_dependencies:
-  required:
-    - as_repositories
-    - as_resources
+  optional:
     - as_archival_objects
-    - as_agents_corp
-    - as_agents_family
-    - as_agents_people
-    - as_subjects_all
-    - as_subjects_geo
