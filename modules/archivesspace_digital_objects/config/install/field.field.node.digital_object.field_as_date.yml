@@ -1,0 +1,44 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_as_date
+    - node.type.digital_object
+  module:
+    - archivesspace
+id: node.digital_object.field_as_date
+field_name: field_as_date
+entity_type: node
+bundle: digital_object
+label: Dates
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  label_types:
+    broadcast: Broadcast
+    copyright: Copyright
+    creation: Creation
+    deaccession: Deaccession
+    agent_relation: 'Agent Relation'
+    digitized: Digitized
+    existence: Existence
+    event: Event
+    issued: Issued
+    modified: Modified
+    publication: Publication
+    record_keeping: 'Record Keeping'
+    usage: Usage
+    other: Other
+  date_types:
+    inclusive: Inclusive
+    bulk: Bulk
+  certainty_types:
+    approximate: Approximate
+    inferred: Inferred
+    questionable: Questionable
+  calendar_types:
+    gregorian: Gregorian
+field_type: as_date

@@ -1,0 +1,10 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.digital_object
+id: node.digital_object
+target_entity_type_id: node
+target_bundle: digital_object
+default_langcode: site_default
+language_alterable: false

@@ -1,0 +1,106 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.digital_object.field_as_agent_links
+    - field.field.node.digital_object.field_as_date
+    - field.field.node.digital_object.field_as_extent
+    - field.field.node.digital_object.field_as_resource_notes
+    - field.field.node.digital_object.field_as_subject
+    - field.field.node.digital_object.field_digital_object_id
+    - field.field.node.digital_object.field_digital_object_type
+    - field.field.node.digital_object.field_display
+    - field.field.node.digital_object.field_restrictions_bool
+    - field.field.node.digital_object.field_source
+    - field.field.node.digital_object.field_vra_core_level
+    - node.type.digital_object
+  module:
+    - archivesspace
+    - controlled_access_terms
+    - user
+id: node.digital_object.default
+targetEntityType: node
+bundle: digital_object
+mode: default
+content:
+  field_as_agent_links:
+    weight: 3
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: typed_relation_default
+    region: content
+  field_as_date:
+    weight: 4
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: as_date_default
+    region: content
+  field_as_extent:
+    weight: 5
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: as_extent_default
+    region: content
+  field_as_resource_notes:
+    weight: 8
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: typed_note_default
+    region: content
+  field_as_subject:
+    weight: 7
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_digital_object_id:
+    weight: 2
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_display:
+    type: entity_reference_entity_view
+    weight: 1
+    label: above
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    region: content
+  field_restrictions_bool:
+    weight: 9
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    type: boolean
+    region: content
+  field_source:
+    weight: 6
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  links:
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  field_digital_object_type: true
+  field_vra_core_level: true
+  langcode: true

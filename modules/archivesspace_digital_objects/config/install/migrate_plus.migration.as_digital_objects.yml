@@ -1,30 +1,21 @@
-id: as_archival_objects
-label: ArchivesSpace Archival Objects
+langcode: en
+status: true
+dependencies: {  }
+id: as_digital_objects
+class: null
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags: null
 migration_group: archivesspace
-migration_dependencies:
-  required:
-    - as_repositories
-    - as_resources
-    - as_agents_corp
-    - as_agents_family
-    - as_agents_people
-    - as_subjects_all
-    - as_subjects_geo
-
+label: 'ArchivesSpace Digital Objects'
 source:
   plugin: archivesspace
-  object_type: archival_object
-  base_uri: http://localhost:8089
-  # repository: /repositories/2
+  object_type: digital_object
+  base_uri: 'http://localhost:8089'
   username: admin
   password: admin
   keys:
     - uri
-
-destination:
-  plugin: entity:node
-  bundle: archival_object
-
 process:
   published:
     plugin: skip_on_value
@@ -33,12 +24,11 @@ process:
     value: true
   type:
     plugin: default_value
-    default_value: archival_object
-  title: display_string
+    default_value: digital_object
+  title: title
   uid:
     plugin: default_value
     default_value: 1
-  field_archival_record_level: level
   field_as_date:
     plugin: sub_process
     source: dates
@@ -50,7 +40,6 @@ process:
       certainty: certainty
       expression: expression
       calendar: calendar
-  # Extents is pulling in some from higher levels. Needs debugging.
   field_as_extent:
     -
       plugin: skip_on_empty
@@ -65,36 +54,21 @@ process:
         container_summary: container_summary
         physical_details: physical_details
         dimensions: dimensions
-  # Parent is a bit more complex.
-  # We need to use parent if it exists, but if not, use resource.
-  field_as_parent:
-    -
-      plugin: get
-      source:
-        - parent # The URI we want to use.
-        - resource # The backup URI.
-    -
-      # Toss out empty items.
-      plugin: callback
-      callable: array_filter
-    -
-      # Return first available
-      plugin: callback
-      callable: 'current'
+  field_source:
     -
       plugin: skip_on_empty
       method: process
+      source: linked_instances
     -
-      # The URI is embedded in an array, pull it out.
       plugin: extract
       index:
+        - 0
         - ref
     -
       plugin: migration_lookup
       migration:
         - as_archival_objects
         - as_resources
-  field_as_ref_id: ref_id
   field_as_resource_notes:
     -
       plugin: skip_on_empty
@@ -102,17 +76,13 @@ process:
       source: notes
       message: 'Notes field is empty'
     -
-      plugin: archivesspace_notes # Custom process to handle single and multi-part notes
-  field_as_title: title
-  field_as_weight: position
-  field_resource_identifier: component_id
-  field_resource_resource_type: level
+      plugin: archivesspace_notes
   field_restrictions_bool: restrictions
   field_as_agent_links:
     plugin: sub_process_ext
     source: linked_agents
     process:
-      role: # Deal with subjects separately
+      role:
         plugin: skip_on_value
         method: row
         source: role
@@ -122,11 +92,11 @@ process:
           plugin: concat
           delimiter: ':'
           source:
-            - 'relators'
+            - relators
             - relator
         -
           plugin: static_map
-          bypass: TRUE
+          bypass: true
           map:
             ':': 'relators:cre'
       target_id:
@@ -136,7 +106,6 @@ process:
           - as_agents_family
           - as_agents_people
         source: ref
-
   temp_subjects_agents:
     -
       plugin: skip_on_empty
@@ -182,3 +151,17 @@ process:
         - '@temp_subjects'
     -
       plugin: flatten
+  field_display:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: file_versions
+    -
+      plugin: archivesspace_import_media
+      drupal_path: false
+destination:
+  plugin: 'entity:node'
+  bundle: digital_object
+migration_dependencies:
+  optional:
+    - as_archival_objects
