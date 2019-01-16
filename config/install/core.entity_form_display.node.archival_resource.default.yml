@@ -11,6 +11,7 @@ dependencies:
     - field.field.node.archival_resource.field_as_resource_notes
     - field.field.node.archival_resource.field_as_subject
     - field.field.node.archival_resource.field_finding_aid_link
+    - field.field.node.archival_resource.field_printable_pdf
     - field.field.node.archival_resource.field_repository
     - field.field.node.archival_resource.field_resource_identifier
     - field.field.node.archival_resource.field_resource_resource_type
@@ -95,6 +96,15 @@ content:
       placeholder_title: ''
     third_party_settings: {  }
     type: link_default
+    region: content
+  field_printable_pdf:
+    weight: 27
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
     region: content
   field_repository:
     weight: 12

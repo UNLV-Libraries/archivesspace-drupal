@@ -11,6 +11,7 @@ dependencies:
     - field.field.node.archival_resource.field_as_resource_notes
     - field.field.node.archival_resource.field_as_subject
     - field.field.node.archival_resource.field_finding_aid_link
+    - field.field.node.archival_resource.field_printable_pdf
     - field.field.node.archival_resource.field_repository
     - field.field.node.archival_resource.field_resource_identifier
     - field.field.node.archival_resource.field_resource_resource_type
@@ -97,6 +98,15 @@ content:
       target: ''
     third_party_settings: {  }
     type: link
+    region: content
+  field_printable_pdf:
+    type: entity_reference_entity_view
+    weight: 12
+    label: above
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
     region: content
   field_resource_identifier:
     weight: 2
