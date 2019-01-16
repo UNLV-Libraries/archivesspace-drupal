@@ -4,7 +4,7 @@ migration_group: archivesspace
 
 source:
   plugin: archivesspace
-  object_type: repository
+  object_type: repositories
   base_uri: http://localhost:8089
   # repository: /repositories/2
   username: admin

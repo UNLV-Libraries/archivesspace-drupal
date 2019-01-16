@@ -14,14 +14,14 @@ class ArchivesSpaceIterator implements \Countable, \Iterator {
   protected $session;
   protected $type;
   protected $types = [
-    'repository',
-    'resource',
-    'archival_object',
-    'digital_object',
-    'agent_person',
-    'agent_corporate_entity',
-    'agent_family',
-    'subject',
+    'repositories',
+    'resources',
+    'archival_objects',
+    'digital_objects',
+    'agents/people',
+    'agents/corporate_entities',
+    'agents/families',
+    'subjects',
   ];
   protected $datetime;
   protected $repository;
@@ -39,7 +39,7 @@ class ArchivesSpaceIterator implements \Countable, \Iterator {
    *
    * @var int
    */
-  protected $pageSize = 500;
+  protected $pageSize = 250;
 
   /**
    * {@inheritdoc}
@@ -75,17 +75,7 @@ class ArchivesSpaceIterator implements \Countable, \Iterator {
    * {@inheritdoc}
    */
   public function current() {
-    // Loading happens with valid(), so current should be there.
-    // 0-based positioning for loaded & position
-    // 1-based positioning for offset
-    // Loaded position is the difference between the
-    // position's offset (pos+1) and the offsetFirst.
-    $loaded_pos = $this->position + 1 - $this->offsetFirst;
-    // Unfortunately/fortunately? The results bury the full json object
-    // as a sub-field, rather than just giving it to us in the first place.
-    // So, let's return that.
-    // Oh, and the base SourcePlugin wants nested arrays.
-    return json_decode($this->loaded[$loaded_pos]['json'], TRUE);
+    return $this->loaded[$this->position];
   }
 
   /**
@@ -106,22 +96,19 @@ class ArchivesSpaceIterator implements \Countable, \Iterator {
    * {@inheritdoc}
    */
   public function valid() {
-    // Offset is out of range?
-    if (($this->position + 1) > $this->count) {
-      return FALSE;
+
+    if ($this->position < count($this->loaded)) {
+      return TRUE;
     }
 
-    // Is position's offset loaded (comes after last loaded)?
-    if (($this->position + 1) > $this->offsetLast) {
-      // Get more!
+    // We may need to load more results.
+    if ($this->currentPage < $this->lastPage) {
       $this->loadPage($this->currentPage + 1);
-
-      // What if the load failed for some reason?
-      if (($this->position + 1) != $this->offsetFirst) {
-        return FALSE;
-      }
+      // Now that we've loaded, check again.
+      return $this->valid();
     }
-    return TRUE;
+
+    return FALSE;
   }
 
   /**
@@ -136,43 +123,26 @@ class ArchivesSpaceIterator implements \Countable, \Iterator {
       return;
     }
 
-    $aq = json_encode([
-      'jsonmodel_type' => 'advanced_query',
-      'query' => [
-        'jsonmodel_type' => 'boolean_query',
-        'op' => 'AND',
-        'subqueries' => [
-        [
-          'field' => 'primary_type',
-          'value' => $this->type,
-          'comparator' => 'equals',
-          'jsonmodel_type' => 'field_query',
-        ],
-        [
-          'field' => 'user_mtime',
-          'value' => $this->datetime->format('c'),
-          'comparator' => 'greater_than',
-          'jsonmodel_type' => 'date_field_query',
-        ],
-        ],
-      ],
-    ]);
     $parameters = [
       'page' => $page,
-      'pageSize' => $this->pageSize,
-      'aq' => $aq,
+      'page_size' => $this->pageSize,
     ];
 
-    // ROOT-level search requires a user to have ADMIN!
-    // If we want a user with read-only, we have to limit search to
-    // a repository where they have read-only permissions set.
-    $results           = $this->session->request('GET', $this->repository . '/search', $parameters);
-    $this->count       = $results['total_hits'];
-    $this->currentPage = $results['this_page'];
-    $this->lastPage    = $results['last_page'];
-    $this->offsetFirst = $results['offset_first'];
-    $this->offsetLast  = $results['offset_last'];
-    $this->loaded      = $results['results'];
+    // The API requires a repository for resources, archival objects, and digital_objects.
+    $results  = $this->session->request('GET', $this->repository . '/' . $this->type, $parameters);
+
+    // Repositories aren't paginated like everything else.
+    if ($this->type == 'repositories'){
+      $this->count    = count($results);
+      $this->position = 0;
+      $this->loaded   = $results;
+    } else {
+      $this->count       = $results['total'];
+      $this->currentPage = $results['this_page'];
+      $this->lastPage    = $results['last_page'];
+      $this->position    = 0;
+      $this->loaded      = $results['results'];
+    }
 
   }
 

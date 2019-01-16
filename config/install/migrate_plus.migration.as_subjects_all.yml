@@ -4,9 +4,8 @@ migration_group: archivesspace_subjects
 
 source:
   plugin: archivesspace
-  object_type: subject
+  object_type: subjects
   base_uri: http://localhost:8089
-  # repository: /repositories/2
   username: admin
   password: admin
   keys:

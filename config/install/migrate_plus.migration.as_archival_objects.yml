@@ -13,9 +13,9 @@ migration_dependencies:
 
 source:
   plugin: archivesspace
-  object_type: archival_object
+  object_type: archival_objects
   base_uri: http://localhost:8089
-  # repository: /repositories/2
+  repository: /repositories/2
   username: admin
   password: admin
   keys:
