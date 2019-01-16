@@ -21,14 +21,14 @@ class ArchivesSpaceSource extends SourcePluginBase {
   protected $objectType;
   protected $lastUpdate;
   protected $objectTypes = [
-    'repository',
-    'resource',
-    'archival_object',
-    'digital_object',
-    'agent_person',
-    'agent_corporate_entity',
-    'agent_family',
-    'subject',
+    'repositories',
+    'resources',
+    'archival_objects',
+    'digital_objects',
+    'agents/people',
+    'agents/corporate_entities',
+    'agents/families',
+    'subjects',
   ];
   protected $fields = [];
   protected $repository = '';
@@ -43,7 +43,7 @@ class ArchivesSpaceSource extends SourcePluginBase {
     $this->objectType = $configuration['object_type'];
 
     switch ($this->objectType) {
-      case 'resource':
+      case 'resources':
         $this->fields = [
           'uri' => $this->t('URI'),
           'title' => $this->t('Title'),
@@ -73,7 +73,7 @@ class ArchivesSpaceSource extends SourcePluginBase {
         ];
         break;
 
-      case 'archival_object':
+      case 'archival_objects':
         $this->fields = [
           'ancestors' => $this->t('Ancestors'),
           'component_id' => $this->t('Component Unique Identifier'),
@@ -98,11 +98,11 @@ class ArchivesSpaceSource extends SourcePluginBase {
         ];
         break;
 
-      case 'agent_person':
-      case 'agent_family':
+      case 'agents/people':
+      case 'agents/families':
         // The only field person and family has that corp doesn't is publish,
         // but we don't use it anyway, so all agent cases use the same fieldset.
-      case 'agent_corporate_entity':
+      case 'agents/corporate_entities':
         $this->fields = [
           'dates_of_existence' => $this->t('Dates of Existence'),
           'display_name' => $this->t('Display Name'),
@@ -129,7 +129,7 @@ class ArchivesSpaceSource extends SourcePluginBase {
         ];
         break;
 
-      case 'repository':
+      case 'repositories':
         $this->fields = [
           'uri' => $this->t('URI'),
           'name' => $this->t('Name'),

@@ -1,4 +1,3 @@
-uuid: baa226ff-09ec-48d8-96e4-439d55d7be55
 id: as_resources
 label: ArchivesSpace Resources
 migration_group: archivesspace
@@ -13,9 +12,9 @@ migration_dependencies:
 
 source:
   plugin: archivesspace
-  object_type: resource
+  object_type: resources
   base_uri: http://localhost:8089
-  # repository: /repositories/2
+  repository: /repositories/2
   username: admin
   password: admin
   keys:

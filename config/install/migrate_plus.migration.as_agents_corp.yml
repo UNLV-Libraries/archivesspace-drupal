@@ -4,9 +4,8 @@ migration_group: archivesspace_agents
 
 source:
   plugin: archivesspace
-  object_type: agent_corporate_entity
+  object_type: agents/corporate_entities
   base_uri: http://localhost:8089
-  # repository: /repositories/2
   username: admin
   password: admin
   keys:
