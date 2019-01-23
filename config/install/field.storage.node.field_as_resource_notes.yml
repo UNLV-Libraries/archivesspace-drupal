@@ -1,8 +1,10 @@
 langcode: en
 status: true
 dependencies:
+  enforced:
+    module:
+      - archivesspace
   module:
-    - archivesspace
     - node
 id: node.field_as_resource_notes
 field_name: field_as_resource_notes

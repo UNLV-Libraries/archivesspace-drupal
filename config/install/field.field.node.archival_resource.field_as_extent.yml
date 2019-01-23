@@ -4,8 +4,9 @@ dependencies:
   config:
     - field.storage.node.field_as_extent
     - node.type.archival_resource
-  module:
-    - archivesspace
+  enforced:
+    module:
+      - archivesspace
 id: node.archival_resource.field_as_extent
 field_name: field_as_extent
 entity_type: node
