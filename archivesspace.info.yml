@@ -10,6 +10,7 @@ dependencies:
   - controlled_access_terms
   - controlled_access_terms_default_configuration
   - language
+  - media
   - migrate_plus
   - migrate_run
   - title_length

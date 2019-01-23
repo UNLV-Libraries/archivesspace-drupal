@@ -1,7 +1,7 @@
 archivesspace.settings:
-  path: '/admin/structure/archivesspace/settings'
+  path: '/admin/config/archivesspace'
   defaults:
     _form: 'Drupal\archivesspace\Form\ASpaceSettingsForm'
-    _title: 'ArchivesSpace Settings Form'
+    _title: 'ArchivesSpace Settings'
   requirements:
     _permission: 'administer site configuration'
