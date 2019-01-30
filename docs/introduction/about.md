@@ -1,22 +1,21 @@
-![AS2D8 Logo]()
 ## AS2D8: ArchivesSpace-to-Drupal 8 integration
-[AS2D8](https://www.as2d8.com/) is a series of Drupal modules for harvesting data from ArchviesSpace. AS2D8 extends the Drupal core Migrate API with plugins, provides sensible defaults for displaying ArchivesSpace resources in Drupal and all of the usual Drupal content and website management tools. AS2D8 closely tracks the [Islandora CLAW project](https://github.com/Islandora-CLAW/CLAW). When the next-generation of Islandora is stable, AS2D8 will offer an integration point for Islandora. 
+AS2D8 is a series of Drupal modules for harvesting data from ArchviesSpace. AS2D8 extends the Drupal core Migrate API with plugins, provides sensible defaults for displaying ArchivesSpace resources in Drupal and all of the usual Drupal content and website management tools. AS2D8 closely tracks the [Islandora CLAW project](https://github.com/Islandora-CLAW/CLAW). When the next-generation of Islandora is stable, AS2D8 will offer an integration point for Islandora.
 
 A few possible use cases include:
-- Using Drupal Views to build glossary displays, user-configurable sorting, 
-- Optionally deploying with Search API with Apache Solr to provide a configurable and granular control over search results 
+- Using Drupal Views to build glossary displays, user-configurable sorting,
+- Optionally deploying with Search API with Apache Solr to provide a configurable and granular control over search results
 - Building custom reports, logs, and user analytics
 - Developing customized "Omeka-like" online exhibitions of archival material
 - Researcher annotations, user-administered "favorites", save-for-later carts
 - Managing research requests
 - Joining archival records to geo-locations
 
-Changes can be made in real time or asynchronously in batches during cron run. Once ArchivesSpace records are consumed by Drupal, they can be further enriched with NISO-defined metadata, published in a customizable discovery theme layer, and published in web service formats for consumption by other resources. 
+Changes can be made in real time or asynchronously in batches during cron run. Once ArchivesSpace records are consumed by Drupal, they can be further enriched with NISO-defined metadata, published in a customizable discovery theme layer, and published in web service formats for consumption by other resources.
 
 ## Pre-history
-This project began in 2014 as a [Kress Foundation-funded](http://www.kressfoundation.org) suite of Drupal 7 modules to support cataloging and discovery at the [American Academy in Rome](http://dhc.aarome.org). The project extends several Drupal modules including [RESTClient](https://www.drupal.org/project/restclient), [Web Service Data](https://www.drupal.org/project/wsdata), and custom code to request ArchivesSpace JSON objects and pipe them into Drupal entities. These entities can then be formatted, manipulated, and indexed via traditional Drupal methods (Views, Solr, Elastic Search, etc.).
+The original ArchivesSpace/Drupal Integration project is a began in 2014 as a [Kress Foundation-funded](http://www.kressfoundation.org) suite of Drupal 7 modules to support cataloging and discovery at the [American Academy in Rome](http://dhc.aarome.org). The project extends several Drupal modules including [RESTClient](https://www.drupal.org/project/restclient), [Web Service Data](https://www.drupal.org/project/wsdata), and custom code to request ArchivesSpace JSON objects and pipe them into Drupal entities. These entities can then be formatted, manipulated, and indexed via traditional Drupal methods (Views, Solr, Elastic Search, etc.). The original project is monitored and updated for maintenance fixes only. No new features will be considered or added.
 
-This project is monitored and updated for maintenance fixes only. No new features will be considered or added. Instead, the Acacdemy, together with partner institutions, seeks to create an entirely new suite of Drupal 8 modules that adhere to PSR coding standards and module development best practices in order to release this suite to both ArchivesSpace and Drupal developer communities.
+Instead, this project provides an entirely new suite of Drupal 8 modules that adhere to PSR coding standards and module development best practices in order to release this suite to both ArchivesSpace and Drupal developer communities.
 
 ## Benchmarks
 #### [BentoSpace](http://demo.martinezdev.com/bento/search/)
@@ -51,7 +50,7 @@ TBD
 TBD
 
 ## Documentation
-TBD. Full AS2D8 documentation is available at http://docs.as2d8.com/
+TBD
 
 ## Quick Start Guide
 TBD
@@ -66,6 +65,8 @@ TBD
 TBD
 
 ## License
-This project is licensed under the MIT open source license.
+AS2D8 is licensed on the same terms as Drupal, under GPLv2 or later.
 
-## About the Authors
+[About Drupal licensing](https://www.drupal.org/about/licensing)
+
+The AS2d8 license also covers its related modules, hacks, plugins, and configuration management.
