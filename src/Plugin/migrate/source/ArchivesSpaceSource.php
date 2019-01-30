@@ -80,6 +80,7 @@ class ArchivesSpaceSource extends SourcePluginBase {
           'dates' => $this->t('Dates'),
           'display_string' => $this->t('Display String'),
           'extents' => $this->t('Extents'),
+          'has_unpublished_ancestor' => $this->t('Has Unpublished Ancestor'),
           'instances' => $this->t('Instances'),
           'level' => $this->t('Level'),
           'linked_agents' => $this->t('Linked Agents'),

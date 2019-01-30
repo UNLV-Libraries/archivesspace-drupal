@@ -27,9 +27,9 @@ destination:
 process:
   published:
     plugin: skip_on_value
-    source: published
+    source: publish
     method: row
-    value: true
+    value: false
   type:
     plugin: default_value
     default_value: archival_resource

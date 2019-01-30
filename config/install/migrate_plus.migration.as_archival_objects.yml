@@ -26,11 +26,16 @@ destination:
   bundle: archival_object
 
 process:
-  published:
+  unpublished_ancestor:
     plugin: skip_on_value
-    source: published
+    source: has_unpublished_ancestor
     method: row
     value: true
+  published:
+    plugin: skip_on_value
+    source: publish
+    method: row
+    value: false
   type:
     plugin: default_value
     default_value: archival_object
