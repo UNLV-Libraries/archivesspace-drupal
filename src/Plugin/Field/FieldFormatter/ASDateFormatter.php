@@ -33,11 +33,6 @@ class ASDateFormatter extends FormatterBase {
         $display_value = $item->expression;
       }
       else {
-        if (!empty($item->type)) {
-          $types = $item->getSettings('date_type');
-          $type = isset($types[$item->type]) ? $types[$item->type] : $item->type;
-          $display_value .= $type;
-        }
         if (!empty($item->begin)) {
           $display_value .= $item->begin;
         }
@@ -47,6 +42,10 @@ class ASDateFormatter extends FormatterBase {
         if (!empty($item->end)) {
           $display_value .= $item->end;
         }
+      }
+      if (!empty($item->date_type) && ($item->date_type == 'bulk')) {
+        $date_type = $item->date_type;
+        $display_value = "$date_type $display_value";
       }
       $output[$delta] = ['#plain_text' => $display_value];
     }
