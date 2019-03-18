@@ -4,6 +4,8 @@ dependencies:
   config:
     - field.storage.node.field_as_weight
     - node.type.archival_object
+  module:
+    - weight
 id: node.archival_object.field_as_weight
 field_name: field_as_weight
 entity_type: node
@@ -17,8 +19,5 @@ default_value:
     value: 0
 default_value_callback: ''
 settings:
-  min: 0
-  max: null
-  prefix: ''
-  suffix: ''
-field_type: integer
+  range: '10000'
+field_type: weight

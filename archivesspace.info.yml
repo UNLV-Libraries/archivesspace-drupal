@@ -1,16 +1,28 @@
-name: 'ArchivesSpace'
+name: ArchivesSpace
 type: module
 description: 'Provides integration between Drupal and ArchivesSpace.'
 core: 8.x
-package: 'ArchivesSpace'
-
+package: ArchivesSpace
 dependencies:
   - address
+  - archivesspace
   - auto_entitylabel
+  - block
   - controlled_access_terms
   - controlled_access_terms_default_configuration
+  - field
   - language
+  - link
   - media
+  - menu_ui
   - migrate_plus
   - migrate_run
+  - node
+  - options
+  - path
+  - taxonomy
+  - text
   - title_length
+  - user
+  - views
+  - weight

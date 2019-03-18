@@ -3,14 +3,14 @@ status: true
 dependencies:
   module:
     - node
+    - weight
 id: node.field_as_weight
 field_name: field_as_weight
 entity_type: node
-type: integer
+type: weight
 settings:
   unsigned: false
-  size: normal
-module: core
+module: weight
 locked: false
 cardinality: 1
 translatable: true
