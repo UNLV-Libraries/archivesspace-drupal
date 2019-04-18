@@ -10,5 +10,18 @@
     "issues": "https://www.drupal.org/project/issues/archivesspace",
     "source": "http://cgit.drupalcode.org/archivesspace"
   },
-  "require": { }
+  "repositories": [
+      {
+          "type": "composer",
+          "url": "https://packages.drupal.org/8"
+      }
+  ],
+  "require": {
+      "drupal/address": "^1.6",
+      "drupal/auto_entitylabel": "^2.1@beta",
+      "drupal/migrate_plus": "^4.1",
+      "drupal/migrate_run": "^1.0@beta",
+      "drupal/title_length": "^1.0",
+      "drupal/weight": "^3.1",
+  }
 }
