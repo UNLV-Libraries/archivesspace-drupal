@@ -1,0 +1,5 @@
+services:
+  archivesspace.breadcrumb:
+    class: Drupal\archivesspace\ArchivesSpaceBreadcrumbBuilder
+    tags:
+      - { name: breadcrumb_builder, priority: 100 }
