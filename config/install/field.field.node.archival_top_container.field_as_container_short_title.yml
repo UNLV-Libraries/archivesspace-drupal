@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_as_container_short_title
+    - node.type.archival_top_container
+id: node.archival_top_container.field_as_container_short_title
+field_name: field_as_container_short_title
+entity_type: node
+bundle: archival_top_container
+label: 'Short Title'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string
