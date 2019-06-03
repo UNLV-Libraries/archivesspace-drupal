@@ -22,6 +22,7 @@ class ArchivesSpaceIterator implements \Countable, \Iterator {
     'agents/corporate_entities',
     'agents/families',
     'subjects',
+    'top_containers',
   ];
   protected $datetime;
   protected $repository;
