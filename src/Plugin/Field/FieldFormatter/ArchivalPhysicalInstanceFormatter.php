@@ -27,6 +27,13 @@ class ArchivalPhysicalInstanceFormatter extends EntityReferenceLabelFormatter {
     foreach ($items as $delta => $item) {
       $top_container = $elements[$delta];
 
+      // The link returned by the parent includes the manuscript number,
+      // but we just want the short version if available since it is usually
+      // being displayed in context. May make this configurable later.
+      if (!empty($top_container) && !empty($item->entity->field_as_container_short_title->value)) {
+        $top_container['#title'] = $item->entity->field_as_container_short_title->value;
+      }
+
       if (isset($item->subcontainer_indicator)) {
         $subcontainer_indicator = '';
         if (!empty($top_container)) {
