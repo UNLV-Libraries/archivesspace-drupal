@@ -9,7 +9,7 @@ dependencies:
   - auto_entitylabel
   - block
   - controlled_access_terms
-  - controlled_access_terms_default_configuration
+  - controlled_access_terms_defaults
   - field
   - language
   - link
