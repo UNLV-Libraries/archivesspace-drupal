@@ -2,32 +2,31 @@ langcode: en
 status: true
 dependencies:
   config:
-    - views.view.as_ao_children
+    - views.view.archival_container_list
   module:
     - node
     - views
   theme:
     - bartik
-id: views_block__as_ao_children_block_1
+id: views_block__archival_container_list_block_1
 theme: bartik
 region: content
-weight: -2
+weight: -1
 provider: null
-plugin: 'views_block:as_ao_children-block_1'
+plugin: 'views_block:archival_container_list-block_1'
 settings:
-  id: 'views_block:as_ao_children-block_1'
-  label: Inventory
+  id: 'views_block:archival_container_list-block_1'
+  label: ''
   provider: views
   label_display: visible
-  views_label: Inventory
+  views_label: ''
   items_per_page: none
   context_mapping: {  }
 visibility:
   node_type:
     id: node_type
     bundles:
-      archival_object: archival_object
-      archival_resource: archival_resource
+      archival_top_container: archival_top_container
     negate: false
     context_mapping:
       node: '@node.node_route_context:node'

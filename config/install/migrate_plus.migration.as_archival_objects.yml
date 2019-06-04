@@ -187,3 +187,8 @@ process:
         - '@temp_subjects'
     -
       plugin: flatten
+  field_archival_container:
+    plugin: archivesspace_instances
+    source: instances
+    migration:
+      - as_top_containers

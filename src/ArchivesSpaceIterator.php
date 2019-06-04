@@ -22,6 +22,7 @@ class ArchivesSpaceIterator implements \Countable, \Iterator {
     'agents/corporate_entities',
     'agents/families',
     'subjects',
+    'top_containers',
   ];
   protected $datetime;
   protected $repository;
@@ -64,8 +65,8 @@ class ArchivesSpaceIterator implements \Countable, \Iterator {
   }
 
   /**
-  * {@inheritdoc}
-  */
+   * {@inheritdoc}
+   */
   public function count() {
     $this->rewind();
     return $this->count;
@@ -128,15 +129,17 @@ class ArchivesSpaceIterator implements \Countable, \Iterator {
       'page_size' => $this->pageSize,
     ];
 
-    // The API requires a repository for resources, archival objects, and digital_objects.
-    $results  = $this->session->request('GET', $this->repository . '/' . $this->type, $parameters);
+    // The API requires a repository for resources, archival objects,
+    // and digital_objects.
+    $results = $this->session->request('GET', $this->repository . '/' . $this->type, $parameters);
 
     // Repositories aren't paginated like everything else.
-    if ($this->type == 'repositories'){
+    if ($this->type == 'repositories') {
       $this->count    = count($results);
       $this->position = 0;
       $this->loaded   = $results;
-    } else {
+    }
+    else {
       $this->count       = $results['total'];
       $this->currentPage = $results['this_page'];
       $this->lastPage    = $results['last_page'];

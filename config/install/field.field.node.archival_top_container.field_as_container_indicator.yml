@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_as_container_indicator
+    - node.type.archival_top_container
+id: node.archival_top_container.field_as_container_indicator
+field_name: field_as_container_indicator
+entity_type: node
+bundle: archival_top_container
+label: Indicator
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

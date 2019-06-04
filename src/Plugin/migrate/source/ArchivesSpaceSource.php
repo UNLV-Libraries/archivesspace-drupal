@@ -140,6 +140,19 @@ class ArchivesSpaceSource extends SourcePluginBase {
         ];
         break;
 
+      case 'top_containers':
+        $this->fields = [
+          'indicator' => $this->t('Indicator'),
+          'type' => $this->t('Type'),
+          'collection' => $this->t('Collection'),
+          'uri' => $this->t('URI'),
+          'restricted' => $this->t('Restricted'),
+          'is_linked_to_published_record' => $this->t('Is Linked to a Published Record'),
+          'display_string' => $this->t('Display String'),
+          'long_display_string' => $this->t('Long Display String'),
+          'repository' => $this->t('Repository'),
+        ];
+
       default:
         break;
     }

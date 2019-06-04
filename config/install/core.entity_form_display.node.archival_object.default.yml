@@ -2,6 +2,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.node.archival_object.field_archival_container
     - field.field.node.archival_object.field_archival_record_level
     - field.field.node.archival_object.field_as_agent_links
     - field.field.node.archival_object.field_as_date
@@ -30,6 +31,15 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
+  field_archival_container:
+    weight: 26
+    settings:
+      match_operator: CONTAINS
+      size: '60'
+      placeholder: ''
+    third_party_settings: {  }
+    type: archival_physical_instance_default
+    region: content
   field_archival_record_level:
     weight: 15
     settings: {  }
