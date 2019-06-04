@@ -104,7 +104,7 @@ class ArchivesSpaceSession {
     ]
                                           ) as $key => $value) {
       $new_key = substr($key, 14);
-      if(!empty($value)){
+      if (!empty($value)) {
         $state_config[$new_key] = $value;
       }
     }

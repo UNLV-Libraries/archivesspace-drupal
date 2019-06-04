@@ -21,64 +21,64 @@ use Drupal\Core\TypedData\DataDefinition;
  *   list_class = "\Drupal\Core\Field\EntityReferenceFieldItemList",
  * )
  */
- class ArchivalPhysicalInstance extends EntityReferenceItem {
+class ArchivalPhysicalInstance extends EntityReferenceItem {
 
-   /**
-    * {@inheritdoc}
-    */
-   public static function schema(FieldStorageDefinitionInterface $field_definition) {
-     $schema = parent::schema($field_definition);
-     $schema['columns']['subcontainer_indicator'] = [
-       'type' => 'text',
-       'size' => 'small',
-     ];
+  /**
+   * {@inheritdoc}
+   */
+  public static function schema(FieldStorageDefinitionInterface $field_definition) {
+    $schema = parent::schema($field_definition);
+    $schema['columns']['subcontainer_indicator'] = [
+      'type' => 'text',
+      'size' => 'small',
+    ];
 
-     return $schema;
-   }
+    return $schema;
+  }
 
-   /**
-    * {@inheritdoc}
-    */
-   public static function propertyDefinitions(FieldStorageDefinitionInterface $field_definition) {
-     $properties = parent::propertyDefinitions($field_definition);
-     $properties['subcontainer_indicator'] = DataDefinition::create('string')
-       ->setLabel(t('Sub-container Indicator'))
-       ->setRequired(FALSE);
+  /**
+   * {@inheritdoc}
+   */
+  public static function propertyDefinitions(FieldStorageDefinitionInterface $field_definition) {
+    $properties = parent::propertyDefinitions($field_definition);
+    $properties['subcontainer_indicator'] = DataDefinition::create('string')
+      ->setLabel(t('Sub-container Indicator'))
+      ->setRequired(FALSE);
 
-     return $properties;
-   }
+    return $properties;
+  }
 
-   /**
-    * {@inheritdoc}
-    */
-   public function isEmpty() {
-     // Both must be empty.
-     if (parent::isEmpty() && empty($this->subcontainer_indicator) ) {
-       return TRUE;
-     }
-     return FALSE;
-   }
+  /**
+   * {@inheritdoc}
+   */
+  public function isEmpty() {
+    // Both must be empty.
+    if (parent::isEmpty() && empty($this->subcontainer_indicator)) {
+      return TRUE;
+    }
+    return FALSE;
+  }
 
-   /**
-    * {@inheritdoc}
-    */
-   public static function defaultFieldSettings() {
-     return ['subcontainer_indicator' => ''] + parent::defaultFieldSettings();
-   }
+  /**
+   * {@inheritdoc}
+   */
+  public static function defaultFieldSettings() {
+    return ['subcontainer_indicator' => ''] + parent::defaultFieldSettings();
+  }
 
-   /**
-    * {@inheritdoc}
-    */
-   public function fieldSettingsForm(array $form, FormStateInterface $form_state) {
-     $element = parent::fieldSettingsForm($form, $form_state);
+  /**
+   * {@inheritdoc}
+   */
+  public function fieldSettingsForm(array $form, FormStateInterface $form_state) {
+    $element = parent::fieldSettingsForm($form, $form_state);
 
-     $element['subcontainer_indicator'] = [
-       '#type' => 'text',
-       '#title' => t('BLAH'),
-       '#default_value' => '',
-     ];
+    $element['subcontainer_indicator'] = [
+      '#type' => 'text',
+      '#title' => t('BLAH'),
+      '#default_value' => '',
+    ];
 
-     return $element;
-   }
+    return $element;
+  }
 
- }
+}

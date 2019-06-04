@@ -2,7 +2,6 @@
 
 namespace Drupal\archivesspace\Plugin\migrate\process;
 
-use Drupal\migrate\MigrateSkipProcessException;
 use Drupal\migrate\Plugin\migrate\process\MigrationLookup;
 use Drupal\migrate\MigrateException;
 use Drupal\migrate\MigrateExecutableInterface;

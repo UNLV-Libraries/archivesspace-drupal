@@ -23,7 +23,7 @@ class ArchivalPhysicalInstanceWidget extends EntityReferenceAutocompleteWidget {
    * {@inheritdoc}
    */
   public function formElement(FieldItemListInterface $items, $delta, array $element, array &$form, FormStateInterface $form_state) {
-    \Drupal::logger('archivesspace')->notice('APIW::formElement parent class: '.get_parent_class());
+    \Drupal::logger('archivesspace')->notice('APIW::formElement parent class: ' . get_parent_class());
     $widget = parent::formElement($items, $delta, $element, $form, $form_state);
     $item =& $items[$delta];
     $widget['subcontainer_indicator'] = [
@@ -33,7 +33,7 @@ class ArchivalPhysicalInstanceWidget extends EntityReferenceAutocompleteWidget {
       '#default_value' => isset($item->subcontainer_indicator) ? $item->subcontainer_indicator : '',
     ];
 
-    //@TODO: figure out how to override the entity autocomplete visually hidden label.
+    // @TODO: figure out how to override the entity autocomplete visually hidden label.
     $widget['target_id']['#title'] = t('Top Container');
 
     return $widget;
