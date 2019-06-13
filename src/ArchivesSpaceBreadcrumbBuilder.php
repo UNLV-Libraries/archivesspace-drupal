@@ -16,9 +16,9 @@ class ArchivesSpaceBreadcrumbBuilder implements BreadcrumbBuilderInterface {
    * {@inheritdoc}
    */
   public function applies(RouteMatchInterface $attributes) {
-    $parameters = $attributes->getParameters()->all();
-    if (!empty($parameters['node'])) {
-      return in_array($parameters['node']->bundle(), [
+    $node = $attributes->getParameter('node');
+    if (!empty($node) && !is_string($node)) {
+      return in_array($node->bundle(), [
         'archival_object',
         'archival_resource',
         'repository',
