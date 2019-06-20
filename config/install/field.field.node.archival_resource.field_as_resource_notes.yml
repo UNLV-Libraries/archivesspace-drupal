@@ -7,6 +7,8 @@ dependencies:
   enforced:
     module:
       - archivesspace
+  module:
+    - archivesspace
 id: node.archival_resource.field_as_resource_notes
 field_name: field_as_resource_notes
 entity_type: node

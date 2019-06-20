@@ -11,6 +11,7 @@ dependencies:
   - controlled_access_terms
   - controlled_access_terms_defaults
   - field
+  - field_permissions
   - language
   - link
   - media
