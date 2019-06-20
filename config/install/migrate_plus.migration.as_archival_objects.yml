@@ -10,6 +10,8 @@ migration_dependencies:
     - as_agents_people
     - as_subjects_all
     - as_subjects_geo
+  optional:
+    - as_top_containers
 
 source:
   plugin: archivesspace
