@@ -49,7 +49,6 @@ process:
       plugin: flatten_to_keys
       source: collection
       key: ref
-
 destination:
   plugin: 'entity:node'
   bundle: archival_top_container

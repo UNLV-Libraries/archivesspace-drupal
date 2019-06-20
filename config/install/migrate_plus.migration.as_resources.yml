@@ -1,29 +1,22 @@
+langcode: en
+status: true
+dependencies: {  }
 id: as_resources
-label: ArchivesSpace Resources
+class: null
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags: null
 migration_group: archivesspace
-migration_dependencies:
-  required:
-    - as_repositories
-    - as_agents_corp
-    - as_agents_family
-    - as_agents_people
-    - as_subjects_all
-    - as_subjects_geo
-
+label: 'ArchivesSpace Resources'
 source:
   plugin: archivesspace
   object_type: resources
-  base_uri: http://localhost:8089
+  base_uri: 'http://localhost:8089'
   repository: /repositories/2
   username: admin
   password: admin
   keys:
     - uri
-
-destination:
-  plugin: entity:node
-  bundle: archival_resource
-
 process:
   published:
     plugin: skip_on_value
@@ -61,7 +54,7 @@ process:
       dimensions: dimensions
   field_as_finding_aid_desc_rules: finding_aid_description_rules
   field_as_resource_notes:
-    plugin: archivesspace_notes  # Custom process to handle single and multi-part notes
+    plugin: archivesspace_notes
     source: notes
   field_repository:
     -
@@ -85,7 +78,7 @@ process:
     -
       plugin: str_replace
       regex: true
-      search: /-+$/ # Remove any trailing dashes from missing id positions
+      search: /-+$/
       replace: ''
   field_resource_resource_type: level
   field_restrictions_bool: restrictions
@@ -93,7 +86,7 @@ process:
     plugin: sub_process_ext
     source: linked_agents
     process:
-      role: # Deal with subjects separately
+      role:
         plugin: skip_on_value
         method: row
         source: role
@@ -103,7 +96,7 @@ process:
           plugin: concat
           delimiter: ':'
           source:
-            - 'relators'
+            - relators
             - relator
         -
           plugin: static_map
@@ -157,4 +150,14 @@ process:
     -
       plugin: flatten
   field_finding_aid_link/uri: ead_location
-  # field_finding_aid_link/title: 'EAD' # ARK, DOI, etc.
+destination:
+  plugin: 'entity:node'
+  bundle: archival_resource
+migration_dependencies:
+  required:
+    - as_repositories
+    - as_agents_corp
+    - as_agents_family
+    - as_agents_people
+    - as_subjects_all
+    - as_subjects_geo
