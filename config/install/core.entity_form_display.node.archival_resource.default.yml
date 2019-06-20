@@ -2,6 +2,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.node.archival_resource.field_abstract
     - field.field.node.archival_resource.field_archival_record_level
     - field.field.node.archival_resource.field_as_agent_links
     - field.field.node.archival_resource.field_as_date
@@ -22,6 +23,7 @@ dependencies:
     - controlled_access_terms
     - link
     - path
+    - text
 id: node.archival_resource.default
 targetEntityType: node
 bundle: archival_resource
@@ -33,6 +35,14 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
+  field_abstract:
+    weight: 17
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
   field_archival_record_level:
     weight: 9
     settings: {  }
@@ -55,7 +65,7 @@ content:
     type: as_date_default
     region: content
   field_as_ead_id:
-    weight: 18
+    weight: 19
     settings:
       size: 60
       placeholder: ''
@@ -69,13 +79,13 @@ content:
     type: as_extent_default
     region: content
   field_as_finding_aid_desc_rules:
-    weight: 19
+    weight: 20
     settings: {  }
     third_party_settings: {  }
     type: options_select
     region: content
   field_as_resource_notes:
-    weight: 17
+    weight: 18
     settings: {  }
     third_party_settings: {  }
     type: typed_note_default
@@ -90,7 +100,7 @@ content:
     type: entity_reference_autocomplete
     region: content
   field_finding_aid_link:
-    weight: 26
+    weight: 21
     settings:
       placeholder_url: ''
       placeholder_title: ''
@@ -98,7 +108,7 @@ content:
     type: link_default
     region: content
   field_printable_pdf:
-    weight: 27
+    weight: 22
     settings:
       match_operator: CONTAINS
       size: 60

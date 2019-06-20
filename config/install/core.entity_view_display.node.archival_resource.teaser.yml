@@ -3,6 +3,7 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.node.teaser
+    - field.field.node.archival_resource.field_abstract
     - field.field.node.archival_resource.field_archival_record_level
     - field.field.node.archival_resource.field_as_agent_links
     - field.field.node.archival_resource.field_as_date
@@ -12,12 +13,15 @@ dependencies:
     - field.field.node.archival_resource.field_as_resource_notes
     - field.field.node.archival_resource.field_as_subject
     - field.field.node.archival_resource.field_finding_aid_link
+    - field.field.node.archival_resource.field_printable_pdf
     - field.field.node.archival_resource.field_repository
     - field.field.node.archival_resource.field_resource_identifier
     - field.field.node.archival_resource.field_resource_resource_type
     - field.field.node.archival_resource.field_restrictions_bool
     - node.type.archival_resource
   module:
+    - archivesspace
+    - text
     - user
 id: node.archival_resource.teaser
 targetEntityType: node
@@ -39,19 +43,36 @@ content:
     settings: {  }
     third_party_settings: {  }
     region: content
-  links:
-    weight: 100
+  field_abstract:
+    type: text_trimmed
+    weight: 2
     region: content
+    label: inline
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+  field_as_date:
+    type: as_date_default
+    weight: 1
+    region: content
+    label: inline
+    settings: {  }
+    third_party_settings: {  }
+  links:
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
 hidden:
   field_archival_record_level: true
   field_as_agent_links: true
-  field_as_date: true
   field_as_ead_id: true
   field_as_extent: true
   field_as_finding_aid_desc_rules: true
   field_as_resource_notes: true
   field_as_subject: true
   field_finding_aid_link: true
+  field_printable_pdf: true
   field_repository: true
   field_resource_identifier: true
   field_resource_resource_type: true

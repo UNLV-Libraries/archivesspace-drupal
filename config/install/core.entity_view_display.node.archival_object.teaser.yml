@@ -3,6 +3,8 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.node.teaser
+    - field.field.node.archival_object.field_abstract
+    - field.field.node.archival_object.field_archival_container
     - field.field.node.archival_object.field_archival_record_level
     - field.field.node.archival_object.field_as_agent_links
     - field.field.node.archival_object.field_as_date
@@ -17,19 +19,38 @@ dependencies:
     - field.field.node.archival_object.field_restrictions_bool
     - node.type.archival_object
   module:
+    - archivesspace
+    - text
     - user
 id: node.archival_object.teaser
 targetEntityType: node
 bundle: archival_object
 mode: teaser
 content:
-  links:
-    weight: 100
+  field_abstract:
+    type: text_trimmed
+    weight: 2
     region: content
+    label: inline
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+  field_as_date:
+    type: as_date_default
+    weight: 1
+    region: content
+    label: inline
+    settings: {  }
+    third_party_settings: {  }
+  links:
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
 hidden:
+  field_archival_container: true
   field_archival_record_level: true
   field_as_agent_links: true
-  field_as_date: true
   field_as_extent: true
   field_as_parent: true
   field_as_ref_id: true

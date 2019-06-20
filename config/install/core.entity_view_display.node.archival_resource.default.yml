@@ -2,6 +2,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.node.archival_resource.field_abstract
     - field.field.node.archival_resource.field_archival_record_level
     - field.field.node.archival_resource.field_as_agent_links
     - field.field.node.archival_resource.field_as_date
@@ -22,6 +23,7 @@ dependencies:
     - controlled_access_terms
     - link
     - options
+    - text
     - user
 id: node.archival_resource.default
 targetEntityType: node
@@ -42,6 +44,13 @@ content:
     weight: 10
     settings: {  }
     third_party_settings: {  }
+    region: content
+  field_abstract:
+    weight: 7
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
     region: content
   field_archival_record_level:
     type: list_default
@@ -66,14 +75,14 @@ content:
     type: as_date_default
     region: content
   field_as_extent:
-    weight: 8
+    weight: 9
     label: above
     settings: {  }
     third_party_settings: {  }
     type: as_extent_default
     region: content
   field_as_resource_notes:
-    weight: 7
+    weight: 8
     label: visually_hidden
     region: content
     type: typed_note_default
@@ -125,7 +134,7 @@ content:
     third_party_settings: {  }
   langcode:
     type: language
-    weight: 9
+    weight: 10
     region: content
     label: above
     settings:
