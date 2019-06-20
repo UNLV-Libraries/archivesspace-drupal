@@ -4,20 +4,45 @@ dependencies:
   config:
     - core.entity_view_mode.node.teaser
     - field.field.node.archival_resource.field_abstract
+    - field.field.node.archival_resource.field_accessrestrict
+    - field.field.node.archival_resource.field_accruals
+    - field.field.node.archival_resource.field_acqinfo
+    - field.field.node.archival_resource.field_altformavail
+    - field.field.node.archival_resource.field_appraisal
     - field.field.node.archival_resource.field_archival_record_level
+    - field.field.node.archival_resource.field_arrangement
     - field.field.node.archival_resource.field_as_agent_links
     - field.field.node.archival_resource.field_as_date
     - field.field.node.archival_resource.field_as_ead_id
     - field.field.node.archival_resource.field_as_extent
     - field.field.node.archival_resource.field_as_finding_aid_desc_rules
-    - field.field.node.archival_resource.field_as_resource_notes
     - field.field.node.archival_resource.field_as_subject
+    - field.field.node.archival_resource.field_bioghist
+    - field.field.node.archival_resource.field_custodhist
+    - field.field.node.archival_resource.field_dimensions
+    - field.field.node.archival_resource.field_fileplan
     - field.field.node.archival_resource.field_finding_aid_link
+    - field.field.node.archival_resource.field_langmaterial
+    - field.field.node.archival_resource.field_legalstatus
+    - field.field.node.archival_resource.field_materialspec
+    - field.field.node.archival_resource.field_odd
+    - field.field.node.archival_resource.field_originalsloc
+    - field.field.node.archival_resource.field_otherfindaid
+    - field.field.node.archival_resource.field_physdesc
+    - field.field.node.archival_resource.field_physfacet
+    - field.field.node.archival_resource.field_physloc
+    - field.field.node.archival_resource.field_phystech
+    - field.field.node.archival_resource.field_prefercite
     - field.field.node.archival_resource.field_printable_pdf
+    - field.field.node.archival_resource.field_processinfo
+    - field.field.node.archival_resource.field_relatedmaterial
     - field.field.node.archival_resource.field_repository
     - field.field.node.archival_resource.field_resource_identifier
     - field.field.node.archival_resource.field_resource_resource_type
     - field.field.node.archival_resource.field_restrictions_bool
+    - field.field.node.archival_resource.field_scopecontent
+    - field.field.node.archival_resource.field_separatedmaterial
+    - field.field.node.archival_resource.field_userestrict
     - node.type.archival_resource
   module:
     - archivesspace
@@ -64,17 +89,42 @@ content:
     settings: {  }
     third_party_settings: {  }
 hidden:
+  field_accessrestrict: true
+  field_accruals: true
+  field_acqinfo: true
+  field_altformavail: true
+  field_appraisal: true
   field_archival_record_level: true
+  field_arrangement: true
   field_as_agent_links: true
   field_as_ead_id: true
   field_as_extent: true
   field_as_finding_aid_desc_rules: true
-  field_as_resource_notes: true
   field_as_subject: true
+  field_bioghist: true
+  field_custodhist: true
+  field_dimensions: true
+  field_fileplan: true
   field_finding_aid_link: true
+  field_langmaterial: true
+  field_legalstatus: true
+  field_materialspec: true
+  field_odd: true
+  field_originalsloc: true
+  field_otherfindaid: true
+  field_physdesc: true
+  field_physfacet: true
+  field_physloc: true
+  field_phystech: true
+  field_prefercite: true
   field_printable_pdf: true
+  field_processinfo: true
+  field_relatedmaterial: true
   field_repository: true
   field_resource_identifier: true
   field_resource_resource_type: true
   field_restrictions_bool: true
+  field_scopecontent: true
+  field_separatedmaterial: true
+  field_userestrict: true
   langcode: true

@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_otherfindaid
+    - node.type.archival_resource
+  module:
+    - text
+id: node.archival_resource.field_otherfindaid
+field_name: field_otherfindaid
+entity_type: node
+bundle: archival_resource
+label: 'Other Finding Aids'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

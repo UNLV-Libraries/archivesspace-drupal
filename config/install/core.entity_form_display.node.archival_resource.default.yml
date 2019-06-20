@@ -3,27 +3,127 @@ status: true
 dependencies:
   config:
     - field.field.node.archival_resource.field_abstract
+    - field.field.node.archival_resource.field_accessrestrict
+    - field.field.node.archival_resource.field_accruals
+    - field.field.node.archival_resource.field_acqinfo
+    - field.field.node.archival_resource.field_altformavail
+    - field.field.node.archival_resource.field_appraisal
     - field.field.node.archival_resource.field_archival_record_level
+    - field.field.node.archival_resource.field_arrangement
     - field.field.node.archival_resource.field_as_agent_links
     - field.field.node.archival_resource.field_as_date
     - field.field.node.archival_resource.field_as_ead_id
     - field.field.node.archival_resource.field_as_extent
     - field.field.node.archival_resource.field_as_finding_aid_desc_rules
-    - field.field.node.archival_resource.field_as_resource_notes
     - field.field.node.archival_resource.field_as_subject
+    - field.field.node.archival_resource.field_bioghist
+    - field.field.node.archival_resource.field_custodhist
+    - field.field.node.archival_resource.field_dimensions
+    - field.field.node.archival_resource.field_fileplan
     - field.field.node.archival_resource.field_finding_aid_link
+    - field.field.node.archival_resource.field_langmaterial
+    - field.field.node.archival_resource.field_legalstatus
+    - field.field.node.archival_resource.field_materialspec
+    - field.field.node.archival_resource.field_odd
+    - field.field.node.archival_resource.field_originalsloc
+    - field.field.node.archival_resource.field_otherfindaid
+    - field.field.node.archival_resource.field_physdesc
+    - field.field.node.archival_resource.field_physfacet
+    - field.field.node.archival_resource.field_physloc
+    - field.field.node.archival_resource.field_phystech
+    - field.field.node.archival_resource.field_prefercite
     - field.field.node.archival_resource.field_printable_pdf
+    - field.field.node.archival_resource.field_processinfo
+    - field.field.node.archival_resource.field_relatedmaterial
     - field.field.node.archival_resource.field_repository
     - field.field.node.archival_resource.field_resource_identifier
     - field.field.node.archival_resource.field_resource_resource_type
     - field.field.node.archival_resource.field_restrictions_bool
+    - field.field.node.archival_resource.field_scopecontent
+    - field.field.node.archival_resource.field_separatedmaterial
+    - field.field.node.archival_resource.field_userestrict
     - node.type.archival_resource
   module:
     - archivesspace
     - controlled_access_terms
+    - field_group
     - link
     - path
     - text
+third_party_settings:
+  field_group:
+    group_basic_information:
+      children:
+        - title
+        - field_resource_identifier
+        - field_archival_record_level
+        - field_resource_resource_type
+        - langcode
+        - status
+        - field_restrictions_bool
+        - field_repository
+      parent_name: ''
+      weight: 0
+      format_type: details
+      format_settings:
+        id: ''
+        classes: ''
+        open: true
+        required_fields: true
+      label: 'Basic Information'
+    group_finding_aid_data:
+      children:
+        - field_as_ead_id
+        - field_finding_aid_link
+        - field_as_finding_aid_desc_rules
+        - field_printable_pdf
+      parent_name: ''
+      weight: 8
+      format_type: details
+      format_settings:
+        id: ''
+        classes: ''
+        open: false
+        required_fields: true
+      label: 'Finding Aid Data'
+    group_notes:
+      children:
+        - field_abstract
+        - field_accruals
+        - field_accessrestrict
+        - field_acqinfo
+        - field_altformavail
+        - field_appraisal
+        - field_arrangement
+        - field_bioghist
+        - field_custodhist
+        - field_dimensions
+        - field_fileplan
+        - field_langmaterial
+        - field_legalstatus
+        - field_materialspec
+        - field_odd
+        - field_originalsloc
+        - field_physdesc
+        - field_physfacet
+        - field_otherfindaid
+        - field_physloc
+        - field_phystech
+        - field_prefercite
+        - field_processinfo
+        - field_relatedmaterial
+        - field_scopecontent
+        - field_separatedmaterial
+        - field_userestrict
+      parent_name: ''
+      weight: 20
+      format_type: details
+      format_settings:
+        id: ''
+        classes: ''
+        open: false
+        required_fields: true
+      label: Notes
 id: node.archival_resource.default
 targetEntityType: node
 bundle: archival_resource
@@ -31,12 +131,52 @@ mode: default
 content:
   created:
     type: datetime_timestamp
-    weight: 3
+    weight: 2
     region: content
     settings: {  }
     third_party_settings: {  }
   field_abstract:
-    weight: 17
+    weight: 11
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+  field_accessrestrict:
+    weight: 13
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+  field_accruals:
+    weight: 12
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+  field_acqinfo:
+    weight: 14
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+  field_altformavail:
+    weight: 15
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+  field_appraisal:
+    weight: 16
     settings:
       rows: 5
       placeholder: ''
@@ -44,13 +184,21 @@ content:
     type: text_textarea
     region: content
   field_archival_record_level:
-    weight: 9
+    weight: 3
     settings: {  }
     third_party_settings: {  }
     type: options_select
     region: content
+  field_arrangement:
+    weight: 17
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
   field_as_agent_links:
-    weight: 15
+    weight: 9
     settings:
       match_operator: CONTAINS
       size: '60'
@@ -59,13 +207,13 @@ content:
     type: typed_relation_default
     region: content
   field_as_date:
-    weight: 14
+    weight: 6
     settings: {  }
     third_party_settings: {  }
     type: as_date_default
     region: content
   field_as_ead_id:
-    weight: 19
+    weight: 13
     settings:
       size: 60
       placeholder: ''
@@ -73,24 +221,155 @@ content:
     type: string_textfield
     region: content
   field_as_extent:
-    weight: 13
+    weight: 7
     settings: {  }
     third_party_settings: {  }
     type: as_extent_default
     region: content
   field_as_finding_aid_desc_rules:
-    weight: 20
+    weight: 15
     settings: {  }
     third_party_settings: {  }
     type: options_select
     region: content
-  field_as_resource_notes:
-    weight: 18
-    settings: {  }
-    third_party_settings: {  }
-    type: typed_note_default
-    region: content
   field_as_subject:
+    weight: 10
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+  field_bioghist:
+    weight: 18
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+  field_custodhist:
+    weight: 19
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+  field_dimensions:
+    weight: 20
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+  field_fileplan:
+    weight: 21
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+  field_finding_aid_link:
+    weight: 14
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
+    region: content
+  field_langmaterial:
+    weight: 22
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+  field_legalstatus:
+    weight: 23
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+  field_materialspec:
+    weight: 24
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+  field_odd:
+    weight: 25
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+  field_originalsloc:
+    weight: 26
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+  field_otherfindaid:
+    weight: 29
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+  field_physdesc:
+    weight: 27
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+  field_physfacet:
+    weight: 28
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+  field_physloc:
+    weight: 30
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+  field_phystech:
+    weight: 31
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+  field_prefercite:
+    weight: 32
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+  field_printable_pdf:
     weight: 16
     settings:
       match_operator: CONTAINS
@@ -99,25 +378,24 @@ content:
     third_party_settings: {  }
     type: entity_reference_autocomplete
     region: content
-  field_finding_aid_link:
-    weight: 21
+  field_processinfo:
+    weight: 33
     settings:
-      placeholder_url: ''
-      placeholder_title: ''
-    third_party_settings: {  }
-    type: link_default
-    region: content
-  field_printable_pdf:
-    weight: 22
-    settings:
-      match_operator: CONTAINS
-      size: 60
+      rows: 5
       placeholder: ''
     third_party_settings: {  }
-    type: entity_reference_autocomplete
+    type: text_textarea
+    region: content
+  field_relatedmaterial:
+    weight: 34
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
     region: content
   field_repository:
-    weight: 12
+    weight: 8
     settings:
       match_operator: CONTAINS
       size: 60
@@ -126,7 +404,7 @@ content:
     type: entity_reference_autocomplete
     region: content
   field_resource_identifier:
-    weight: 8
+    weight: 2
     settings:
       size: 60
       placeholder: ''
@@ -134,28 +412,52 @@ content:
     type: string_textfield
     region: content
   field_resource_resource_type:
-    weight: 10
+    weight: 4
     settings: {  }
     third_party_settings: {  }
     type: options_select
     region: content
   field_restrictions_bool:
-    weight: 11
+    weight: 7
     settings:
       display_label: true
     third_party_settings: {  }
     type: boolean_checkbox
     region: content
+  field_scopecontent:
+    weight: 35
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+  field_separatedmaterial:
+    weight: 36
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+  field_userestrict:
+    weight: 37
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
   langcode:
     type: language_select
-    weight: 1
+    weight: 5
     region: content
     settings:
       include_locked: true
     third_party_settings: {  }
   path:
     type: path
-    weight: 6
+    weight: 5
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -163,26 +465,26 @@ content:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 4
+    weight: 3
     region: content
     third_party_settings: {  }
   status:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 7
+    weight: 6
     region: content
     third_party_settings: {  }
   sticky:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 5
+    weight: 4
     region: content
     third_party_settings: {  }
   title:
     type: string_textfield
-    weight: 0
+    weight: 1
     region: content
     settings:
       size: 60
@@ -190,7 +492,7 @@ content:
     third_party_settings: {  }
   uid:
     type: entity_reference_autocomplete
-    weight: 2
+    weight: 1
     settings:
       match_operator: CONTAINS
       size: 60
