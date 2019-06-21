@@ -16,7 +16,6 @@ dependencies:
     - field.field.node.archival_object.field_as_extent
     - field.field.node.archival_object.field_as_parent
     - field.field.node.archival_object.field_as_ref_id
-    - field.field.node.archival_object.field_as_resource_notes
     - field.field.node.archival_object.field_as_subject
     - field.field.node.archival_object.field_as_title
     - field.field.node.archival_object.field_as_weight
@@ -220,12 +219,6 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: entity_reference_autocomplete
-    region: content
-  field_as_resource_notes:
-    weight: 20
-    settings: {  }
-    third_party_settings: {  }
-    type: typed_note_default
     region: content
   field_as_subject:
     weight: 13
