@@ -3,8 +3,14 @@ status: true
 dependencies:
   config:
     - field.field.node.archival_object.field_abstract
+    - field.field.node.archival_object.field_accessrestrict
+    - field.field.node.archival_object.field_accruals
+    - field.field.node.archival_object.field_acqinfo
+    - field.field.node.archival_object.field_altformavail
+    - field.field.node.archival_object.field_appraisal
     - field.field.node.archival_object.field_archival_container
     - field.field.node.archival_object.field_archival_record_level
+    - field.field.node.archival_object.field_arrangement
     - field.field.node.archival_object.field_as_agent_links
     - field.field.node.archival_object.field_as_date
     - field.field.node.archival_object.field_as_extent
@@ -14,8 +20,28 @@ dependencies:
     - field.field.node.archival_object.field_as_subject
     - field.field.node.archival_object.field_as_title
     - field.field.node.archival_object.field_as_weight
+    - field.field.node.archival_object.field_bioghist
+    - field.field.node.archival_object.field_custodhist
+    - field.field.node.archival_object.field_dimensions
+    - field.field.node.archival_object.field_fileplan
+    - field.field.node.archival_object.field_langmaterial
+    - field.field.node.archival_object.field_legalstatus
+    - field.field.node.archival_object.field_materialspec
+    - field.field.node.archival_object.field_odd
+    - field.field.node.archival_object.field_originalsloc
+    - field.field.node.archival_object.field_otherfindaid
+    - field.field.node.archival_object.field_physdesc
+    - field.field.node.archival_object.field_physfacet
+    - field.field.node.archival_object.field_physloc
+    - field.field.node.archival_object.field_phystech
+    - field.field.node.archival_object.field_prefercite
+    - field.field.node.archival_object.field_processinfo
+    - field.field.node.archival_object.field_relatedmaterial
     - field.field.node.archival_object.field_resource_identifier
     - field.field.node.archival_object.field_restrictions_bool
+    - field.field.node.archival_object.field_scopecontent
+    - field.field.node.archival_object.field_separatedmaterial
+    - field.field.node.archival_object.field_userestrict
     - node.type.archival_object
   module:
     - archivesspace
@@ -35,6 +61,41 @@ content:
     third_party_settings: {  }
     type: text_default
     region: content
+  field_accessrestrict:
+    weight: 13
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_accruals:
+    weight: 14
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_acqinfo:
+    weight: 15
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_altformavail:
+    weight: 16
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_appraisal:
+    weight: 17
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
   field_archival_container:
     weight: 12
     label: above
@@ -49,6 +110,13 @@ content:
     settings: {  }
     third_party_settings: {  }
     type: list_default
+    region: content
+  field_arrangement:
+    weight: 18
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
     region: content
   field_as_agent_links:
     weight: 4
@@ -102,6 +170,125 @@ content:
     third_party_settings: {  }
     type: basic_string
     region: content
+  field_bioghist:
+    weight: 19
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_custodhist:
+    weight: 20
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_dimensions:
+    weight: 21
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_fileplan:
+    weight: 22
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_langmaterial:
+    weight: 23
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_legalstatus:
+    weight: 24
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_materialspec:
+    weight: 25
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_odd:
+    weight: 26
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_originalsloc:
+    weight: 27
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_otherfindaid:
+    weight: 28
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_physdesc:
+    weight: 29
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_physfacet:
+    weight: 30
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_physloc:
+    weight: 31
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_phystech:
+    weight: 32
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_prefercite:
+    weight: 33
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_processinfo:
+    weight: 34
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_relatedmaterial:
+    weight: 35
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
   field_resource_identifier:
     weight: 9
     label: above
@@ -119,6 +306,27 @@ content:
       format_custom_false: ''
     third_party_settings: {  }
     type: boolean
+    region: content
+  field_scopecontent:
+    weight: 36
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_separatedmaterial:
+    weight: 37
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_userestrict:
+    weight: 38
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
     region: content
   links:
     weight: 0

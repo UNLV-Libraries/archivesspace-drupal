@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_processinfo
+    - node.type.archival_object
+  module:
+    - text
+id: node.archival_object.field_processinfo
+field_name: field_processinfo
+entity_type: node
+bundle: archival_object
+label: 'Processing Information'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long
