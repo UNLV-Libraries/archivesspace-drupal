@@ -53,19 +53,14 @@ process:
       physical_details: physical_details
       dimensions: dimensions
   field_as_finding_aid_desc_rules: finding_aid_description_rules
-  field_as_resource_notes:
+  field_abstract:
     plugin: archivesspace_notes
+    type: abstract
     source: notes
-  field_repository:
-    -
-      plugin: extract
-      source: repository
-      index:
-        - ref
-    -
-      plugin: migration_lookup
-      migration: as_repositories
-      no_stub: true
+  field_userestrict:
+    plugin: archivesspace_notes
+    type: userestrict
+    source: notes
   field_resource_identifier:
     -
       plugin: concat
