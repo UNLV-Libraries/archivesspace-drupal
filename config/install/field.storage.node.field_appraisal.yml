@@ -1,17 +1,19 @@
 langcode: en
 status: true
 dependencies:
-  enforced:
-    module:
-      - archivesspace
   module:
+    - field_permissions
     - node
-id: node.field_as_resource_notes
-field_name: field_as_resource_notes
+    - text
+third_party_settings:
+  field_permissions:
+    permission_type: public
+id: node.field_appraisal
+field_name: field_appraisal
 entity_type: node
-type: typed_note
+type: text_long
 settings: {  }
-module: archivesspace
+module: text
 locked: false
 cardinality: -1
 translatable: true

@@ -27,38 +27,77 @@ class ArchivesSpaceNotes extends ProcessPluginBase {
     if (!is_array($value)) {
       throw new MigrateException(sprintf('ArchivesSpace Notes process failed for destination property (%s): input is not an array.', $destination_property));
     }
+    if (empty($this->configuration['type']) && !array_key_exists('type', $this->configuration)) {
+      throw new MigrateException('ArchivesSpace Notes plugin is missing type configuration.');
+    }
 
-    // Start with the easy attributes.
-    $label = (isset($value['lable'])) ? $value['label'] : '';
-    $type = (isset($value['type'])) ? $value['type'] : 'odd';
-    $content = '';
+    if ($value['type'] === $this->configuration['type'] && $value['publish'] === TRUE) {
+      $content = '';
+      switch ($value['jsonmodel_type']) {
+        case 'note_singlepart':
+          foreach ($value['content'] as $line) {
+            $content .= $this->cleanup($line);
+          }
+          break;
 
-    // Single or multipart notes?
-    if ($value['jsonmodel_type'] == 'note_singlepart') {
-      foreach ($value['content'] as $p) {
-        $content .= "<p>$p</p>";
+        case 'note_multipart':
+          foreach ($value['subnotes'] as $subnote) {
+            if ($subnote['publish'] === TRUE) {
+              $content .= $this->cleanup($subnote['content']);
+            }
+          }
+          break;
+      }
+      if (!empty($content)) {
+        return [
+          'value' => $content,
+          'format' => 'basic_html',
+        ];
       }
     }
-    elseif ($value['jsonmodel_type'] == 'note_multipart') {
-      foreach ($value['subnotes'] as $subnote) {
-        if ($subnote['publish']) {
-          $content .= '<p>' . $subnote['content'] . '</p>';
-        }
+  }
+
+  /**
+   * Cleans up EAD-specific markup for Basic HTML compliance.
+   */
+  protected function cleanup($string) {
+    // These tags get stripped:
+    // - language (part of langmaterial)
+    // - date: possibly change to <time datetime='...'> ?
+    // - function
+    // - occupation
+    // - subject
+    // - corpname
+    // - persname
+    // - famname
+    // - name
+    // - geogname
+    // - genreform
+    // - title
+    // - extref
+    // Consider possible replacement.
+    // Tag replacements.
+    $patterns = [
+      '/<emph>([^<]+)<\/emph>/',
+      '/<ref ([^<]+)<\/ref>/',
+    ];
+    $replacements = [
+      '<em>$1</em>',
+      '<a $1</a>',
+    ];
+    $string = preg_replace($patterns, $replacements, $string);
+
+    // Replace newlines with paragraph tags.
+    // TODO: prevent blockquotes from getting wrapped in paragraphs
+    // but still support paragraphs inside blockquotes.
+    $paragraphs = '';
+    foreach (explode(PHP_EOL, $string) as $line) {
+      $trimmed = trim($line);
+      if (!empty($trimmed)) {
+        $paragraphs .= '<p>' . $trimmed . '</p>';
       }
     }
-
-    // Is the note published and does it contain content?
-    if (isset($value['publish']) && $value['publish'] && $content) {
-      return [
-        'label' => $label,
-        'note_type' => $type,
-        'note' => $content,
-      ];
-    }
-    else {
-      throw new MigrateSkipProcessException();
-    }
-
+    return $paragraphs;
   }
 
 }

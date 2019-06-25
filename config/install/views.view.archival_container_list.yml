@@ -2,6 +2,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - core.entity_view_mode.node.teaser
     - field.storage.node.field_archival_container
     - node.type.archival_object
   module:
@@ -55,7 +56,10 @@ display:
       style:
         type: default
       row:
-        type: fields
+        type: 'entity:node'
+        options:
+          relationship: none
+          view_mode: teaser
       fields:
         title:
           id: title
@@ -205,10 +209,22 @@ display:
           entity_field: type
           plugin_id: bundle
       sorts:
-        delta:
-          id: delta
-          table: node__field_archival_container
-          field: delta
+        field_as_weight_value:
+          id: field_as_weight_value
+          table: node__field_as_weight
+          field: field_as_weight_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          order: ASC
+          exposed: false
+          expose:
+            label: ''
+          plugin_id: standard
+        field_as_title_value:
+          id: field_as_title_value
+          table: node__field_as_title
+          field: field_as_title_value
           relationship: none
           group_type: group
           admin_label: ''

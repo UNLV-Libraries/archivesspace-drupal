@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_prefercite
+    - node.type.archival_object
+  module:
+    - text
+id: node.archival_object.field_prefercite
+field_name: field_prefercite
+entity_type: node
+bundle: archival_object
+label: 'Preferred Citation'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

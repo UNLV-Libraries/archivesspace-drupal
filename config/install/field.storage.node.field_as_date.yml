@@ -5,6 +5,7 @@ dependencies:
     module:
       - archivesspace
   module:
+    - archivesspace
     - node
 id: node.field_as_date
 field_name: field_as_date

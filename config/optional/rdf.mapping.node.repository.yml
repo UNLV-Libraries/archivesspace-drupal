@@ -1,0 +1,32 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.repository
+  module:
+    - node
+id: node.repository
+targetEntityType: node
+bundle: repository
+types:
+  - 'schema:ArchiveOrganization'
+fieldMappings:
+  title:
+    properties:
+      - 'schema:name'
+  created:
+    properties:
+      - 'schema:dateCreated'
+    datatype_callback:
+      callable: 'Drupal\rdf\CommonDataConverter::dateIso8601Value'
+  changed:
+    properties:
+      - 'schema:dateModified'
+    datatype_callback:
+      callable: 'Drupal\rdf\CommonDataConverter::dateIso8601Value'
+  body:
+    properties:
+      - 'schema:description'
+  field_as_address:
+    properties:
+      - 'schema:address'

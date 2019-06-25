@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_relatedmaterial
+    - node.type.archival_object
+  module:
+    - text
+id: node.archival_object.field_relatedmaterial
+field_name: field_relatedmaterial
+entity_type: node
+bundle: archival_object
+label: 'Related Materials'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

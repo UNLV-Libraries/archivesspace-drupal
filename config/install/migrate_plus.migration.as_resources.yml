@@ -1,29 +1,22 @@
+langcode: en
+status: true
+dependencies: {  }
 id: as_resources
-label: ArchivesSpace Resources
+class: null
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags: null
 migration_group: archivesspace
-migration_dependencies:
-  required:
-    - as_repositories
-    - as_agents_corp
-    - as_agents_family
-    - as_agents_people
-    - as_subjects_all
-    - as_subjects_geo
-
+label: 'ArchivesSpace Resources'
 source:
   plugin: archivesspace
   object_type: resources
-  base_uri: http://localhost:8089
+  base_uri: 'http://localhost:8089'
   repository: /repositories/2
   username: admin
   password: admin
   keys:
     - uri
-
-destination:
-  plugin: entity:node
-  bundle: archival_resource
-
 process:
   published:
     plugin: skip_on_value
@@ -60,19 +53,114 @@ process:
       physical_details: physical_details
       dimensions: dimensions
   field_as_finding_aid_desc_rules: finding_aid_description_rules
-  field_as_resource_notes:
-    plugin: archivesspace_notes  # Custom process to handle single and multi-part notes
+  field_abstract:
+    plugin: archivesspace_notes
+    type: abstract
     source: notes
-  field_repository:
-    -
-      plugin: extract
-      source: repository
-      index:
-        - ref
-    -
-      plugin: migration_lookup
-      migration: as_repositories
-      no_stub: true
+  field_accessrestrict:
+    plugin: archivesspace_notes
+    type: accessrestrict
+    source: notes
+  field_accruals:
+    plugin: archivesspace_notes
+    type: accruals
+    source: notes
+  field_acqinfo:
+    plugin: archivesspace_notes
+    type: acqinfo
+    source: notes
+  field_altformavail:
+    plugin: archivesspace_notes
+    type: altformavail
+    source: notes
+  field_appraisal:
+    plugin: archivesspace_notes
+    type: appraisal
+    source: notes
+  field_arrangement:
+    plugin: archivesspace_notes
+    type: arrangement
+    source: notes
+  field_bioghist:
+    plugin: archivesspace_notes
+    type: bioghist
+    source: notes
+  field_custodhist:
+    plugin: archivesspace_notes
+    type: custodhist
+    source: notes
+  field_dimensions:
+    plugin: archivesspace_notes
+    type: dimensions
+    source: notes
+  field_fileplan:
+    plugin: archivesspace_notes
+    type: fileplan
+    source: notes
+  field_langmaterial:
+    plugin: archivesspace_notes
+    type: langmaterial
+    source: notes
+  field_legalstatus:
+    plugin: archivesspace_notes
+    type: legalstatus
+    source: notes
+  field_materialspec:
+    plugin: archivesspace_notes
+    type: materialspec
+    source: notes
+  field_odd:
+    plugin: archivesspace_notes
+    type: odd
+    source: notes
+  field_originalsloc:
+    plugin: archivesspace_notes
+    type: originalsloc
+    source: notes
+  field_otherfindaid:
+    plugin: archivesspace_notes
+    type: otherfindaid
+    source: notes
+  field_physdesc:
+    plugin: archivesspace_notes
+    type: physdesc
+    source: notes
+  field_physfacet:
+    plugin: archivesspace_notes
+    type: physfacet
+    source: notes
+  field_physloc:
+    plugin: archivesspace_notes
+    type: physloc
+    source: notes
+  field_phystech:
+    plugin: archivesspace_notes
+    type: phystech
+    source: notes
+  field_prefercite:
+    plugin: archivesspace_notes
+    type: prefercite
+    source: notes
+  field_processinfo:
+    plugin: archivesspace_notes
+    type: processinfo
+    source: notes
+  field_relatedmaterial:
+    plugin: archivesspace_notes
+    type: relatedmaterial
+    source: notes
+  field_scopecontent:
+    plugin: archivesspace_notes
+    type: scopecontent
+    source: notes
+  field_separatedmaterial:
+    plugin: archivesspace_notes
+    type: separatedmaterial
+    source: notes
+  field_userestrict:
+    plugin: archivesspace_notes
+    type: userestrict
+    source: notes
   field_resource_identifier:
     -
       plugin: concat
@@ -85,7 +173,7 @@ process:
     -
       plugin: str_replace
       regex: true
-      search: /-+$/ # Remove any trailing dashes from missing id positions
+      search: /-+$/
       replace: ''
   field_resource_resource_type: level
   field_restrictions_bool: restrictions
@@ -93,7 +181,7 @@ process:
     plugin: sub_process_ext
     source: linked_agents
     process:
-      role: # Deal with subjects separately
+      role:
         plugin: skip_on_value
         method: row
         source: role
@@ -103,7 +191,7 @@ process:
           plugin: concat
           delimiter: ':'
           source:
-            - 'relators'
+            - relators
             - relator
         -
           plugin: static_map
@@ -157,4 +245,14 @@ process:
     -
       plugin: flatten
   field_finding_aid_link/uri: ead_location
-  # field_finding_aid_link/title: 'EAD' # ARK, DOI, etc.
+destination:
+  plugin: 'entity:node'
+  bundle: archival_resource
+migration_dependencies:
+  required:
+    - as_repositories
+    - as_agents_corp
+    - as_agents_family
+    - as_agents_people
+    - as_subjects_all
+    - as_subjects_geo

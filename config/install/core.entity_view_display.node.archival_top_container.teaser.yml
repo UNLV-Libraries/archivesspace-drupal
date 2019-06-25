@@ -3,6 +3,12 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.node.teaser
+    - field.field.node.archival_top_container.field_as_container_collection
+    - field.field.node.archival_top_container.field_as_container_indicator
+    - field.field.node.archival_top_container.field_as_container_short_title
+    - field.field.node.archival_top_container.field_as_container_type
+    - field.field.node.archival_top_container.field_repository
+    - field.field.node.archival_top_container.field_restrictions_bool
     - node.type.archival_top_container
   module:
     - user
@@ -17,4 +23,10 @@ content:
     third_party_settings: {  }
     region: content
 hidden:
+  field_as_container_collection: true
+  field_as_container_indicator: true
+  field_as_container_short_title: true
+  field_as_container_type: true
+  field_repository: true
+  field_restrictions_bool: true
   langcode: true
