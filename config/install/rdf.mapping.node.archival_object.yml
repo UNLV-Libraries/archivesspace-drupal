@@ -1,0 +1,46 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.archival_object
+  module:
+    - node
+id: node.archival_object
+targetEntityType: node
+bundle: archival_object
+types:
+  - 'schema:ArchiveComponent'
+fieldMappings:
+  title:
+    properties:
+      - 'schema:name'
+  created:
+    properties:
+      - 'schema:sdDatePublished'
+    datatype_callback:
+      callable: 'Drupal\rdf\CommonDataConverter::dateIso8601Value'
+  changed:
+    properties:
+      - 'schema:sdDatePublished'
+    datatype_callback:
+      callable: 'Drupal\rdf\CommonDataConverter::dateIso8601Value'
+  field_as_parent:
+    properties:
+      - 'schema:isPartOf'
+  field_as_extent:
+    properties:
+      - 'schema:materialExtent'
+  field_as_weight:
+    properties:
+      - 'schema:position'
+  field_as_date:
+    properties:
+      - 'schema:temporalCoverage'
+    datatype_callback:
+      callable: 'Drupal\archivesspace\ArchivesSpaceDataConverter::iso8601Interval'
+  field_resource_identifier:
+    properties:
+      - 'schema:identifier'
+  field_as_subject:
+    properties:
+      - 'schema:about'
