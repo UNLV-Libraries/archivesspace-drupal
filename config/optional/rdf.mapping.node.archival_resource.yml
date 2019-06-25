@@ -72,6 +72,10 @@ fieldMappings:
   field_fileplan:
     properties:
       - 'dc:tableOfContents'
+  field_finding_aid_link:
+    properties:
+      - 'dc:identifier'
+      - 'schema:url'
   field_langmaterial:
     properties:
       - 'dc:language'
