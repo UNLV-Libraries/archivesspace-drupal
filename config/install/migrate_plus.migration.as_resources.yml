@@ -57,6 +57,106 @@ process:
     plugin: archivesspace_notes
     type: abstract
     source: notes
+  field_accessrestrict:
+    plugin: archivesspace_notes
+    type: accessrestrict
+    source: notes
+  field_accruals:
+    plugin: archivesspace_notes
+    type: accruals
+    source: notes
+  field_acqinfo:
+    plugin: archivesspace_notes
+    type: acqinfo
+    source: notes
+  field_altformavail:
+    plugin: archivesspace_notes
+    type: altformavail
+    source: notes
+  field_appraisal:
+    plugin: archivesspace_notes
+    type: appraisal
+    source: notes
+  field_arrangement:
+    plugin: archivesspace_notes
+    type: arrangement
+    source: notes
+  field_bioghist:
+    plugin: archivesspace_notes
+    type: bioghist
+    source: notes
+  field_custodhist:
+    plugin: archivesspace_notes
+    type: custodhist
+    source: notes
+  field_dimensions:
+    plugin: archivesspace_notes
+    type: dimensions
+    source: notes
+  field_fileplan:
+    plugin: archivesspace_notes
+    type: fileplan
+    source: notes
+  field_langmaterial:
+    plugin: archivesspace_notes
+    type: langmaterial
+    source: notes
+  field_legalstatus:
+    plugin: archivesspace_notes
+    type: legalstatus
+    source: notes
+  field_materialspec:
+    plugin: archivesspace_notes
+    type: materialspec
+    source: notes
+  field_odd:
+    plugin: archivesspace_notes
+    type: odd
+    source: notes
+  field_originalsloc:
+    plugin: archivesspace_notes
+    type: originalsloc
+    source: notes
+  field_otherfindaid:
+    plugin: archivesspace_notes
+    type: otherfindaid
+    source: notes
+  field_physdesc:
+    plugin: archivesspace_notes
+    type: physdesc
+    source: notes
+  field_physfacet:
+    plugin: archivesspace_notes
+    type: physfacet
+    source: notes
+  field_physloc:
+    plugin: archivesspace_notes
+    type: physloc
+    source: notes
+  field_phystech:
+    plugin: archivesspace_notes
+    type: phystech
+    source: notes
+  field_prefercite:
+    plugin: archivesspace_notes
+    type: prefercite
+    source: notes
+  field_processinfo:
+    plugin: archivesspace_notes
+    type: processinfo
+    source: notes
+  field_relatedmaterial:
+    plugin: archivesspace_notes
+    type: relatedmaterial
+    source: notes
+  field_scopecontent:
+    plugin: archivesspace_notes
+    type: scopecontent
+    source: notes
+  field_separatedmaterial:
+    plugin: archivesspace_notes
+    type: separatedmaterial
+    source: notes
   field_userestrict:
     plugin: archivesspace_notes
     type: userestrict

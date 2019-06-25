@@ -36,14 +36,14 @@ class ArchivesSpaceNotes extends ProcessPluginBase {
       switch ($value['jsonmodel_type']) {
         case 'note_singlepart':
           foreach ($value['content'] as $line) {
-            $content .= "<p>$line</p>";
+            $content .= $this->cleanup($line);
           }
           break;
 
         case 'note_multipart':
           foreach ($value['subnotes'] as $subnote) {
             if ($subnote['publish'] === TRUE) {
-              $content .= '<p>' . $subnote['content'] . '</p>';
+              $content .= $this->cleanup($subnote['content']);
             }
           }
           break;
@@ -55,6 +55,49 @@ class ArchivesSpaceNotes extends ProcessPluginBase {
         ];
       }
     }
+  }
+
+  /**
+   * Cleans up EAD-specific markup for Basic HTML compliance.
+   */
+  protected function cleanup($string) {
+    // These tags get stripped:
+    // - language (part of langmaterial)
+    // - date: possibly change to <time datetime='...'> ?
+    // - function
+    // - occupation
+    // - subject
+    // - corpname
+    // - persname
+    // - famname
+    // - name
+    // - geogname
+    // - genreform
+    // - title
+    // - extref
+    // Consider possible replacement.
+    // Tag replacements.
+    $patterns = [
+      '/<emph>([^<]+)<\/emph>/',
+      '/<ref ([^<]+)<\/ref>/',
+    ];
+    $replacements = [
+      '<em>$1</em>',
+      '<a $1</a>',
+    ];
+    $string = preg_replace($patterns, $replacements, $string);
+
+    // Replace newlines with paragraph tags.
+    // TODO: prevent blockquotes from getting wrapped in paragraphs
+    // but still support paragraphs inside blockquotes.
+    $paragraphs = '';
+    foreach (explode(PHP_EOL, $string) as $line) {
+      $trimmed = trim($line);
+      if (!empty($trimmed)) {
+        $paragraphs .= '<p>' . $trimmed . '</p>';
+      }
+    }
+    return $paragraphs;
   }
 
 }
