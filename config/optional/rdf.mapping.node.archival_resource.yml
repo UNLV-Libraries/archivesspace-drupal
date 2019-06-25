@@ -48,3 +48,61 @@ fieldMappings:
   field_as_subject:
     properties:
       - 'schema:about'
+  field_abstract:
+    properties:
+      - 'dc:abstract'
+  field_accessrestrict:
+    properties:
+      - 'dc:accessRights'
+  field_accruals:
+    properties:
+      - 'dc:accrualMethod'
+  field_acqinfo:
+    properties:
+      - 'dc:provenance'
+  field_altformavail:
+    properties:
+      - 'dc:hasFormat'
+  field_custodhist:
+    properties:
+      - 'dc:provenance'
+  field_dimensions:
+    properties:
+      - 'dc:extent'
+  field_fileplan:
+    properties:
+      - 'dc:tableOfContents'
+  field_langmaterial:
+    properties:
+      - 'dc:language'
+  field_materialspec:
+    properties:
+      - 'dc:format'
+  field_odd:
+    properties:
+      - 'dc:description'
+  field_orginalsloc:
+    properties:
+      - 'dc:source'
+  field_physdesc:
+    properties:
+      - 'dc:description'
+  field_physfacet:
+    properties:
+      - 'dc:format'
+  field_phystech:
+    properties:
+      - 'dc:medium'
+  field_prefercite:
+    properties:
+      - 'schema:citation'
+  field_relatedmaterial:
+    properties:
+      - 'dc:relation'
+  field_scopecontent:
+    properties:
+      - 'schema:description'
+      - 'dc:description'
+  field_userestrict:
+    properties:
+      - 'dc:rights'
