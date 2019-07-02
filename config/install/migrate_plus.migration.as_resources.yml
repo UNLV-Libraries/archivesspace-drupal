@@ -30,6 +30,7 @@ process:
   uid:
     plugin: default_value
     default_value: 1
+  field_archival_record_level: level
   field_as_date:
     plugin: sub_process
     source: dates
@@ -161,6 +162,16 @@ process:
     plugin: archivesspace_notes
     type: userestrict
     source: notes
+  field_repository:
+    -
+      plugin: extract
+      source: repository
+      index:
+        - ref
+    -
+      plugin: migration_lookup
+      migration: as_repositories
+      no_stub: true
   field_resource_identifier:
     -
       plugin: concat
@@ -175,7 +186,7 @@ process:
       regex: true
       search: /-+$/
       replace: ''
-  field_resource_resource_type: level
+  field_resource_resource_type: resource_type
   field_restrictions_bool: restrictions
   field_as_agent_links:
     plugin: sub_process_ext

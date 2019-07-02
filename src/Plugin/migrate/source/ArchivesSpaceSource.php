@@ -67,6 +67,7 @@ class ArchivesSpaceSource extends SourcePluginBase {
           'linked_agents' => $this->t('Linked Agents'),
           'notes' => $this->t('Notes'),
           'publish' => $this->t('Publish'),
+          'resource_type' => $this->t('Resource Type'),
           'restrictions' => $this->t('Restrictions'),
           'subjects' => $this->t('Subjects'),
           'suppressed' => $this->t('Suppressed'),
