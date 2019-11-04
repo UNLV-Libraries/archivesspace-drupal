@@ -17,6 +17,11 @@ source:
   keys:
     - uri
 process:
+  published:
+    plugin: skip_on_value
+    source: publish
+    method: row
+    value: false
   is_used:
     plugin: skip_on_value
     source: is_linked_to_published_record
